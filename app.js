@@ -11,7 +11,11 @@ app.set("view engine", "pug");
 app.use("/assets", express.static('assets'));
 
 app.get("/", (req, res) => {
-    res.render(__dirname + "/snippet/views/index", {message: "Hello world"});
+    res.render(__dirname + "/snippet/index", { message: "Hello world"});
+});
+
+app.get("/users", (req, res) => {
+    res.render(__dirname + "/snippet/users", { message: "Hello world"});
 });
 
 

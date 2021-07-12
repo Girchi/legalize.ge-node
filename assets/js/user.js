@@ -123,4 +123,4 @@ const user_in_list = document.getElementById('user_in_list');
 
 // window.location.assign('./asd');
 
-
+module.exports = users
