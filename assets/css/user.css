@@ -1,0 +1,50 @@
+.user-search{
+    height:fit-content;
+    margin-top: 10rem;
+}
+#myInput {
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    outline: none;
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+  
+  #myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #myUL li a {
+    margin-top: 10px; /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+}
+  
+#myUL li a:hover:not(.header) {
+    background-color: #eee;
+}
+ 
+
+#user-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+.user--name{
+    margin-left: 1rem;
+    font-size: 0.9rem;
+}
+.user--li{
+    margin-top: 0.8rem;
+}
