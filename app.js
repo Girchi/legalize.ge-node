@@ -18,6 +18,14 @@ app.get("/users", (req, res) => {
     res.render(__dirname + "/snippet/users", { message: "Hello world"});
 });
 
+// --------------------Card Sides----------------
+
+app.get("/user/:id", (req, res) => {
+    res.render(__dirname + "/snippet/profile", { id: req.params.id});
+});
+
+
+
 
 
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`)); 
