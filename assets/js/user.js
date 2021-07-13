@@ -66,7 +66,7 @@ for(let i in users) {
     users[i].id_number = num;
     num++;
     data += `<li class='li-element' value=${users[i].id_number}>
-    <a href="/user/${users[i].id_number}" target="_blank" id="user_in_list" class="user--li" value=${users[i].id_number}>
+    <a href="/user/${users[i].id_number}" id="user_in_list" class="user--li" value=${users[i].id_number}>
     <img class='user-pic' src='${users[i].img}'>
     <span class="user--name">${users[i].name} ${users[i].surname}</span>
     </a></li> `
