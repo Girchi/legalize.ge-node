@@ -5,7 +5,7 @@
             "name": "კუკური",
             "surname": "ნებაძე",
             "img": "assets/img/users/კუკურინებაძე.jpg",
-            "status": "მწეველი"
+            "status": "cbd"
         },
 
         {
@@ -13,7 +13,7 @@
             "name": "გიგა",
             "surname": "გოგაშვილი",
             "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -21,7 +21,7 @@
             "name": "გიორგი",
             "surname": "არაბული",
             "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "მწეველი"
+            "status": "founder"
         },
 
         {
@@ -29,7 +29,7 @@
             "name": "ირაკლი",
             "surname": "ბურღაშვილი",
             "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "investor"
         },
 
         {
@@ -37,7 +37,7 @@
             "name": "ლევანი",
             "surname": "ჩოთალიშვილი",
             "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "მწეველი"
+            "status": "owner"
         },
 
         {
@@ -45,7 +45,7 @@
             "name": "მერი",
             "surname": "ნაცარაშვილი",
             "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "supporter"
         },
 
         {
@@ -53,7 +53,7 @@
             "name": "ნუგო",
             "surname": "ბიბილაშვილი",
             "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "smoker"
         },
 
         {
@@ -61,14 +61,14 @@
             "name": "რეზო",
             "surname": "ტეტუნაშვილი",
             "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "goldeninvestor"
         },
         {
             "id": null,
             "name": "გიგა",
             "surname": "გოგაშვილი",
             "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "cbd"
         },
 
         {
@@ -76,7 +76,7 @@
             "name": "გიორგი",
             "surname": "არაბული",
             "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -84,7 +84,7 @@
             "name": "ირაკლი",
             "surname": "ბურღაშვილი",
             "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -92,7 +92,7 @@
             "name": "ლევანი",
             "surname": "ჩოთალიშვილი",
             "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -100,30 +100,14 @@
             "name": "მერი",
             "surname": "ნაცარაშვილი",
             "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "მწეველი"
-        },
-
-        {
-            "id": null,
-            "name": "ნუგო",
-            "surname": "ბიბილაშვილი",
-            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "მწეველი"
-        },
-
-        {
-            "id": null,
-            "name": "რეზო",
-            "surname": "ტეტუნაშვილი",
-            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
         {
             "id": null,
             "name": "გიგა",
             "surname": "გოგაშვილი",
             "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -131,7 +115,7 @@
             "name": "გიორგი",
             "surname": "არაბული",
             "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "მწეველი"
+            "status": "founder"
         },
 
         {
@@ -139,7 +123,7 @@
             "name": "ირაკლი",
             "surname": "ბურღაშვილი",
             "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "investor"
         },
 
         {
@@ -147,7 +131,7 @@
             "name": "ლევანი",
             "surname": "ჩოთალიშვილი",
             "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "მწეველი"
+            "status": "owner"
         },
 
         {
@@ -155,7 +139,7 @@
             "name": "მერი",
             "surname": "ნაცარაშვილი",
             "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "supporter"
         },
 
         {
@@ -163,7 +147,7 @@
             "name": "ნუგო",
             "surname": "ბიბილაშვილი",
             "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "smoker"
         },
 
         {
@@ -171,14 +155,14 @@
             "name": "რეზო",
             "surname": "ტეტუნაშვილი",
             "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "goldeninvestor"
         },
         {
             "id": null,
             "name": "გიგა",
             "surname": "გოგაშვილი",
             "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "cbd"
         },
 
         {
@@ -186,7 +170,7 @@
             "name": "გიორგი",
             "surname": "არაბული",
             "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -194,7 +178,7 @@
             "name": "ირაკლი",
             "surname": "ბურღაშვილი",
             "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -202,7 +186,7 @@
             "name": "ლევანი",
             "surname": "ჩოთალიშვილი",
             "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         },
 
         {
@@ -210,23 +194,7 @@
             "name": "მერი",
             "surname": "ნაცარაშვილი",
             "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "მწეველი"
-        },
-
-        {
-            "id": null,
-            "name": "ნუგო",
-            "surname": "ბიბილაშვილი",
-            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "მწეველი"
-        },
-
-        {
-            "id": null,
-            "name": "რეზო",
-            "surname": "ტეტუნაშვილი",
-            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "მწეველი"
+            "status": "grower"
         }
     ]
 }

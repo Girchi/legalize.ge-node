@@ -1,5 +1,6 @@
 {
   "name": "legalize",
+  "type": "module",
   "version": "1.0.0",
   "description": "cannabis lovers community",
   "main": "qrcode.min.js",
@@ -10,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
     "pdf-lib": "^1.16.0",
     "pug": "^3.0.2"
   }
