@@ -183,10 +183,15 @@
 .bedge-icon {
     width: 60px;
     height: 60px;
-    background: #000;
     border-radius: 50%;
     margin-right: 12px;
     margin-bottom: 12px;
+}
+
+.bedge-icon .img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Golden Card Start */
@@ -196,10 +201,6 @@
 
 .card-golden .card-footer {
    background: url('../img/card/1.svg') no-repeat left top/cover;
-}
-
-.card-golden .bedge-icon {
-    background: url('../img/card/ოქროს ინვესტორი.png') no-repeat center/cover;
 }
 /* Golden Card End */
 
@@ -211,10 +212,6 @@
 .card-cbd .card-footer {
    background: url('../img/card/2.svg') no-repeat left top/cover;
 }
-
-.card-cbd .bedge-icon {
-    background: url('../img/card/CBD.png') no-repeat center/cover;
-}
 /* CBD Card End */
 
 /* Grower Card Start */
@@ -224,10 +221,6 @@
 
 .card-grower .card-footer {
    background: url('../img/card/3.svg') no-repeat left top/cover;
-}
-
-.card-grower .bedge-icon {
-    background: url('../img/card/გროუერი.png') no-repeat center/cover;
 }
 /* Grower Card End */
 
@@ -239,10 +232,6 @@
 .card-founder .card-footer {
    background: url('../img/card/4.svg') no-repeat left top/cover;
 }
-
-.card-founder .bedge-icon {
-    background: url('../img/card/დამფუძნებელი.png') no-repeat center/cover;
-}
 /* Founder Card End */
 
 /* Smoker Card Start */
@@ -252,10 +241,6 @@
 
 .card-smoker .card-footer {
    background: url('../img/card/5.svg') no-repeat left top/cover;
-}
-
-.card-smoker .bedge-icon {
-    background: url('../img/card/მწეველი.png') no-repeat center/cover;
 }
 /* Smoker Card End */
 
@@ -267,10 +252,6 @@
 .card-supporter .card-footer {
    background: url('../img/card/6.svg') no-repeat left top/cover;
 }
-
-.card-supporter .bedge-icon {
-    background: url('../img/card/ქომაგი.png') no-repeat center/cover;
-}
 /* Supporter Card End */
 
 /* Investor Card Start */
@@ -281,10 +262,6 @@
 .card-investor .card-footer {
    background: url('../img/card/7.svg') no-repeat left top/cover;
 }
-
-.card-investor .bedge-icon {
-    background: url('../img/card/ინვესტორი.png') no-repeat center/cover;
-}
 /* Investor Card End */
 
 /* Owner Card Start */
@@ -294,10 +271,6 @@
 
 .card-owner .card-footer {
    background: url('../img/card/8.svg') no-repeat left top/cover;
-}
-
-.card-owner .bedge-icon {
-    background: url('../img/card/მეწარმე.png') no-repeat center/cover;
 }
 /* Owner Card End */
 
