@@ -1,80 +1,84 @@
-const btnSwitch = document.getElementById('btn-switch')
-let switched = false;
-btnSwitch.onclick = () => {
-    switched = !switched;
-    if(switched){
-        btnSwitch.innerHTML = '<i class="fas fa-toggle-on"></i>'
-    }else{
-        btnSwitch.innerHTML = '<i class="fas fa-toggle-off"></i>'
-    }
-}
+// Generate User Information
+const userInfoContainer = document.getElementById('userinfo-container');
 
-// ------------------------------
+userInfoContainer.innerHTML = `
+    <div class="user-info">
+        <img class="user-info--pic" src="../assets/img/users/გიგაგოგაშვილი.jpg" alt="">
+        <div class="user-info--text">
+            <h4>გიგა გიგაგოგაშვილი</h4>
+            <span>მწეველი</span>
+        </div>
 
-const { PDFDocument } = PDFLib
+        <div id="qrcode"></div> 
+    </div>
 
-async function embedImages() {
-    const jpgUrl = 'http://127.0.0.1:3000/assets/cards/bg.jpg'
-    const jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer())
-    const pdfDoc = await PDFDocument.create()
-    const jpgImage = await pdfDoc.embedJpg(jpgImageBytes)
-    const jpgDims = jpgImage.scale(0.24)
-    const page = pdfDoc.addPage()
-    page.drawImage(jpgImage, {
-    x: 0,
-    y: page.getHeight() - jpgDims.height,
-    width: jpgDims.width,
-    height: jpgDims.height,
-    })
+    <p id="quote" class="quote">საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე.</p>
 
-    let counterY = page.getHeight() - 172;
-
-    for(let i = 0; i < 5; i++){
-
-        const pngUrl = 'http://127.0.0.1:3000/assets/cards/goldenfront.png'
-        const pngImageBytes = await fetch(pngUrl).then((res) => res.arrayBuffer())
-        const pngImage = await pdfDoc.embedPng(pngImageBytes)
-        const pngDims = pngImage.scale(0.37)
-        page.drawImage(pngImage, {
-            x: 36 ,
-            y: counterY,
-            width: pngDims.width + 4,
-            height: pngDims.height - 10,
-        })
-
-        // counterX += 200;
-        counterY -= 162;
-
-    }
-
-    counterY = page.getHeight() - 172;
-
-    for(let i = 0; i < 5; i++){
-
-        const pngUrl = 'http://127.0.0.1:3000/assets/cards/goldenback.png'
-        const pngImageBytes = await fetch(pngUrl).then((res) => res.arrayBuffer())
-        const pngImage = await pdfDoc.embedPng(pngImageBytes)
-        const pngDims = pngImage.scale(0.37)
-        page.drawImage(pngImage, {
-            x: 318,
-            y: counterY,
-            width: pngDims.width + 4,
-            height: pngDims.height - 10,
-        })
-        counterY -= 162;
-
-    }
-
-    const pdfBytes = await pdfDoc.save()
-    download(pdfBytes, "newpdf", "application/pdf");
-}
-
-// Download into PDF
-const userCardID=document.getElementById('cards');
-const idBtn=document.querySelector('.idDownload')
-
-
-idBtn.addEventListener('click',embedImages)
+    <div id="cards" class="cards card-golden">
+    <div id="card-front" class="card-side">
+    <header class="card-header">კანაფის მოყვარულთა საზოგადოება</header>
+    <main class="card-main">
+        <div class="card-info">
+        <span>სახელი გვარი</span>
+        <h4>სახელი გვარი</h4>
+        <span>დაბადების თარიღი</span>
+        <h4>36.12.2000</h4>
+        </div>
+        <div class="card-info">
+        <span>პირადი ნომერი</span>
+        <h4>01021234567</h4>
+        <span>ნომერი</span>
+        <h4>123456789</h4>
+        </div>
+        <div id="card-img" class="card-img">
+            <img class="img-fluid" src="/assets/img/users/გიგაგოგაშვილი.jpg" alt="user">
+        </div>
+    </main>
+    <footer class="card-footer">
+        <div class="bedge">
+            <div class="bedge-icon">
+                <img class="img-fluid" src="/assets/img/card/${'cbd'}.png" alt="bedge">
+            </div>
+            ოქროს ინვესტორი
+        </div>
+        <div>
+            ძალაშია: <span>25.12.2025</span>
+        </div>
+    </footer>
+    </div>
+    <div id="card-back" class="card-side">
+    <header class="card-header">CANNABIS LOVERS SOCIETY</header>
+    <main class="card-main">
+    <div class="card-info">
+    <span>name surname</span>
+    <h4>Name Surname</h4>
+    <span>date of birth</span>
+    <h4>36.12.2000</h4>
+    </div>
+    <div class="card-info">
+    <span>personal number</span>
+    <h4>01021234567</h4>
+    <span>number</span>
+    <h4>123456789</h4>
+    </div>
+    <div id="card-img" class="card-img">
+    <div class="card-qrcode"></div>
+    </div>
+    </main>
+    <footer class="card-footer">
+    <div class="bedge">
+        <div class="bedge-icon">
+            <img class="img-fluid" src="/assets/img/card/${'cbd'}.png" alt="bedge">
+        </div>
+        GOLDEN INVESTOR
+    </div>
+    <div>
+        VALID: <span>25.12.2025</span>
+    </div>
+    </footer>
+    </div>
+    </div>
+    `
 
 
 /* ========== Qr Code ========== */
