@@ -62,7 +62,6 @@ let userCount = 0;
 
 let num = 0;
 for(let i in users) {
-    // Adding path key to the object
     users[i].id_number = num;
     num++;
     data += `<li class='li-element' value=${users[i].id_number}>
@@ -81,10 +80,8 @@ for(let i in users) {
         console.log(element)
         element.addEventListener('click', (e) => {
             // window.location.assign(`/user/${ e.target.attributes.value.nodeValue}`);
-            console.log("s")
         });
     });
-
 
 
 document.getElementById('underUl').innerHTML = `მომხმარებელთა რაოდენობა - ${userCount}`
@@ -105,10 +102,6 @@ function myFunction() {
         }
     }
 }
-
 const user_in_list = document.getElementById('user_in_list');
-
-
-
 
 module.exports = users
