@@ -6,114 +6,208 @@ head
   meta(content='' name='description')
   meta(content='' name='keywords')
   // Favicons
-  link(href='/assets/img/kanafi.png' rel='icon')
-  link(href='/assets/img/apple-touch-icon.png' rel='apple-touch-icon')
+  link(href='../assets/img/kanafi.png' rel='icon')
+  link(href='../assets/img/apple-touch-icon.png' rel='apple-touch-icon')
   // Google Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
   // Vendor CSS Files
-  link(href='/assets/vendor/aos/aos.css' rel='stylesheet')
-  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
-
-  link(href='/assets/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-  link(href='/assets/vendor/bootstrap-icons/bootstrap-icons.css' rel='stylesheet')
-  link(href='/assets/vendor/glightbox/css/glightbox.min.css' rel='stylesheet')
-  link(href='/assets/vendor/remixicon/remixicon.css' rel='stylesheet')
-  link(href='/assets/vendor/swiper/swiper-bundle.min.css' rel='stylesheet')
+  link(href='../assets/vendor/aos/aos.css' rel='stylesheet')
+  link(href='../assets/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+  link(href='../assets/vendor/bootstrap-icons/bootstrap-icons.css' rel='stylesheet')
+  link(href='../assets/vendor/boxicons/css/boxicons.min.css' rel='stylesheet')
+  link(href='../assets/vendor/glightbox/css/glightbox.min.css' rel='stylesheet')
+  link(href='../assets/vendor/remixicon/remixicon.css' rel='stylesheet')
+  link(href='../assets/vendor/swiper/swiper-bundle.min.css' rel='stylesheet')
   // Template Main CSS File
-  link(href='/assets/css/style.css' rel='stylesheet')
-  link(href='/assets/css/user.css' rel='stylesheet')
+  link(href='../assets/css/style.css' rel='stylesheet')
+  link(href='../assets/css/user.css' rel='stylesheet')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js')
-  script(src='/assets/js/qrcode.min.js')
-
-body
-  // ======= Header =======
-  include parts/header.pug
-  // End Header
-  // user search
-  h1= id
-  .container.pb-4
-    .user-info
-      img.user-info--pic(src='/assets/img/users/გიგაგოგაშვილი.jpg' alt='')
-      .user-info--text
-        h4 &#x10D2;&#x10D8;&#x10D2;&#x10D0; &#x10D2;&#x10D8;&#x10D2;&#x10D0;&#x10D2;&#x10DD;&#x10D2;&#x10D0;&#x10E8;&#x10D5;&#x10D8;&#x10DA;&#x10D8;
-        span &#x10DB;&#x10EC;&#x10D4;&#x10D5;&#x10D4;&#x10DA;&#x10D8;
-      // qr code
-      // <input type="text" id="qr-data" onchange="generateQR()">
-      #qrcode
-    p#quote.quote
-      | &#x10E1;&#x10D0;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D8; &#x10D3;&#x10D0; &#x10E2;&#x10D8;&#x10DE;&#x10DD;&#x10D2;&#x10E0;&#x10D0;&#x10E4;&#x10D8;&#x10E3;&#x10DA;&#x10D8; &#x10D8;&#x10DC;&#x10D3;&#x10E3;&#x10E1;&#x10E2;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10E3;&#x10E8;&#x10D8;&#x10DC;&#x10D0;&#x10D0;&#x10E0;&#x10E1;&#x10DD; &#x10E2;&#x10D4;&#x10E5;&#x10E1;&#x10E2;&#x10D8;&#x10D0;. &#x10D8;&#x10D2;&#x10D8; &#x10E1;&#x10E2;&#x10D0;&#x10DC;&#x10D3;&#x10D0;&#x10E0;&#x10E2;&#x10D0;&#x10D3; 1500-&#x10D8;&#x10D0;&#x10DC;&#x10D8; &#x10EC;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10D3;&#x10D0;&#x10DC; &#x10D8;&#x10E5;&#x10EA;&#x10D0;, &#x10E0;&#x10DD;&#x10D3;&#x10D4;&#x10E1;&#x10D0;&#x10EA; &#x10E3;&#x10EA;&#x10DC;&#x10DD;&#x10D1;&#x10DB;&#x10D0; &#x10DB;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D0;&#x10D5;&#x10DB;&#x10D0; &#x10D0;&#x10DB;&#x10EC;&#x10E7;&#x10DD;&#x10D1; &#x10D3;&#x10D0;&#x10D6;&#x10D2;&#x10D0;&#x10D6;&#x10D4;.
-    #cards.cards.card-golden
-      #card-front.card-side
-        header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
-        main.card-main
-          .card-info
-            span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-            h4 &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-            span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
-            h4 36.12.2000
-          .card-info
-            span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-            h4 01021234567
-            span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-            h4 123456789
-          #card-img.card-img
-            img#example.img-fluid(src='/assets/img/users/გიგაგოგაშვილი.jpg' alt='user')
-        footer.card-footer
-          .bedge
-            .bedge-icon
-            |                     &#x10DD;&#x10E5;&#x10E0;&#x10DD;&#x10E1; &#x10D8;&#x10DC;&#x10D5;&#x10D4;&#x10E1;&#x10E2;&#x10DD;&#x10E0;&#x10D8;
-          div
-            | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-            span 25.12.2025
-      #card-back.card-side
-        header.card-header CANNABIS LOVERS SOCIETY
-        main.card-main
-          .card-info
-            span name surname
-            h4 Name Surname
-            span date of birth
-            h4 36.12.2000
-          .card-info
-            span personal number
-            h4 01021234567
-            span number
-            h4 123456789
-          #card-img.card-img
-            .card-qrcode
-        footer.card-footer
-          .bedge
-            .bedge-icon
-            |                 GOLDEN INVESTOR
-          div
-            | VALID: 
-            span 25.12.2025
-    .d-flex.align-items-center
-      button.btn.btn-default.idDownload &#x10D2;&#x10D0;&#x10D3;&#x10DB;&#x10DD;&#x10EC;&#x10D4;&#x10E0;&#x10D0;
-      button#btn-switch.btn-switch
-        i.fas.fa-toggle-off
-
-  // ======= Footer =======
-  include parts/footer.pug
-  // End Footer
-
-  #preloader
-  a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
-    i.bi.bi-arrow-up-short
+  script(src='../assets/js/qrcode.min.js')
+  script(src='https://unpkg.com/pdf-lib@1.4.0')
+  script(src='https://unpkg.com/downloadjs@1.4.7')
+// ======= Header =======
+header#header.fixed-top
+  .container.d-flex.align-items-center.justify-content-between
+    h1.logo
+      a(href='/')
+        img(src='../assets/img/kanafi.png' alt='cannabis')
+    nav#navbar.navbar
+      ul
+        li
+          a.nav-link.scrollto.active(href='/') &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
+        li
+          a.nav-link.scrollto(href='/#about') &#x10E8;&#x10D4;&#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10D1;
+        li
+          a.nav-link.scrollto(href='/#testimonials') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D8;
+        li
+          a.nav-link.scrollto(href='/#services') &#x10DE;&#x10E0;&#x10D8;&#x10DC;&#x10EA;&#x10D8;&#x10DE;&#x10D4;&#x10D1;&#x10D8;
+        li
+          a.nav-link.scrollto.o(href='/#portfolio') &#x10DE;&#x10E0;&#x10DD;&#x10D3;&#x10E3;&#x10E5;&#x10E2;&#x10D4;&#x10D1;&#x10D8;
+        li
+          a.nav-link.scrollto(href='/#team') &#x10D2;&#x10E3;&#x10DC;&#x10D3;&#x10D8;
+        li
+          a.nav-link.scrollto(href='/#faq') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10DD;&#x10D1;&#x10D0;
+        li
+          a.getstarted.scrollto(href='https://www.girchi.com/donate/project/legalize') &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10D2;&#x10D5;&#x10D8;&#x10D4;&#x10E0;&#x10D7;&#x10D3;&#x10D8;
+      i.bi.bi-list.mobile-nav-toggle
+    // .navbar
+// End Header
+// user search
+.container.pb-4
+  .user-info
+    img.user-info--pic(src='../assets/img/users/გიგაგოგაშვილი.jpg' alt='')
+    .user-info--text
+      h4 &#x10D2;&#x10D8;&#x10D2;&#x10D0; &#x10D2;&#x10D8;&#x10D2;&#x10D0;&#x10D2;&#x10DD;&#x10D2;&#x10D0;&#x10E8;&#x10D5;&#x10D8;&#x10DA;&#x10D8;
+      span &#x10DB;&#x10EC;&#x10D4;&#x10D5;&#x10D4;&#x10DA;&#x10D8;
+    // qr code
+    // <input type="text" id="qr-data" onchange="generateQR()">
+    #qrcode
+  p#quote.quote
+    | &#x10E1;&#x10D0;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D8; &#x10D3;&#x10D0; &#x10E2;&#x10D8;&#x10DE;&#x10DD;&#x10D2;&#x10E0;&#x10D0;&#x10E4;&#x10D8;&#x10E3;&#x10DA;&#x10D8; &#x10D8;&#x10DC;&#x10D3;&#x10E3;&#x10E1;&#x10E2;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10E3;&#x10E8;&#x10D8;&#x10DC;&#x10D0;&#x10D0;&#x10E0;&#x10E1;&#x10DD; &#x10E2;&#x10D4;&#x10E5;&#x10E1;&#x10E2;&#x10D8;&#x10D0;. &#x10D8;&#x10D2;&#x10D8; &#x10E1;&#x10E2;&#x10D0;&#x10DC;&#x10D3;&#x10D0;&#x10E0;&#x10E2;&#x10D0;&#x10D3; 1500-&#x10D8;&#x10D0;&#x10DC;&#x10D8; &#x10EC;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10D3;&#x10D0;&#x10DC; &#x10D8;&#x10E5;&#x10EA;&#x10D0;, &#x10E0;&#x10DD;&#x10D3;&#x10D4;&#x10E1;&#x10D0;&#x10EA; &#x10E3;&#x10EA;&#x10DC;&#x10DD;&#x10D1;&#x10DB;&#x10D0; &#x10DB;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D0;&#x10D5;&#x10DB;&#x10D0; &#x10D0;&#x10DB;&#x10EC;&#x10E7;&#x10DD;&#x10D1; &#x10D3;&#x10D0;&#x10D6;&#x10D2;&#x10D0;&#x10D6;&#x10D4;.
+  #cards.cards.card-golden
+    #card-front.card-side
+      header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
+      main.card-main
+        .card-info
+          span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
+          h4 &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
+          span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
+          h4 36.12.2000
+        .card-info
+          span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
+          h4 01021234567
+          span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
+          h4 123456789
+        #card-img.card-img
+          img#example.img-fluid(src='/../assets/img/users/გიგაგოგაშვილი.jpg' alt='user')
+      footer.card-footer
+        .bedge
+          .bedge-icon
+          |                     &#x10DD;&#x10E5;&#x10E0;&#x10DD;&#x10E1; &#x10D8;&#x10DC;&#x10D5;&#x10D4;&#x10E1;&#x10E2;&#x10DD;&#x10E0;&#x10D8;
+        div
+          | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
+          span 25.12.2025
+    #card-back.card-side
+      header.card-header CANNABIS LOVERS SOCIETY
+      main.card-main
+        .card-info
+          span name surname
+          h4 Name Surname
+          span date of birth
+          h4 36.12.2000
+        .card-info
+          span personal number
+          h4 01021234567
+          span number
+          h4 123456789
+        #card-img.card-img
+          .card-qrcode
+      footer.card-footer
+        .bedge
+          .bedge-icon
+          |                 GOLDEN INVESTOR
+        div
+          | VALID: 
+          span 25.12.2025
+  .d-flex.align-items-center
+    button.btn.btn-default.idDownload &#x10D2;&#x10D0;&#x10D3;&#x10DB;&#x10DD;&#x10EC;&#x10D4;&#x10E0;&#x10D0;
+    button#btn-switch.btn-switch
+      i.fas.fa-toggle-off
+// ======= Footer =======
+footer#footer
+  .footer-top
+    .container
+      .row
+        .col-lg-3.col-md-6.footer-contact
+          h3 Legalize.ge
+          p
+            | &#x10D7;&#x10D1;&#x10D8;&#x10DA;&#x10D8;&#x10E1;&#x10D8;
+            br
+            |               &#x10D7;&#x10D0;&#x10D5;&#x10D8;&#x10E1;&#x10E3;&#x10E4;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10D4;&#x10D3;&#x10D0;&#x10DC;&#x10D8;
+            br
+            |               9 &#x10D0;&#x10DE;&#x10E0;&#x10D8;&#x10DA;&#x10D8;&#x10E1; &#x10E5;&#x10E3;&#x10E9;&#x10D0; #3/5
+            br
+            br
+            strong &#x10D4;&#x10DB;&#x10D0;&#x10D8;&#x10DA;&#x10D8;
+            |  info@legalize.ge
+            br
+        .col-lg-2.col-md-6.footer-links
+          h4 &#x10DC;&#x10D0;&#x10D5;&#x10D8;&#x10D2;&#x10D0;&#x10EA;&#x10D8;&#x10D0;
+          ul
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10E9;&#x10D5;&#x10D4;&#x10DC;&#x10E1; &#x10E8;&#x10D4;&#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10D1;
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10DE;&#x10E0;&#x10D8;&#x10DC;&#x10EA;&#x10D8;&#x10DE;&#x10D4;&#x10D1;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10DE;&#x10E0;&#x10DD;&#x10D3;&#x10E3;&#x10E5;&#x10E2;&#x10D4;&#x10D1;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10D2;&#x10E3;&#x10DC;&#x10D3;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              a(href='/') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10DD;&#x10D1;&#x10D0;
+        .col-lg-3.col-md-6.footer-links
+          h4 &#x10DE;&#x10E0;&#x10D8;&#x10DC;&#x10EA;&#x10D8;&#x10DE;&#x10D4;&#x10D1;&#x10D8;
+          ul
+            li
+              i.bx.bx-chevron-right
+              |  &#x10DB;&#x10D0;&#x10E0;&#x10D7;&#x10D5;&#x10D0;
+            li
+              i.bx.bx-chevron-right
+              |  &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10E1;&#x10D0;&#x10D5;&#x10DA;&#x10D4;&#x10D1;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              |  &#x10EE;&#x10D0;&#x10E0;&#x10EF;&#x10D4;&#x10D1;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              |  &#x10E1;&#x10D0;&#x10EF;&#x10D0;&#x10E0;&#x10DD;&#x10DD;&#x10D1;&#x10D0;
+            li
+              i.bx.bx-chevron-right
+              |  &#x10D9;&#x10DD;&#x10DC;&#x10E4;&#x10DA;&#x10D8;&#x10E5;&#x10E2;&#x10D4;&#x10D1;&#x10D8;
+            li
+              i.bx.bx-chevron-right
+              |  &#x10D3;&#x10D0;&#x10E4;&#x10E3;&#x10EB;&#x10DC;&#x10D4;&#x10D1;&#x10D0;
+  .container.d-md-flex.py-4
+    .me-md-auto.text-center.text-md-start
+      .copyright
+        | &copy; &#x10E7;&#x10D5;&#x10D4;&#x10DA;&#x10D0; &#x10E3;&#x10E4;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10D5;&#x10D6;&#x10D4;&#x10EA; &#x10D2;&#x10D0;&#x10D5;&#x10D8;&#x10D0;&#x10E0;&#x10D4;&#x10D7;.
+        strong
+          span  &#x10D2;&#x10D8;&#x10E0;&#x10E9;&#x10D8;
+      .credits
+    .social-links.text-center.text-md-right.pt-3.pt-md-0
+      a.twitter(href='https://twitter.com/girchiparty' target='_blank')
+        i.bx.bxl-twitter
+      a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
+        i.bx.bxl-facebook
+      a.instagram(href='https://www.instagram.com/girchiparty/' target='_blank')
+        i.bx.bxl-instagram
+      a.linkedin(href='https://ge.linkedin.com/company/%E1%83%92%E1%83%98%E1%83%A0%E1%83%A9%E1%83%98-girchi' target='_blank')
+        i.bx.bxl-linkedin
+// End Footer
+#preloader
+a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
+  i.bi.bi-arrow-up-short
 // Vendor JS Files
-script(src='/assets/vendor/aos/aos.js')
-script(src='/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-script(src='/assets/vendor/glightbox/js/glightbox.min.js')
-script(src='/assets/vendor/isotope-layout/isotope.pkgd.min.js')
-script(src='/assets/vendor/php-email-form/validate.js')
-script(src='/assets/vendor/purecounter/purecounter.js')
-script(src='/assets/vendor/swiper/swiper-bundle.min.js')
+script(src='../assets/vendor/aos/aos.js')
+script(src='../assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
+script(src='../assets/vendor/glightbox/js/glightbox.min.js')
+script(src='../assets/vendor/isotope-layout/isotope.pkgd.min.js')
+script(src='../assets/vendor/php-email-form/validate.js')
+script(src='../assets/vendor/purecounter/purecounter.js')
+script(src='../assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
-script(src='/assets/js/main.js')
-script(src='/assets/js/profile.js')
-//- script(src='/assets/js/inneruser.js')
+script(src='../assets/js/main.js')
+script(src='../assets/js/inneruser.js')
 // For img to pdf
 script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
