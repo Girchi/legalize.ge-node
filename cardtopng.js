@@ -1,5 +1,5 @@
-const nodeHtmlToImage = require('node-html-to-image')
-import generateCardTemplate from './generateCardTemplate'
+import nodeHtmlToImage from 'node-html-to-image'
+const generateCardTemplate = require('./generateCardTemplate')
 
 const fetch = require("node-fetch");
 

@@ -277,4 +277,4 @@ img
 </div></body></html>`;
 }
 
-module.exports = generateCardTemplate
+exports.generateCardTemplate = generateCardTemplate
