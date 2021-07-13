@@ -1,5 +1,8 @@
+import { PDFDocument } from 'pdf-lib'
+import fs from 'fs'
+import fetch from 'node-fetch'
+
 // --CREATE PDF FILES--
-const { PDFDocument } = PDFLib
 
 async function embedImages() {
     const jpgUrl = 'http://127.0.0.1:3000/assets/cards/bg.jpg'
@@ -15,7 +18,7 @@ async function embedImages() {
     height: jpgDims.height,
     })
 
-    let counterY = page.getHeight() - 178;
+    let counterY = page.getHeight() - 176;
 
     for(let i = 1; i < 6; i++){
 
@@ -24,16 +27,16 @@ async function embedImages() {
         const pngImage = await pdfDoc.embedPng(pngImageBytes)
         const pngDims = pngImage.scale(0.38)
         page.drawImage(pngImage, {
-            x: 30 ,
+            x: 29 ,
             y: counterY,
-            width: pngDims.width + 10,
-            height: pngDims.height - 3,
+            width: pngDims.width + 13,
+            height: pngDims.height - 4,
         })
 
         counterY -= 163;
     }
 
-    counterY = page.getHeight() - 178;
+    counterY = page.getHeight() - 176;
 
     for(let i = 1; i < 6; i++){
 
@@ -42,19 +45,26 @@ async function embedImages() {
         const pngImage = await pdfDoc.embedPng(pngImageBytes)
         const pngDims = pngImage.scale(0.38)
         page.drawImage(pngImage, {
-            x: 312,
+            x: 310,
             y: counterY,
-            width: pngDims.width + 10,
-            height: pngDims.height - 3,
+            width: pngDims.width + 13,
+            height: pngDims.height - 4,
         })
         counterY -= 163;
     }
 
     const pdfBytes = await pdfDoc.save()
-    download(pdfBytes, "newpdf", "application/pdf");
+    console.log("After Save")
+
+   
+
+    var callback = (err) => {
+        if (err) throw err;
+        console.log('It\'s saved!');
+      }
+
+       // Buffer
+    fs.writeFile('./assets/pdf/test-cards.pdf', pdfBytes, callback);
 }
 
-// Download into PDF
-const userCardID=document.getElementById('cards');
-const idBtn=document.querySelector('.idDownload')
-idBtn.addEventListener('click',embedImages)
+embedImages();
