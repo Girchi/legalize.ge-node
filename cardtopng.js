@@ -1,7 +1,7 @@
 import nodeHtmlToImage from 'node-html-to-image'
-const generateCardTemplate = require('./generateCardTemplate')
+import generateCardTemplate from './generateCardTemplate.js'
 
-const fetch = require("node-fetch");
+import fetch from 'node-fetch';
 
 
 async function fetchUsers() {

@@ -1,4 +1,4 @@
-const font2base64 = require('node-font2base64')
+import font2base64 from 'node-font2base64'
 const _data = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-nino-mtavruli-bold-webfont.woff2')
 const _data2 = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-web-002-caps-webfont.woff2')
 
@@ -277,4 +277,4 @@ img
 </div></body></html>`;
 }
 
-exports.generateCardTemplate = generateCardTemplate
+export default generateCardTemplate
