@@ -1,90 +1,34 @@
-const users = [
-    {
-        "id_number": null,
-        "name": "კუკური",
-        "surname": "ნებაძე",
-        "img": "/assets/img/users/კუკურინებაძე.jpg",
-        "status": "მწეველი",
-    },
+async function fetchUsers() {
+    const response = await fetch('./assets/js/users.json');
+    const users = await response.json()
+    return users.data
+  }
 
-    {
-        "id_number": null,
-        "name": "გიგა",
-        "surname": "გოგაშვილი",
-        "img": "/assets/img/users/გიგაგოგაშვილი.jpg",
-        "status": "მწეველი",
-    },
 
-    {
-        "id_number": null,
-        "name": "გიორგი",
-        "surname": "არაბული",
-        "img": "/assets/img/users/გიორგიარაბული.jpg",
-        "status": "მწეველი",
-    },
-    {
-        "id_number": null,
-        "name": "ლევანი",
-        "surname": "ჩოთალიშვილი",
-        "img": "/assets/img/users/ლევანიჩოთალიშვილი.jpg",
-        "status": "მწეველი",
-    },
+async function setUsers(){
 
-    {
-        "id_number": null,
-        "name": "მერი",
-        "surname": "ნაცარაშვილი",
-        "img": "/assets/img/users/მერინაცარაშვილი.jpg",
-        "status": "მწეველი",
-        "path": ""
-    },
+    let users = await fetchUsers();
 
-    {
-        "id_number": null,
-        "name": "ნუგო",
-        "surname": "ბიბილაშვილი",
-        "img": "/assets/img/users/ნუგობიბილაშვილი.jpg",
-        "status": "მწეველი",
-    },
-
-    {
-        "id_number": null,
-        "name": "რეზო",
-        "surname": "ტეტუნაშვილი",
-        "img": "/assets/img/users/რეზოტეტუნაშვილი.jpg",
-        "status": "მწეველი",
+    let userslist = '';
+    const container = document.getElementById('myUL');
+    
+    let userCount = 0;
+    
+    for(let i in users) {
+        userslist += `<li>
+        <a href="user/1" class="user--li">
+        <img class='user-pic' src='${users[i].img}'>
+        <span class="user--name">${users[i].name} ${users[i].surname}</span>
+        </a></li> `
+        container.innerHTML = userslist;
+        userCount++;
     }
-];
+    document.getElementById('underUl').innerHTML = `სულ მომხმარებელთა რაოდენობა - ${userCount}`
 
-let data = '';
-const container = document.getElementById('myUL');
-let userCount = 0;
-
-let num = 0;
-for(let i in users) {
-    users[i].id_number = num;
-    num++;
-    data += `<li class='li-element' value=${users[i].id_number}>
-    <a href="/user/${users[i].id_number}" id="user_in_list" class="user--li" value=${users[i].id_number}>
-    <img class='user-pic' src='${users[i].img}'>
-    <span class="user--name">${users[i].name} ${users[i].surname}</span>
-    </a></li> `
-    container.innerHTML = data;
-
-    userCount++;
 }
 
+document.addEventListener("DOMContentLoaded", setUsers)
 
-    let arr = document.querySelectorAll('.li-element');
-    arr.forEach(element => {
-        console.log(element)
-        element.addEventListener('click', (e) => {
-            // window.location.assign(`/user/${ e.target.attributes.value.nodeValue}`);
-        });
-    });
-
-
-document.getElementById('underUl').innerHTML = `მომხმარებელთა რაოდენობა - ${userCount}`
 
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -102,6 +46,3 @@ function myFunction() {
         }
     }
 }
-const user_in_list = document.getElementById('user_in_list');
-
-module.exports = users
