@@ -30,6 +30,13 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/user.css" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+  <script src="assets/js/qrcode.min.js"></script>
+  
+  <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+  <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+
 
 </head>
 
@@ -40,16 +47,13 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <h1 class="logo"><a href="index.html"><img src="assets/img/kanafi.png" alt="cannabis"></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index.html">მთავარი</a></li>
           <li><a class="nav-link scrollto" href="index.html#about">შესახებ</a></li>
           <li><a class="nav-link scrollto" href="index.html#testimonials">წევრები</a></li>
           <li><a class="nav-link scrollto" href="index.html#services">პრინციპები</a></li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">პროდუქტები</a></li>
+          <li><a class="nav-link scrollto o" href="index.html#portfolio">პროდუქტები</a></li>
           <li><a class="nav-link scrollto" href="index.html#team">გუნდი</a></li>
           <li><a class="nav-link scrollto" href="index.html#faq">წევრობა</a></li>
           <li><a class="getstarted scrollto" href="https://www.girchi.com/donate/project/legalize">შემოგვიერთდი</a></li>
@@ -61,20 +65,10 @@
   </header><!-- End Header -->
 
 
-  <!-- user search -->
-<div class="user-search container">
-  <h5>მომხმარებლები</h5>
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="ძიება...." title="Type in a name">
-
-<ul id="myUL">
-  <li>იტვირთება...</li>
-</ul>
-<br>
-<p id="underUl"></p>
-
-</div>
-
-
+    <!-- user search -->
+    <div id="userinfo-container" class="container pb-4">
+      
+    </div>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -157,7 +151,19 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/user.js"></script>
+  <script src="assets/js/inneruser.js"></script>
+
+  <!-- For img to pdf -->
+  
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+  crossorigin="anonymous"></script>
 </body>
 
 </html>

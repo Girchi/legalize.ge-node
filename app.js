@@ -24,10 +24,8 @@ app.get("/constitution", (req, res) => {
 
 app.get("/user/:id", (req, res) => {
     res.render(__dirname + "/snippet/profile", { id: req.params.id});
+    console.log(req.params.id);
 });
-
-
-
 
 
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`)); 

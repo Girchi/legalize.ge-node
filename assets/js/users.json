@@ -1,0 +1,200 @@
+{
+    "data": [
+            {
+            "id": null,
+            "name": "კუკური",
+            "surname": "ნებაძე",
+            "img": "assets/img/users/კუკურინებაძე.jpg",
+            "status": "cbd"
+        },
+
+        {
+            "id": null,
+            "name": "გიგა",
+            "surname": "გოგაშვილი",
+            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "გიორგი",
+            "surname": "არაბული",
+            "img": "assets/img/users/გიორგიარაბული.jpg",
+            "status": "founder"
+        },
+
+        {
+            "id": null,
+            "name": "ირაკლი",
+            "surname": "ბურღაშვილი",
+            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
+            "status": "investor"
+        },
+
+        {
+            "id": null,
+            "name": "ლევანი",
+            "surname": "ჩოთალიშვილი",
+            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
+            "status": "owner"
+        },
+
+        {
+            "id": null,
+            "name": "მერი",
+            "surname": "ნაცარაშვილი",
+            "img": "assets/img/users/მერინაცარაშვილი.jpg",
+            "status": "supporter"
+        },
+
+        {
+            "id": null,
+            "name": "ნუგო",
+            "surname": "ბიბილაშვილი",
+            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
+            "status": "smoker"
+        },
+
+        {
+            "id": null,
+            "name": "რეზო",
+            "surname": "ტეტუნაშვილი",
+            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
+            "status": "goldeninvestor"
+        },
+        {
+            "id": null,
+            "name": "გიგა",
+            "surname": "გოგაშვილი",
+            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
+            "status": "cbd"
+        },
+
+        {
+            "id": null,
+            "name": "გიორგი",
+            "surname": "არაბული",
+            "img": "assets/img/users/გიორგიარაბული.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "ირაკლი",
+            "surname": "ბურღაშვილი",
+            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "ლევანი",
+            "surname": "ჩოთალიშვილი",
+            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "მერი",
+            "surname": "ნაცარაშვილი",
+            "img": "assets/img/users/მერინაცარაშვილი.jpg",
+            "status": "grower"
+        },
+        {
+            "id": null,
+            "name": "გიგა",
+            "surname": "გოგაშვილი",
+            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "გიორგი",
+            "surname": "არაბული",
+            "img": "assets/img/users/გიორგიარაბული.jpg",
+            "status": "founder"
+        },
+
+        {
+            "id": null,
+            "name": "ირაკლი",
+            "surname": "ბურღაშვილი",
+            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
+            "status": "investor"
+        },
+
+        {
+            "id": null,
+            "name": "ლევანი",
+            "surname": "ჩოთალიშვილი",
+            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
+            "status": "owner"
+        },
+
+        {
+            "id": null,
+            "name": "მერი",
+            "surname": "ნაცარაშვილი",
+            "img": "assets/img/users/მერინაცარაშვილი.jpg",
+            "status": "supporter"
+        },
+
+        {
+            "id": null,
+            "name": "ნუგო",
+            "surname": "ბიბილაშვილი",
+            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
+            "status": "smoker"
+        },
+
+        {
+            "id": null,
+            "name": "რეზო",
+            "surname": "ტეტუნაშვილი",
+            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
+            "status": "goldeninvestor"
+        },
+        {
+            "id": null,
+            "name": "გიგა",
+            "surname": "გოგაშვილი",
+            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
+            "status": "cbd"
+        },
+
+        {
+            "id": null,
+            "name": "გიორგი",
+            "surname": "არაბული",
+            "img": "assets/img/users/გიორგიარაბული.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "ირაკლი",
+            "surname": "ბურღაშვილი",
+            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "ლევანი",
+            "surname": "ჩოთალიშვილი",
+            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
+            "status": "grower"
+        },
+
+        {
+            "id": null,
+            "name": "მერი",
+            "surname": "ნაცარაშვილი",
+            "img": "assets/img/users/მერინაცარაშვილი.jpg",
+            "status": "grower"
+        }
+    ]
+}
