@@ -1,11 +1,6 @@
 const pdfId=document.querySelector("#pdfId")
 console.log(pdfId)
 
-// pdfId.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     window.location.href="../../Pdf-Example/1.pdf"
-// })
-
 
 // let downloadData = '';
 // const downloadDiv = document.querySelector('.addList');
