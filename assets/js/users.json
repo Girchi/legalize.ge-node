@@ -1,200 +1,245 @@
 {
-    "data": [
-            {
-            "id": null,
-            "name": "კუკური",
-            "surname": "ნებაძე",
-            "img": "assets/img/users/კუკურინებაძე.jpg",
-            "status": "cbd"
+    "data":[
+        {
+            "ge": {
+                "id": 29001003723,
+                "name": "იაგო",
+                "surname": "ხვიჩია",
+                "b_date": "19.05.1982",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/იაგოხვიჩია.jpg",
+                "status": "დამფუძნებელი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": 29001003723,
+                "name": "Iago",
+                "surname": "Khvichia",
+                "b_date": "19.05.1982",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/იაგოხვიჩია.jpg",
+                "status": "founder",
+                "number": "555 55 55 55"
+            }
+        },
+        
+        {
+            "ge": {
+                "id": 20001003734,
+                "name": "ვახტანგ",
+                "surname": "მეგრელიშვილი",
+                "b_date": "28.02.1972",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": 20001003734,
+                "name": "Vakhtang",
+                "surname": "Megrelishvili",
+                "b_date": "28.02.1972",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
+                "status_ge": "smoker",
+                "number": "555 55 55 55"
+            }
         },
 
         {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "grower"
+            "ge": {
+                "id": 29001030486,
+                "name": "ლევან",
+                "surname": "ჯგერენაია",
+                "b_date": "08.06.1990",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ლევანჯგერენაია.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": 29001030486,
+                "name": "Levan",
+                "surname": "Jgerenaia",
+                "b_date": "08.06.1990",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ლევანჯგერენაია.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
+        },
+        
+
+        {
+            "ge": {
+                "id": "01001071740",
+                "name": "ოთო",
+                "surname": "ზაკალაშვილი",
+                "b_date": "09.07.1991",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": "01001071740",
+                "name": "Oto",
+                "surname": "Zakalashvili",
+                "b_date": "09.07.1991",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
         },
 
         {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "founder"
+            "ge": {
+                "id": "01005029043",
+                "name": "მარიამ",
+                "surname": "შენგელია",
+                "b_date": "14.02.2000",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/მარიამშენგელია.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": "01005029043",
+                "name": "Mariam",
+                "surname": "Shengelia",
+                "b_date": "14.02.2000",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/მარიამშენგელია.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
         },
 
         {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "investor"
+            "ge": {
+                "id": "01019068754",
+                "name": "რუსუდან",
+                "surname": "აბუაშვილი",
+                "b_date": "23.07.2003",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": "01019068754",
+                "name": "Rusudan",
+                "surname": "Abuashvili",
+                "b_date": "23.07.2003",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
         },
 
         {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "owner"
+            "ge": {
+                "id": "01027048470",
+                "name": "ჰერმან",
+                "surname": "საბო",
+                "b_date": "18/11/1988",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ჰერმანსაბო.jpg",
+                "status_ge": "",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": "01027048470",
+                "name": "Hermann",
+                "surname": "Szabó",
+                "b_date": "18/11/1988",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ჰერმანსაბო.jpg",
+                "status_en": "",
+                "number": "555 55 55 55"
+                
+            }
         },
 
         {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "supporter"
+            "ge": {
+                "id": "01401133739",
+                "name": "ალექსანდრე",
+                "surname": "რაქვიაშვილი",
+                "b_date": "10/07/1982",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": "01401133739",
+                "name": "Aleksandre",
+                "surname": "Raqviashvili",
+                "b_date": "10/07/1982",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
         },
 
         {
-            "id": null,
-            "name": "ნუგო",
-            "surname": "ბიბილაშვილი",
-            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "smoker"
+            "ge": {
+                "id": "19001078500",
+                "name": "დავით",
+                "surname": "წურწუმია",
+                "b_date": "20/07/1989",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/დავითწურწუმია.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
+
+            "en": {
+                "id": "19001078500",
+                "name": "Davit",
+                "surname": "Tsurtsumia",
+                "b_date": "20/07/1989",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/დავითწურწუმია.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
         },
 
         {
-            "id": null,
-            "name": "რეზო",
-            "surname": "ტეტუნაშვილი",
-            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "goldeninvestor"
-        },
-        {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "cbd"
-        },
+            "ge": {
+                "id": "01024078693",
+                "name": "ავთანდილ",
+                "surname": "ლაბაძე",
+                "b_date": "25/08/1998",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
+                "status_ge": "მწეველი",
+                "number": "555 55 55 55"
+            },
 
-        {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "grower"
-        },
-        {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "founder"
-        },
-
-        {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "investor"
-        },
-
-        {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "owner"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "supporter"
-        },
-
-        {
-            "id": null,
-            "name": "ნუგო",
-            "surname": "ბიბილაშვილი",
-            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "smoker"
-        },
-
-        {
-            "id": null,
-            "name": "რეზო",
-            "surname": "ტეტუნაშვილი",
-            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "goldeninvestor"
-        },
-        {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "cbd"
-        },
-
-        {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "grower"
+            "en": {
+                "id": "01024078693",
+                "name": "Avtandil",
+                "surname": "Labadze",
+                "b_date": "25/08/1998",
+                "validation": "13/09/2025",
+                "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
+                "status_en": "smoker",
+                "number": "555 55 55 55"
+            }
         }
     ]
 }
