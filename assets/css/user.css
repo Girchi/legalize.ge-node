@@ -55,7 +55,6 @@
 }
 
 /* User Page Styles */
-
 .user-info {
     margin: 6rem 0 1rem;
     height: 150px;
@@ -73,15 +72,52 @@
 
 .user-info--text {
     flex: 1;
-    margin-left: 2rem;
-
+    margin-left: 32px;
 }
-
 
 .quote {
     text-align: justify;
 }
 
+/* User LowerScreen Sizes */
+@media(max-width: 768px){
+    .user-info {
+        margin: 6rem 0 1rem;
+        height: 75px;
+    }
+    
+    .user-info--pic {
+        width: 75px;  
+    }
+    .user-info--text {
+        flex: 1;
+        margin-left: 9px;
+    }
+    .user-info--text h4 {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+    .user-info--text span {
+        font-size: 14px;
+    }
+    .quote {
+        font-size: 14px;
+    }
+}
+
+/*QR Code */
+#qrcode {
+    /* width: 130px; */
+    height: 100%;
+}
+
+#qrcode img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card Styles */
 .cards {
     display: flex;
     flex-direction: column;
@@ -154,10 +190,9 @@
 .card-img {
     width: 130px;
     height: 160px;
-    /* background-color: #000; */
 }
 
-.card-img .img-fluid {
+.card-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -194,6 +229,117 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Card Media Queries */
+@media(max-width: 768px){
+    .card-side {
+        width: 91mm;
+        height: 57.3mm;
+        border-radius: 11px;
+    }
+    
+    .card-side::before {
+        width: 210px;
+        height: 210px;
+        left: 45px;
+        top: 10px;
+    }
+
+    .card-header {
+        padding: 20px 20px 0 20px;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .card-main {
+        padding: 0 20px;
+    }
+
+    .card-info {
+        margin-top: 10px;
+    }
+
+    .card-info span {
+        font-size: 6px;
+    }
+
+    .card-info h4 {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .card-img {
+        width: 65px;
+        height: 80px;
+    }
+
+    .card-footer {
+        padding: 12px 20px 12px;
+        font-size: 9px;
+    }
+
+    .bedge-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+    }
+}
+
+@media(max-width: 375px){
+    .card-side {
+        width: 89mm;
+        height: 54.3mm;
+        border-radius: 11px;
+    }
+    
+    .card-side::before {
+        width: 200px;
+        height: 200px;
+        left: 40px;
+        top: 8px;
+    }
+
+    .card-header {
+        padding: 18px 18px 0 18px;
+        font-size: 12px;
+        margin-bottom: 11px;
+    }
+
+    .card-main {
+        padding: 0 18px;
+    }
+
+    .card-info {
+        margin-top: 8px;
+    }
+
+    .card-info span {
+        font-size: 5px;
+    }
+
+    .card-info h4 {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .card-img {
+        width: 60px;
+        height: 75px;
+    }
+
+    .card-footer {
+        padding: 10px 18px 10px;
+        font-size: 8px;
+    }
+
+    .bedge-icon {
+        width: 27px;
+        height: 27px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
 }
 
 /* Golden Card Start */
@@ -306,16 +452,3 @@
     color: #3f8d45;
 }
 
-/*QR Code */
-
-/*#qr-data {      must be deleted
-    width: 400px;
-    height: 50px;
-    font-size: 20px;
-}*/
-
-
-#qrcode {
-    margin-top: 20px;
-    left: -100px;
-}
