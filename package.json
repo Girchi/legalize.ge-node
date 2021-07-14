@@ -12,7 +12,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
-    "node-font2base64": "^0.7.1",
     "node-html-to-image": "^3.2.0",
     "pdf-lib": "^1.16.0",
     "pug": "^3.0.2"
