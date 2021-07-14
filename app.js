@@ -1,6 +1,7 @@
-import express from 'express'
+import express, { response } from 'express'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import fetch from 'node-fetch';
 
 const app = express();
 const port = 3000;
@@ -26,16 +27,21 @@ app.get("/constitution", (req, res) => {
 });
 
 // --------------------Card Sides----------------
- 
 
 app.get("/user/:id", (req, res) => {
-    res.render(__dirname + "/snippet/profile", { id: req.params.id});
-    console.log(req.params.id);
-});
+    let obj={};
+    fetch('http://127.0.0.1:3000/assets/js/users.json')
+    .then(response => response.json())
+    .then(data => {
+        obj=data.data[req.params.id];
+    });
+    setTimeout(()=>{
+        res.render(__dirname + "/snippet/profile", obj);
+    }, 100)
+})
 
 app.get("/cards-download", (req, res) => {
     res.render(__dirname + "/snippet/card-download", { id: req.params.id});
-    console.log(req.params.id);
 });
 
 
