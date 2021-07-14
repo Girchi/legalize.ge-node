@@ -16,8 +16,8 @@
             "surname": "მეგრელიშვილი",
             "b_date": "28.02.1972",
             "img": "/assets/img/users/ვახტანგმეგრელიშვილი.JPG",
-            "status_ge": "",
-            "status_en": ""
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
         },
 
         {
@@ -36,8 +36,8 @@
             "surname": "ზაკალაშვილი",
             "b_date": "09.07.1991",
             "img": "/assets/img/users/ოთოზაკალაშვილი.JPG",
-            "status_ge": "",
-            "status_en": ""
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
         },
 
         {
@@ -56,8 +56,8 @@
             "surname": "აბუაშვილი",
             "b_date": "23.07.2003",
             "img": "/assets/img/users/რუსუდანაბუაშვილი.JPG",
-            "status_ge": "",
-            "status_en": ""
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
         }
 
     ]
