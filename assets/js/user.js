@@ -1,6 +1,6 @@
 async function fetchUsers() {
     const response = await fetch('./assets/js/users.json');
-    const users = await response.json()
+    const users = await response.json();
     return users.data
   }
 
@@ -12,13 +12,14 @@ async function setUsers(){
     
     for(let i in users) {
         userslist += `<li>
-        <a href="user/${users[i].id}" class="user--li">
-        <img class='user-pic' src='${users[i].img}'>
-        <span class="user--name">${users[i].name} ${users[i].surname}</span>
+        <a href="user/${users[i].ge.id}" class="user--li">
+        <img class='user-pic' src='${users[i].ge.img}'>
+        <span class="user--name">${users[i].ge.name} ${users[i].ge.surname}</span>
         </a></li>`
         container.innerHTML = userslist;
         userCount++;
     }
+
     document.getElementById('underUl').innerHTML = `სულ მომხმარებელთა რაოდენობა - ${userCount}`
 }
 document.addEventListener("DOMContentLoaded", setUsers)
