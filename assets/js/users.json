@@ -1,200 +1,64 @@
 {
-    "data": [
-            {
-            "id": null,
-            "name": "კუკური",
-            "surname": "ნებაძე",
-            "img": "assets/img/users/კუკურინებაძე.jpg",
-            "status": "cbd"
+    "data":[
+        {
+            "id": 29001003723,
+            "name": "იაგო",
+            "surname": "ხვიჩია",
+            "b_date": "19.05.1982",
+            "img": "/assets/img/users/იაგოხვიჩია.JPG",
+            "status_ge": "დამფუძნებელი",
+            "status_en": "founder"
+        },
+        
+        {
+            "id": 20001003734,
+            "name": "ვახტანგ",
+            "surname": "მეგრელიშვილი",
+            "b_date": "28.02.1972",
+            "img": "/assets/img/users/ვახტანგმეგრელიშვილი.JPG",
+            "status_ge": "",
+            "status_en": ""
         },
 
         {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "grower"
+            "id": 29001030486,
+            "name": "ლევან",
+            "surname": "ჯგერენაია",
+            "b_date": "08.06.1990",
+            "img": "/assets/img/users/ლევანჯგერენაია.JPG",
+            "status_ge": "",
+            "status_en": ""
         },
 
         {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "founder"
+            "id": "01001071740",
+            "name": "ოთო",
+            "surname": "ზაკალაშვილი",
+            "b_date": "09.07.1991",
+            "img": "/assets/img/users/ოთოზაკალაშვილი.JPG",
+            "status_ge": "",
+            "status_en": ""
         },
 
         {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "investor"
+            "id": "01005029043",
+            "name": "მარიამ",
+            "surname": "შენგელია",
+            "b_date": "14.02.2000",
+            "img": "/assets/img/users/მარიამშენგელია.jpg",
+            "status_ge": "",
+            "status_en": ""
         },
 
         {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "owner"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "supporter"
-        },
-
-        {
-            "id": null,
-            "name": "ნუგო",
-            "surname": "ბიბილაშვილი",
-            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "smoker"
-        },
-
-        {
-            "id": null,
-            "name": "რეზო",
-            "surname": "ტეტუნაშვილი",
-            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "goldeninvestor"
-        },
-        {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "cbd"
-        },
-
-        {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "grower"
-        },
-        {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "founder"
-        },
-
-        {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "investor"
-        },
-
-        {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "owner"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "supporter"
-        },
-
-        {
-            "id": null,
-            "name": "ნუგო",
-            "surname": "ბიბილაშვილი",
-            "img": "assets/img/users/ნუგობიბილაშვილი.jpg",
-            "status": "smoker"
-        },
-
-        {
-            "id": null,
-            "name": "რეზო",
-            "surname": "ტეტუნაშვილი",
-            "img": "assets/img/users/რეზოტეტუნაშვილი.jpg",
-            "status": "goldeninvestor"
-        },
-        {
-            "id": null,
-            "name": "გიგა",
-            "surname": "გოგაშვილი",
-            "img": "assets/img/users/გიგაგოგაშვილი.jpg",
-            "status": "cbd"
-        },
-
-        {
-            "id": null,
-            "name": "გიორგი",
-            "surname": "არაბული",
-            "img": "assets/img/users/გიორგიარაბული.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ირაკლი",
-            "surname": "ბურღაშვილი",
-            "img": "assets/img/users/ირაკლიბურღაშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "ლევანი",
-            "surname": "ჩოთალიშვილი",
-            "img": "assets/img/users/ლევანიჩოთალიშვილი.jpg",
-            "status": "grower"
-        },
-
-        {
-            "id": null,
-            "name": "მერი",
-            "surname": "ნაცარაშვილი",
-            "img": "assets/img/users/მერინაცარაშვილი.jpg",
-            "status": "grower"
+            "id": "01019068754",
+            "name": "რუსუდან",
+            "surname": "აბუაშვილი",
+            "b_date": "23.07.2003",
+            "img": "/assets/img/users/რუსუდანაბუაშვილი.JPG",
+            "status_ge": "",
+            "status_en": ""
         }
+
     ]
 }

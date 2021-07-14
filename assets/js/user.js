@@ -8,13 +8,9 @@ async function setUsers(){
     let users = await fetchUsers();
     let userslist = '';
     const container = document.getElementById('myUL');
-    
     let userCount = 0;
-    let usersID = 0;
     
     for(let i in users) {
-        users[i].id = usersID;
-        usersID++;
         userslist += `<li>
         <a href="user/${users[i].id}" class="user--li">
         <img class='user-pic' src='${users[i].img}'>
