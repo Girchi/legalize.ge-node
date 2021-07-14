@@ -53,8 +53,65 @@ header#header.fixed-top
       i.bi.bi-list.mobile-nav-toggle
     // .navbar
 // End Header
-// user search
+
+// User Profile
 #userinfo-container.container.pb-4
+  .user-info
+    img.user-info--pic(src='../assets/img/users/გიგაგოგაშვილი.jpg' alt='')
+    .user-info--text
+      h4 გიგა გოგაშვილი
+      span მწეველი
+    #qrcode
+  p#quote.quote
+    | &#x10E1;&#x10D0;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D8; &#x10D3;&#x10D0; &#x10E2;&#x10D8;&#x10DE;&#x10DD;&#x10D2;&#x10E0;&#x10D0;&#x10E4;&#x10D8;&#x10E3;&#x10DA;&#x10D8; &#x10D8;&#x10DC;&#x10D3;&#x10E3;&#x10E1;&#x10E2;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10E3;&#x10E8;&#x10D8;&#x10DC;&#x10D0;&#x10D0;&#x10E0;&#x10E1;&#x10DD; &#x10E2;&#x10D4;&#x10E5;&#x10E1;&#x10E2;&#x10D8;&#x10D0;. &#x10D8;&#x10D2;&#x10D8; &#x10E1;&#x10E2;&#x10D0;&#x10DC;&#x10D3;&#x10D0;&#x10E0;&#x10E2;&#x10D0;&#x10D3; 1500-&#x10D8;&#x10D0;&#x10DC;&#x10D8; &#x10EC;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10D3;&#x10D0;&#x10DC; &#x10D8;&#x10E5;&#x10EA;&#x10D0;, &#x10E0;&#x10DD;&#x10D3;&#x10D4;&#x10E1;&#x10D0;&#x10EA; &#x10E3;&#x10EA;&#x10DC;&#x10DD;&#x10D1;&#x10DB;&#x10D0; &#x10DB;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D0;&#x10D5;&#x10DB;&#x10D0; &#x10D0;&#x10DB;&#x10EC;&#x10E7;&#x10DD;&#x10D1; &#x10D3;&#x10D0;&#x10D6;&#x10D2;&#x10D0;&#x10D6;&#x10D4;.
+  #cards.cards(class='card-goldeninvestor')
+    #card-front.card-side
+      header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
+      main.card-main
+        .card-info
+          span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
+          h4 გიგა გოგაშვილი
+          span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
+          h4 12.12.2000
+        .card-info
+          span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
+          h4 00123123123
+          span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
+          h4 234234324
+        #card-img.card-img
+          img.img-fluid(src='/assets/img/users/გიგაგოგაშვილი.jpg' alt='user')
+      footer.card-footer
+        .bedge
+          .bedge-icon
+            img.img-fluid(src='/assets/img/card/smoker.png' alt='bedge')
+          |             მწეველი
+        div
+          | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
+          span 25.12.2025
+    #card-back.card-side
+      header.card-header CANNABIS LOVERS SOCIETY
+      main.card-main
+        .card-info
+          span name surname
+          h4 Giga Gogashvili
+          span date of birth
+          h4 12.12.2000
+        .card-info
+          span personal number
+          h4 234234234234
+          span number
+          h4 1231231231232
+        #card-img.card-img
+          .card-qrcode
+      footer.card-footer
+        .bedge
+          .bedge-icon
+            img.img-fluid(src='/assets/img/card/smoker.png' alt='bedge')
+          |         smoker
+        div
+          | VALID: 
+          span 25.12.2025
+
   
 // ======= Footer =======
 footer#footer
