@@ -84,6 +84,7 @@
 
 .cards {
     display: flex;
+    flex-direction: column;
     gap: 16px;
     margin-bottom: 1rem;
 
@@ -95,7 +96,7 @@
     width: 182mm;
     height: 114.6mm;
     border: 0;
-    border-radius: 10px;
+    border-radius: 22px;
     letter-spacing: 0;
     position: relative;
     overflow: hidden;
@@ -118,7 +119,7 @@
 
 .card-header {
     background-color: transparent;
-    padding: 30px 30px 0 30px;
+    padding: 40px 40px 0 40px;
     border: 0;
     font-size: 26px;
     color: #6EAC43;
@@ -128,7 +129,7 @@
 .card-main {
     display: flex;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 40px;
     flex: 1;
 }
 
@@ -164,7 +165,7 @@
 
 .card-footer {
     background-color: transparent;
-    padding: 24px 32px 0;
+    padding: 24px 40px 24px;
     border: 0;
     font-size: 18px;
     color: #040505;
@@ -178,6 +179,7 @@
 .bedge {
     display: flex;
     align-items: center;
+    text-transform: uppercase;
 }
 
 .bedge-icon {
@@ -195,11 +197,11 @@
 }
 
 /* Golden Card Start */
-.card-golden .card-side {
+.card-goldeninvestor .card-side {
     background: #FFF4CD;
 }
 
-.card-golden .card-footer {
+.card-goldeninvestor .card-footer {
    background: url('../img/card/1.svg') no-repeat left top/cover;
 }
 /* Golden Card End */

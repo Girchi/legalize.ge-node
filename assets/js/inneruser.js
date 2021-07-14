@@ -1,12 +1,23 @@
 // Generate User Information
 const userInfoContainer = document.getElementById('userinfo-container');
+const userInfo = {
+    name: 'ვახტანგ',
+    surname: 'მეგრელიშვილი',
+    id: '20001003734',
+    number: '555777888',
+    date: '28.02.1972',
+    statusge: 'მწეველი',
+    status: 'smoker',
+    nameen: 'Vakhtang',
+    surnameen: 'Megrelishvili'
+}
 
 userInfoContainer.innerHTML = `
     <div class="user-info">
         <img class="user-info--pic" src="../assets/img/users/გიგაგოგაშვილი.jpg" alt="">
         <div class="user-info--text">
-            <h4>გიგა გიგაგოგაშვილი</h4>
-            <span>მწეველი</span>
+            <h4>${userInfo.name} ${userInfo.surname}</h4>
+            <span>${userInfo.statusge}</span>
         </div>
 
         <div id="qrcode"></div> 
@@ -14,32 +25,32 @@ userInfoContainer.innerHTML = `
 
     <p id="quote" class="quote">საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე.</p>
 
-    <div id="cards" class="cards card-golden">
+    <div id="cards" class="cards card-${userInfo.status}">
     <div id="card-front" class="card-side">
     <header class="card-header">კანაფის მოყვარულთა საზოგადოება</header>
     <main class="card-main">
         <div class="card-info">
         <span>სახელი გვარი</span>
-        <h4>სახელი გვარი</h4>
+        <h4>${userInfo.name} ${userInfo.surname}</h4>
         <span>დაბადების თარიღი</span>
-        <h4>36.12.2000</h4>
+        <h4>${userInfo.date}</h4>
         </div>
         <div class="card-info">
         <span>პირადი ნომერი</span>
-        <h4>01021234567</h4>
+        <h4>${userInfo.id}</h4>
         <span>ნომერი</span>
-        <h4>123456789</h4>
+        <h4>${userInfo.number}</h4>
         </div>
         <div id="card-img" class="card-img">
-            <img class="img-fluid" src="/assets/img/users/გიგაგოგაშვილი.jpg" alt="user">
+            <img class="img-fluid" src="/assets/img/users/${userInfo.name}${userInfo.surname}.jpg" alt="user">
         </div>
     </main>
     <footer class="card-footer">
         <div class="bedge">
             <div class="bedge-icon">
-                <img class="img-fluid" src="/assets/img/card/${'cbd'}.png" alt="bedge">
+                <img class="img-fluid" src="/assets/img/card/${userInfo.status}.png" alt="bedge">
             </div>
-            ოქროს ინვესტორი
+            ${userInfo.statusge}
         </div>
         <div>
             ძალაშია: <span>25.12.2025</span>
@@ -51,15 +62,15 @@ userInfoContainer.innerHTML = `
     <main class="card-main">
     <div class="card-info">
     <span>name surname</span>
-    <h4>Name Surname</h4>
+    <h4>${userInfo.nameen} ${userInfo.surnameen}</h4>
     <span>date of birth</span>
-    <h4>36.12.2000</h4>
+    <h4>${userInfo.date}</h4>
     </div>
     <div class="card-info">
     <span>personal number</span>
-    <h4>01021234567</h4>
+    <h4>${userInfo.id}</h4>
     <span>number</span>
-    <h4>123456789</h4>
+    <h4>${userInfo.number}</h4>
     </div>
     <div id="card-img" class="card-img">
     <div class="card-qrcode"></div>
@@ -68,9 +79,9 @@ userInfoContainer.innerHTML = `
     <footer class="card-footer">
     <div class="bedge">
         <div class="bedge-icon">
-            <img class="img-fluid" src="/assets/img/card/${'cbd'}.png" alt="bedge">
+            <img class="img-fluid" src="/assets/img/card/${userInfo.status}.png" alt="bedge">
         </div>
-        GOLDEN INVESTOR
+        ${userInfo.status}
     </div>
     <div>
         VALID: <span>25.12.2025</span>
