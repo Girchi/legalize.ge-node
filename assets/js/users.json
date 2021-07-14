@@ -2,8 +2,9 @@
     "data":[
         {
             "ge": {
-                "id": 29001003723,
-                "name": "იაგო",
+                "id":0,
+                "idnum": 29001003723,
+                "name": "იაგო ხვიჩია",
                 "surname": "ხვიჩია",
                 "b_date": "19.05.1982",
                 "validation": "13/09/2025",
@@ -12,8 +13,9 @@
             },
 
             "en": {
-                "id": 29001003723,
-                "name": "Iago",
+                "id":0,
+                "idnum": 29001003723,
+                "name": "Iago Khvichia",
                 "surname": "Khvichia",
                 "b_date": "19.05.1982",
                 "validation": "13/09/2025",
@@ -24,200 +26,218 @@
         
         {
             "ge": {
-                "id": 20001003734,
-                "name": "ვახტანგ",
+                "id":1,
+                "idnum": 20001003734,
+                "name": "ვახტანგ მეგრელიშვილი",
                 "surname": "მეგრელიშვილი",
                 "b_date": "28.02.1972",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": 20001003734,
-                "name": "Vakhtang",
+                "id":1,
+                "idnum": 20001003734,
+                "name": "Vakhtang Megrelishvili",
                 "surname": "Megrelishvili",
                 "b_date": "28.02.1972",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
-                "status_ge": "smoker"
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": 29001030486,
-                "name": "ლევან",
+                "id":2,
+                "idnum": 29001030486,
+                "name": "ლევან ჯგერენაია",
                 "surname": "ჯგერენაია",
                 "b_date": "08.06.1990",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ლევანჯგერენაია.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": 29001030486,
-                "name": "Levan",
+                "id":2,
+                "idnum": 29001030486,
+                "name": "Levan Jgerenaia",
                 "surname": "Jgerenaia",
                 "b_date": "08.06.1990",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ლევანჯგერენაია.jpg",
-                "status_en": "smoker"
+                "status": "smoker"
             }
         },
         
 
         {
             "ge": {
-                "id": "01001071740",
-                "name": "ოთო",
+                "id":3,
+                "idnum": "01001071740",
+                "name": "ოთო ზაკალაშვილი",
                 "surname": "ზაკალაშვილი",
                 "b_date": "09.07.1991",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "01001071740",
-                "name": "Oto",
+                "id":3,
+                "idnum": "01001071740",
+                "name": "Oto Zakalashvili",
                 "surname": "Zakalashvili",
                 "b_date": "09.07.1991",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
-                "status_en": "smoker"
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": "01005029043",
-                "name": "მარიამ",
+                "id":4,
+                "idnum": "01005029043",
+                "name": "მარიამ შენგელია",
                 "surname": "შენგელია",
                 "b_date": "14.02.2000",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/მარიამშენგელია.jpg",
-                "status_ge": ""
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "01005029043",
-                "name": "Mariam",
+                "id":4,
+                "idnum": "01005029043",
+                "name": "Mariam Shengelia",
                 "surname": "Shengelia",
                 "b_date": "14.02.2000",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/მარიამშენგელია.jpg",
-                "status_en": ""
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": "01019068754",
-                "name": "რუსუდან",
+                "id":5,
+                "idnum": "01019068754",
+                "name": "რუსუდან აბუაშვილი",
                 "surname": "აბუაშვილი",
                 "b_date": "23.07.2003",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "01019068754",
-                "name": "Rusudan",
+                "id":5,
+                "idnum": "01019068754",
+                "name": "Rusudan Abuashvili",
                 "surname": "Abuashvili",
                 "b_date": "23.07.2003",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
-                "status_en": "smoker"
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": "01027048470",
-                "name": "ჰერმან",
+                "id":6,
+                "idnum": "01027048470",
+                "name": "ჰერმან საბო",
                 "surname": "საბო",
                 "b_date": "18/11/1988",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ჰერმანსაბო.jpg",
-                "status_ge": ""
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "01027048470",
-                "name": "Hermann",
+                "id":6,
+                "idnum": "01027048470",
+                "name": "Hermann Szabó",
                 "surname": "Szabó",
                 "b_date": "18/11/1988",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ჰერმანსაბო.jpg",
-                "status_en": ""
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": "01401133739",
-                "name": "ალექსანდრე",
+                "id":7,
+                "idnum": "01401133739",
+                "name": "ალექსანდრე რაქვიაშვილი",
                 "surname": "რაქვიაშვილი",
                 "b_date": "10/07/1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "01401133739",
-                "name": "Aleksandre",
+                "id":7,
+                "idnum": "01401133739",
+                "name": "Aleksandre Raqviashvili",
                 "surname": "Raqviashvili",
                 "b_date": "10/07/1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
-                "status_en": "smoker"
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": "19001078500",
-                "name": "დავით",
+                "id":8,
+                "idnum": "19001078500",
+                "name": "დავით წურწუმია",
                 "surname": "წურწუმია",
                 "b_date": "20/07/1989",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/დავითწურწუმია.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "19001078500",
-                "name": "Davit",
+                "id":8,
+                "idnum": "19001078500",
+                "name": "Davit Tsurtsumia",
                 "surname": "Tsurtsumia",
                 "b_date": "20/07/1989",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/დავითწურწუმია.jpg",
-                "status_en": "smoker"
+                "status": "smoker"
             }
         },
 
         {
             "ge": {
-                "id": "01024078693",
-                "name": "ავთანდილ",
+                "id":9,
+                "idnum": "01024078693",
+                "name": "ავთანდილ ლაბაძე",
                 "surname": "ლაბაძე",
                 "b_date": "25/08/1998",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
-                "status_ge": "მწეველი"
+                "status": "მწეველი"
             },
 
             "en": {
-                "id": "01024078693",
-                "name": "Avtandil",
+                "id":9,
+                "idnum": "01024078693",
+                "name": "Avtandil Labadze",
                 "surname": "Labadze",
                 "b_date": "25/08/1998",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
-                "status_en": "smoker"
+                "status": "smoker"
             }
         }
     ]
