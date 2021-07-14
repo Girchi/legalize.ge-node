@@ -5,7 +5,8 @@
             "name": "იაგო",
             "surname": "ხვიჩია",
             "b_date": "19.05.1982",
-            "img": "/assets/img/users/იაგოხვიჩია.JPG",
+            "validation": "",
+            "img": "/assets/img/users/იაგოხვიჩია.jpg",
             "status_ge": "დამფუძნებელი",
             "status_en": "founder"
         },
@@ -15,7 +16,8 @@
             "name": "ვახტანგ",
             "surname": "მეგრელიშვილი",
             "b_date": "28.02.1972",
-            "img": "/assets/img/users/ვახტანგმეგრელიშვილი.JPG",
+            "validation": "",
+            "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
             "status_ge": "მწეველი",
             "status_en": "smoker"
         },
@@ -25,7 +27,8 @@
             "name": "ლევან",
             "surname": "ჯგერენაია",
             "b_date": "08.06.1990",
-            "img": "/assets/img/users/ლევანჯგერენაია.JPG",
+            "validation": "",
+            "img": "/assets/img/users/ლევანჯგერენაია.jpg",
             "status_ge": "",
             "status_en": ""
         },
@@ -35,7 +38,8 @@
             "name": "ოთო",
             "surname": "ზაკალაშვილი",
             "b_date": "09.07.1991",
-            "img": "/assets/img/users/ოთოზაკალაშვილი.JPG",
+            "validation": "",
+            "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
             "status_ge": "მწეველი",
             "status_en": "smoker"
         },
@@ -45,6 +49,7 @@
             "name": "მარიამ",
             "surname": "შენგელია",
             "b_date": "14.02.2000",
+            "validation": "",
             "img": "/assets/img/users/მარიამშენგელია.jpg",
             "status_ge": "",
             "status_en": ""
@@ -55,10 +60,54 @@
             "name": "რუსუდან",
             "surname": "აბუაშვილი",
             "b_date": "23.07.2003",
-            "img": "/assets/img/users/რუსუდანაბუაშვილი.JPG",
+            "validation": "",
+            "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
+        },
+
+        {
+            "id": "01027048470",
+            "name": "ჰერმან",
+            "surname": "საბო",
+            "b_date": "18/11/1988",
+            "validation": "",
+            "img": "/assets/img/users/ჰერმანსაბო.jpg",
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
+        },
+
+        {
+            "id": "01401133739",
+            "name": "ალექსანდრე",
+            "surname": "რაქვიაშვილი",
+            "b_date": "10/07/1982",
+            "validation": "",
+            "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
+        },
+
+        {
+            "id": "19001078500",
+            "name": "დავით",
+            "surname": "წურწუმია",
+            "b_date": "20/07/1989",
+            "validation": "",
+            "img": "/assets/img/users/დავითწურწუმია.jpg",
+            "status_ge": "მწეველი",
+            "status_en": "smoker"
+        },
+
+        {
+            "id": "01024078693",
+            "name": "ავთანდილ",
+            "surname": "ლაბაძე",
+            "b_date": "25/08/1998",
+            "validation": "",
+            "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
             "status_ge": "მწეველი",
             "status_en": "smoker"
         }
-
     ]
 }
