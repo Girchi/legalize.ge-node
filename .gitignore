@@ -1,1 +1,8 @@
 node_modules/
+
+/index.html
+/inneruser.html
+/constitution.html
+/userspage.html
+/user-profile.html
+/portfolio-details.html
