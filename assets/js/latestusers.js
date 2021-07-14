@@ -10,15 +10,16 @@
     const userArray = await fetchUsers();
     
     for(let i = 0; i < 6; i++){
+      console.log(userArray[i].ge);
       const currUser = `
         <div class="swiper-slide">
           <div class="testimonial-item">
             <img
-              src="${userArray[i].img}"
+              src="${userArray[i].ge.img}"
               class="testimonial-img"
               alt=""
             />
-            <h3>${userArray[i].name} ${userArray[i].surname}</h3>
+            <h3>${userArray[i].ge.name} ${userArray[i].ge.surname}</h3>
             <h4>მწეველი</h4>
           </div>
         </div>
