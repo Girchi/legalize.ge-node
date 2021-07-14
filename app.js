@@ -33,5 +33,10 @@ app.get("/user/:id", (req, res) => {
     console.log(req.params.id);
 });
 
+app.get("/cards-download", (req, res) => {
+    res.render(__dirname + "/snippet/card-download", { id: req.params.id});
+    console.log(req.params.id);
+});
+
 
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`)); 
