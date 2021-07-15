@@ -9,8 +9,7 @@
                 "b_date": "19.05.1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/იაგოხვიჩია.jpg",
-                "primary_status": "დამფუძნებელი",
-                "secondary_statuses": []
+                "status": "მწეველი"
             },
 
             "en": {
@@ -21,7 +20,7 @@
                 "b_date": "19.05.1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/იაგოხვიჩია.jpg",
-                "status": "founder"
+                "status": "smoker"
             }
         },
         
@@ -155,7 +154,7 @@
                 "b_date": "18/11/1988",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ჰერმანსაბო.jpg",
-                "status": "მწეველი"
+                "status": "ქომაგი"
             },
 
             "en": {
@@ -166,7 +165,7 @@
                 "b_date": "18/11/1988",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ჰერმანსაბო.jpg",
-                "status": "smoker"
+                "status": "supporter"
             }
         },
 
@@ -179,7 +178,7 @@
                 "b_date": "10/07/1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
-                "status": "მწეველი"
+                "status": "ქომაგი"
             },
 
             "en": {
@@ -190,7 +189,7 @@
                 "b_date": "10/07/1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
-                "status": "smoker"
+                "status": "supporter"
             }
         },
 
