@@ -1,6 +1,6 @@
 // import nodeHtmlToImage from 'node-html-to-image'
 import generateCardTemplateGe from './assets/js/generateFrontCardTemplate.js'
-import generateCardTemplateEn from './assets/js/generateBackCardTemplate.js'
+import generateCardTemplateEn from './assets/js/generateBackCardTemplate.js'         
 import nodeHtmlToImage from 'node-html-to-image'
 
 import fetch from 'node-fetch';
@@ -14,7 +14,6 @@ async function fetchUsers() {
     const users = await response.json()
     return users.data
 }
-
 
 let a = 0
 let num = 0
@@ -33,6 +32,7 @@ async function card2png(){
   let idnum;
   let statusen;
   let name;
+
   let badge;
   let users = await fetchUsers()
 
@@ -54,8 +54,8 @@ async function card2png(){
     }
     front()
   
-    //have to be deleted
     const back = () => {
+        
       nodeHtmlToImage({
         output: `./assets/cards/${num}-back.jpg`,
         html: generateCardTemplateEn(namesurname, id, number, img, status, qr, bday, validate),
@@ -72,11 +72,3 @@ async function card2png(){
 }
 
 card2png()
-
-
-
-
-
-
-
-

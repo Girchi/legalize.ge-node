@@ -26,8 +26,8 @@ const generateCardTemplateEn = function(namesurname, id, number, img, status, qr
 
   /* Card Styles */
 body{
-    width: 688px;
-    height: 430px;
+    width: 166.6mm;
+    height: 105mm;
 }
 .cards {
     display: flex;
@@ -40,8 +40,8 @@ body{
 .card-side {
     font-family: "BPG Nino Mtavruli Bold", sans-serif;
     font-weight: 400;
-    width: 182mm;
-    height: 114.6mm;
+    width: 166.6mm;
+    height: 105mm;
     border: 0;
     border-radius: 22px;
     letter-spacing: 0;
@@ -89,7 +89,7 @@ body{
     display: block;
     font-size: 12px;
     color: #6A6A6A;
-    margin: 0 0 2px 0;
+    margin: 0 0 4px 0;
     padding: 0;
 }
 
@@ -110,6 +110,12 @@ body{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.card-qrcode img {
+    width:150px;
+    height: 150px;
+    object-fit:auto;
 }
 
 .card-footer {
@@ -245,7 +251,9 @@ body{
     <h4>{{number}}</h4>
     </div>
     <div id="card-img" class="card-img">
-    <div class="card-qrcode"></div>
+    <div class="card-qrcode">
+    <img src="http://127.0.0.1:3000/assets/legalize-qr.png">
+    </div>
     </div>
     </main>
     <footer class="card-footer">
