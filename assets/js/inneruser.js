@@ -9,8 +9,8 @@ const cardQrCodes = document.getElementsByClassName('card-qrcode')
 for(let i = 0; i < cardQrCodes.length; i++){
     let cardqrcode = new QRCode(cardQrCodes[i], {
         text: "https://legalize.ge/", //this generates code
-        width: 130,
-        height: 130,
+        // width: 130,
+        // height: 130,
         colorDark : "#000",
         colorLight : "transparent",
         correctLevel : QRCode.CorrectLevel.H
@@ -19,8 +19,8 @@ for(let i = 0; i < cardQrCodes.length; i++){
 
 let qrcode = new QRCode(document.getElementById("qrcode"), {
 text: "https://legalize.ge/", //this generates code
-width: 130,
-height: 130,
+// width: 130,
+// height: 130,
 colorDark : "#0e6a38",
 colorLight : "transparent",
 correctLevel : QRCode.CorrectLevel.H
