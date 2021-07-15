@@ -169,6 +169,13 @@ main#main
         h2 &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D8;
       .testimonials-slider.swiper-container(data-aos='fade-up' data-aos-delay='100')
         #latestUsers.swiper-wrapper
+          ul#usersList.list-group
+          - for(let i = 0; i < 6; i++)
+              .swiper-slide
+                .testimonial-item
+                  img.testimonial-img(src=`${arr[i].img}` alt='user image')
+                  h3= `${arr[i].name} ${arr[i].surname}`
+                  h4= arr[i].status
           // testimonial items
         // <div class="swiper-pagination"></div>
         a.users-btn(href='users') &#x10E1;&#x10E0;&#x10E3;&#x10DA;&#x10D8; &#x10E1;&#x10D8;&#x10D0;
@@ -179,11 +186,9 @@ main#main
         .modal-header
           h5#usersModalLabel.modal-title &#x10E1;&#x10D8;&#x10D0;
           button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-        .modal-body
-          ul#usersList.list-group
-            // Users Comming From Array
-        .modal-footer
-          button.btn.btn-success(type='button' data-bs-dismiss='modal')
+          .modal-body
+            .modal-footer
+              button.btn.btn-success(type='button' data-bs-dismiss='modal')
             | &#x10D3;&#x10D0;&#x10EE;&#x10E3;&#x10E0;&#x10D5;&#x10D0;
   // End Testimonials Section
   // ======= Services Section =======
