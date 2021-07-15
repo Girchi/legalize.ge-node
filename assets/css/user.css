@@ -107,7 +107,7 @@
 
 /*QR Code */
 #qrcode {
-    /* width: 130px; */
+    width: 150px;
     height: 100%;
 }
 
@@ -289,6 +289,10 @@
         height: 30px;
         margin-right: 6px;
         margin-bottom: 6px;
+    }
+
+    #qrcode {
+        width: 75px;
     }
 }
 
