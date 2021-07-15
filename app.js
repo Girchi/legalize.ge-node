@@ -22,7 +22,6 @@ app.get("/", (req, res) => {
         console.log(users.data.map(element => element.ge));
         res.render(__dirname + "/snippet/index", {arr: users.data.map(element => element.ge)});
     }
-
     try {
         latestUsers();
     } catch(error) {
