@@ -61,7 +61,7 @@ header#header.fixed-top
   .user-info
     img.user-info--pic(src=`${ge.img}` alt='')
     .user-info--text
-      h4= ge.name
+      h4= `${ge.name} ${ge.surname}`
       span= ge.status
     #qrcode
   p#quote.quote
@@ -79,7 +79,7 @@ header#header.fixed-top
           span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
           h4= ge.idnum
           span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4 595 59 59 59
+          h4= ge.number
         #card-img.card-img
           img.img-fluid(src=`${ge.img}` alt='user')
       footer.card-footer
@@ -102,7 +102,7 @@ header#header.fixed-top
           span Personal Number
           h4= ge.idnum
           span Mobile Number
-          h4 595 59 59 59
+          h4=ge.number
         #card-img.card-img
           .card-qrcode
       footer.card-footer
