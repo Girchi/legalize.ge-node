@@ -10,6 +10,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/იაგოხვიჩია.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -21,6 +22,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/იაგოხვიჩია.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -35,6 +37,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი", "გროუერი"],
                 "number": "555 55 55 55"
             },
 
@@ -47,6 +50,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder", "grower"],
                 "number": "555 55 55 55"
             }
         },
@@ -61,6 +65,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ლევანჯგერენაია.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -72,6 +77,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ლევანჯგერენაია.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -87,6 +93,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -98,6 +105,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -112,6 +120,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/მარიამშენგელია.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -123,6 +132,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/მარიამშენგელია.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -137,6 +147,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -148,6 +159,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -162,6 +174,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ჰერმანსაბო.jpg",
                 "status": "ქომაგი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -173,6 +186,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ჰერმანსაბო.jpg",
                 "status": "supporter",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
                 
             }
@@ -188,6 +202,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
                 "status": "ქომაგი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -199,6 +214,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
                 "status": "supporter",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -213,6 +229,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/დავითწურწუმია.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -225,6 +242,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/დავითწურწუმია.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         },
@@ -239,6 +257,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
                 "status": "მწეველი",
+                "other_statuses": ["დამფუძნებელი"],
                 "number": "555 55 55 55"
             },
 
@@ -250,6 +269,7 @@
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
                 "status": "smoker",
+                "other_statuses": ["founder"],
                 "number": "555 55 55 55"
             }
         }
