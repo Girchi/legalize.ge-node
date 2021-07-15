@@ -38,7 +38,7 @@ app.get("/user/:id", (req, res) => {
     });
     setTimeout(()=>{
         res.render(__dirname + "/snippet/profile", obj);
-    }, 100)
+    }, 100);
 })
 
 app.get("/cards-download", (req, res) => {
@@ -46,6 +46,5 @@ app.get("/cards-download", (req, res) => {
     let arr=fs.readdirSync('assets/pdf')
     res.render(__dirname + "/snippet/card-download", { arr: arr});
 });
-
 
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`)); 

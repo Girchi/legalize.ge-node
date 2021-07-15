@@ -19,7 +19,7 @@
               class="testimonial-img"
               alt=""
             />
-            <h3>${userArray[i].ge.name} ${userArray[i].ge.surname}</h3>
+            <h3>${userArray[i].ge.name}</h3>
             <h4>მწეველი</h4>
           </div>
         </div>
