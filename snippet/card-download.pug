@@ -37,29 +37,13 @@ body
 
   // ======= main =======
   main.leaderboard__profiles.container.addList
-    a#pdfId(href='../assets/pdf/test-cards copy.pdf' download target='_blank')
-      article.leaderboard__profile
-        span.leaderboard__value
-          | 1.pdf
-          span
-            i.fas.fa-cloud-download-alt
-    a#pdfId(href='../Pdf-Example/1.pdf' download='' target='_blank')
-      article.leaderboard__profile
-        span.leaderboard__value
-          | 2.pdf
-          span
-            i.fas.fa-cloud-download-alt
-    article.leaderboard__profile
-        span.leaderboard__value
-          | 3.pdf
-          span
-            i.fas.fa-cloud-download-alt
-    a#pdfId(href='../Pdf-Example/1.pdf' download='' target='_blank')
-      article.leaderboard__profile
-        span.leaderboard__value
-          | 4.pdf
-          span
-            i.fas.fa-cloud-download-alt       
+    each val in arr  
+      a#pdfId(href=`../assets/pdf/${val}` download target='_blank')
+        article.leaderboard__profile
+          span.leaderboard__value
+            span= val
+            span
+              i.fas.fa-cloud-download-alt
 
 
 
