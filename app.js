@@ -2,6 +2,7 @@ import express, { response } from 'express'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fetch from 'node-fetch';
+import * as fs from 'fs';
 
 const app = express();
 const port = 3000;
@@ -41,7 +42,9 @@ app.get("/user/:id", (req, res) => {
 })
 
 app.get("/cards-download", (req, res) => {
-    res.render(__dirname + "/snippet/card-download", { id: req.params.id});
+
+    let arr=fs.readdirSync('assets/pdf')
+    res.render(__dirname + "/snippet/card-download", { arr: arr});
 });
 
 
