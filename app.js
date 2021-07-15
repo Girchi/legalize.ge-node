@@ -34,10 +34,6 @@ app.get("/user/:id", (req, res) => {
     .then(response => response.json())
     .then(data => {
         obj=data.data[req.params.id];
-
-        if(data.data.ge.status === "მწეველი") {
-            
-        }
     });
     setTimeout(()=>{
         res.render(__dirname + "/snippet/profile", obj);
@@ -47,6 +43,5 @@ app.get("/user/:id", (req, res) => {
 app.get("/cards-download", (req, res) => {
     res.render(__dirname + "/snippet/card-download", { id: req.params.id});
 });
-
 
 app.listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`)); 
