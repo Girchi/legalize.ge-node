@@ -9,23 +9,29 @@ const generateCardTemplateGe = function(namesurname, id, number, img, status, qr
       
 @import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css");
 
-@import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css");
-@import url("//cdn.web-fonts.ge/fonts/bpg-arial/css/bpg-arial.min.css");
+@import url("https://cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css");
+@import url("https://cdn.web-fonts.ge/fonts/bpg-arial/css/bpg-arial.min.css");
 
 //BPG WEB 002
 
 @font-face {
   font-family: 'BPG Nino Mtavruli Bold';  
-  src: url(${_data}) format('woff2'); // don't forget the format!
+  src: url('https://cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css') format('woff2'); // don't forget the format!
 }
 
 @font-face {
   font-family: 'BPG WEB 002';  
-  src: url(${_data2}) format('woff2'); // don't forget the format!
+  src: url('https://cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css') format('woff2'); // don't forget the format!
 }
 
+body{
+    width: 688px;
+    height: 430px;
+}
 
 /* Card Styles */
+
+
 .cards {
     display: flex;
     flex-direction: column;
@@ -86,13 +92,16 @@ const generateCardTemplateGe = function(namesurname, id, number, img, status, qr
     display: block;
     font-size: 12px;
     color: #6A6A6A;
+    margin: 0 0 2px 0;
+    padding: 0;
 }
 
 .card-info h4 {
     font-family: inherit;
     font-size: 22px;
     color: #040505;
-    margin-bottom: 12px;
+    margin: 0 0 18px 0;
+    padding: 0;
 }
 
 .card-img {
@@ -123,7 +132,7 @@ const generateCardTemplateGe = function(namesurname, id, number, img, status, qr
     display: flex;
     align-items: center;
     text-transform: uppercase;
-}
+} 
 
 .bedge-icon {
     width: 60px;
@@ -221,7 +230,7 @@ const generateCardTemplateGe = function(namesurname, id, number, img, status, qr
 
 
 </style>
-<body><div id="cards" class="cards card-smoker">
+<body><div id="cards" class="cards card-{{statusen}}">
   <div id="card-front" class="card-side">
   <header class="card-header">კანაფის მოყვარულთა საზოგადოება</header>
   <main class="card-main">
@@ -233,23 +242,23 @@ const generateCardTemplateGe = function(namesurname, id, number, img, status, qr
       </div>
       <div class="card-info">
       <span>პირადი ნომერი</span>
-      <h4>{{id}}</h4>
+      <h4>{{idnum}}</h4>
       <span>ნომერი</span>
       <h4>{{number}}</h4>
       </div>
       <div id="card-img" class="card-img">
-          <img class="img-fluid" src="http://127.0.0.1:3000/assets/img/users/რეზოტეტუნაშვილი.jpg" alt="user">
+          <img class="img-fluid" src="http://127.0.0.1:3000{{img}}" alt="user">
       </div>
   </main>
   <footer class="card-footer">
       <div class="bedge">
           <div class="bedge-icon">
-              <img class="img-fluid" src="http://127.0.0.1:3000/assets/img/card/smoker.png" alt="bedge">
+              <img class="img-fluid" src="{{badge}}" alt="bedge">
           </div>
-          მწეველი
+          {{status}}
       </div>
       <div>
-          ძალაშია: <span>25.12.2025</span>
+          ძალაშია: <span>{{validate}}</span>
       </div>
   </footer>
 </div></div></body></html>`;

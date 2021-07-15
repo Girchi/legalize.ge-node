@@ -6,25 +6,29 @@ const _data2 = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-web-002-caps-
 
 const generateCardTemplateEn = function(namesurname, id, number, img, status, qr, bday, validate) {
   return `<html><style>
-    
   @import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css");
 
-  @import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css");
-  @import url("//cdn.web-fonts.ge/fonts/bpg-arial/css/bpg-arial.min.css");
+@import url("https://cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css");
+@import url("https://cdn.web-fonts.ge/fonts/bpg-arial/css/bpg-arial.min.css");
 
-  //BPG WEB 002
+//BPG WEB 002
 
-  @font-face {
-    font-family: 'BPG Nino Mtavruli Bold';  
-    src: url(${_data}) format('woff2'); // don't forget the format!
-  }
+@font-face {
+  font-family: 'BPG Nino Mtavruli Bold';  
+  src: url('https://cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css') format('woff2'); // don't forget the format!
+}
 
-  @font-face {
-    font-family: 'BPG WEB 002';  
-    src: url(${_data2}) format('woff2'); // don't forget the format!
-  }
+@font-face {
+  font-family: 'BPG WEB 002';  
+  src: url('https://cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css') format('woff2'); // don't forget the format!
+}
+
 
   /* Card Styles */
+body{
+    width: 688px;
+    height: 430px;
+}
 .cards {
     display: flex;
     flex-direction: column;
@@ -85,13 +89,16 @@ const generateCardTemplateEn = function(namesurname, id, number, img, status, qr
     display: block;
     font-size: 12px;
     color: #6A6A6A;
+    margin: 0 0 2px 0;
+    padding: 0;
 }
 
 .card-info h4 {
     font-family: inherit;
     font-size: 22px;
     color: #040505;
-    margin-bottom: 12px;
+    margin: 0 0 18px 0;
+    padding: 0;
 }
 
 .card-img {
@@ -221,21 +228,21 @@ const generateCardTemplateEn = function(namesurname, id, number, img, status, qr
 
 
   </style>
-  <body><div id="cards" class="cards card-grower">
+  <body><div id="cards" class="cards card-{{status}}">
   <div id="card-back" class="card-side">
   <header class="card-header">CANNABIS LOVERS SOCIETY</header>
     <main class="card-main">
     <div class="card-info">
     <span>name surname</span>
-    <h4>xfvxdv</h4>
+    <h4>{{namesurname}}</h4>
     <span>date of birth</span>
-    <h4>sdfdsf</h4>
+    <h4>{{bday}}</h4>
     </div>
     <div class="card-info">
     <span>personal number</span>
-    <h4>dfs</h4>
+    <h4>{{idnum}}</h4>
     <span>number</span>
-    <h4>sdfsdf</h4>
+    <h4>{{number}}</h4>
     </div>
     <div id="card-img" class="card-img">
     <div class="card-qrcode"></div>
@@ -244,12 +251,12 @@ const generateCardTemplateEn = function(namesurname, id, number, img, status, qr
     <footer class="card-footer">
     <div class="bedge">
         <div class="bedge-icon">
-            <img class="img-fluid" src="http://127.0.0.1:3000/assets/img/card/smoker.png" alt="bedge">
+            <img class="img-fluid" src="{{badge}}">
         </div>
-        mweveli
+        {{status}}
     </div>
     <div>
-        VALID: <span>25.12.2025</span>
+        VALID: <span>{{validate}}</span>
     </div>
     </footer>
 </div></div></body></html>`
