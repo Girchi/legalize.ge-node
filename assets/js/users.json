@@ -9,7 +9,8 @@
                 "b_date": "19.05.1982",
                 "validation": "13/09/2025",
                 "img": "/assets/img/users/იაგოხვიჩია.jpg",
-                "status": "დამფუძნებელი"
+                "primary_status": "დამფუძნებელი",
+                "secondary_statuses": []
             },
 
             "en": {

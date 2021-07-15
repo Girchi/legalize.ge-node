@@ -34,10 +34,14 @@ app.get("/user/:id", (req, res) => {
     .then(response => response.json())
     .then(data => {
         obj=data.data[req.params.id];
+
+        if(data.data.ge.status === "მწეველი") {
+            
+        }
     });
     setTimeout(()=>{
         res.render(__dirname + "/snippet/profile", obj);
-    }, 100)
+    }, 100);
 })
 
 app.get("/cards-download", (req, res) => {
