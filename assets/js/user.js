@@ -14,7 +14,7 @@ async function setUsers(){
         userslist += `<li>
         <a href="user/${users[i].ge.id}" class="user--li">
         <img class='user-pic' src='${users[i].ge.img}'>
-        <span class="user--name">${users[i].ge.name} </span>
+        <span class="user--name">${users[i].ge.name} ${users[i].ge.surname}</span>
         </a></li>`
         container.innerHTML = userslist;
         userCount++;
