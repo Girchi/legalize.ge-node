@@ -26,4 +26,4 @@ async function generateQRs(){
 
 }
 
-generateQRs() 
+generateQRs()
