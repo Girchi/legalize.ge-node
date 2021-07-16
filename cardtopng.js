@@ -22,6 +22,7 @@ async function card2png(){
   let bday;
   let validate;
   let qr;
+  let n;
 
   let badge;
   let users = await fetchUsers()
@@ -39,8 +40,8 @@ async function card2png(){
 
       nodeHtmlToImage({
         output: `./generate/card-imgs/${i}-front.jpg`,
-        html: generateCardTemplateGe(badge,namesurname, id, number, img, status, qr, bday, validate),
-        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[i].en.status}.png` ,statusen:users[i].en.status, namesurname: namee,idnum:users[i].ge.idnum, id: users[i].ge.id, number: users[i].ge.number, img: users[i].ge.img, status:users[i].ge.status, bday:users[i].ge.b_date, validate:users[i].ge.validation,  surname:users[i].ge.surname}
+        html: generateCardTemplateGe(badge,namesurname, id, number, n, img, status, qr, bday, validate),
+        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[i].en.status}.png` ,statusen:users[i].en.status, namesurname: namee,idnum:users[i].ge.idnum,n:users[i].ge.n, id: users[i].ge.id, number: users[i].ge.number, img: users[i].ge.img, status:users[i].ge.status, bday:users[i].ge.b_date, validate:users[i].ge.validation,  surname:users[i].ge.surname}
         })
         .then(() => console.log(`${i} frontcard created successfully!'`))
     }
@@ -51,8 +52,8 @@ async function card2png(){
         
       nodeHtmlToImage({
         output: `./generate/card-imgs/${i}-back.jpg`,
-        html: generateCardTemplateEn(namesurname, id, number, img, status, qr, bday, validate),
-        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[i].en.status}.png` , namesurname: nameen, idnum:users[i].ge.idnum, id: users[i].en.id, number: users[i].en.number, img: users[i].en.img, status:users[i].en.status, bday:users[i].en.b_date, validate:users[i].en.validation,  surname:users[i].en.surname}
+        html: generateCardTemplateEn(namesurname, id, number, img,n, status, qr, bday, validate),
+        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[i].en.status}.png`, namesurname: nameen, idnum:users[i].ge.idnum,n:users[i].ge.n, id: users[i].ge.id, number: users[i].en.number, img: users[i].en.img, status:users[i].en.status, bday:users[i].en.b_date, validate:users[i].en.validation,  surname:users[i].en.surname}
         })
         .then(() => console.log(`${i} backcard created successfully!'`))
     }

@@ -244,7 +244,7 @@ body{
       <span>პირადი ნომერი</span>
       <h4>{{idnum}}</h4>
       <span>ნომერი</span>
-      <h4>{{number}}</h4>
+      <h4>{{n}}</h4>
       </div>
       <div id="card-img" class="card-img">
           <img class="img-fluid" src="http://127.0.0.1:3000{{img}}" alt="user">
