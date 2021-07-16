@@ -248,11 +248,11 @@ body{
     <span>personal number</span>
     <h4>{{idnum}}</h4>
     <span>number</span>
-    <h4>{{number}}</h4>
+    <h4>{{n}}</h4>
     </div>
     <div id="card-img" class="card-img">
     <div class="card-qrcode">
-    <img src="http://127.0.0.1:3000/generate/card-imgs/other/legalize-qr.png">
+    <img src="http://127.0.0.1:3000/generate/qrs/{{id}}-UserQr.png">
     </div>
     </div>
     </main>
