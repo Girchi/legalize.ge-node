@@ -1,10 +1,15 @@
-import font2base64 from 'node-font2base64'
-const _data = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-nino-mtavruli-bold-webfont.woff2')
-const _data2 = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-web-002-caps-webfont.woff2')
+const hostname = "http://127.0.0.1:3000";
 
-
-
-const generateCardTemplateEn = function(namesurname, id, number, img, status, qr, bday, validate) {
+const generateCardTemplateEn = function (
+  namesurname,
+  id,
+  number,
+  img,
+  status,
+  qr,
+  bday,
+  validate
+) {
   return `<html><style>
   @import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css");
 
@@ -54,9 +59,9 @@ body{
 
 .card-side::before {
     content: '';
-    width: 420px;
-    height: 420px;
-    background: url('http://127.0.0.1:3000/assets/img/kanafi.png') no-repeat center/contain;
+    width: 405px;
+    height: 405px;
+    background: url('${hostname}/assets/img/kanafi.png') no-repeat center/contain;
     position: absolute;
     left: 90px;
     top: 20px;
@@ -113,14 +118,14 @@ body{
 }
 
 .card-qrcode img {
-    width:150px;
-    height: 150px;
+    width:130px;
+    height: 130px;
     object-fit:auto;
 }
 
 .card-footer {
     background-color: transparent;
-    padding: 24px 50px 24px 40px;
+    padding: 24px 50px 18px 40px;
     border: 0;
     font-size: 18px;
     color: #040505;
@@ -157,7 +162,7 @@ body{
 }
 
 .card-goldeninvestor .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/1.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/1.svg') no-repeat left top/cover;
 }
 /* Golden Card End */
 
@@ -167,7 +172,7 @@ body{
 }
 
 .card-cbd .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/2.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/2.svg') no-repeat left top/cover;
 }
 /* CBD Card End */
 
@@ -177,7 +182,7 @@ body{
 }
 
 .card-grower .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/3.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/3.svg') no-repeat left top/cover;
 }
 /* Grower Card End */
 
@@ -187,7 +192,7 @@ body{
 }
 
 .card-founder .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/4.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/4.svg') no-repeat left top/cover;
 }
 /* Founder Card End */
 
@@ -197,7 +202,7 @@ body{
 }
 
 .card-smoker .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/5.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/5.svg') no-repeat left top/cover;
 }
 /* Smoker Card End */
 
@@ -207,7 +212,7 @@ body{
 }
 
 .card-supporter .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/6.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/6.svg') no-repeat left top/cover;
 }
 /* Supporter Card End */
 
@@ -217,7 +222,7 @@ body{
 }
 
 .card-investor .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/7.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/7.svg') no-repeat left top/cover;
 }
 /* Investor Card End */
 
@@ -227,7 +232,7 @@ body{
 }
 
 .card-owner .card-footer {
-   background: url('http://127.0.0.1:3000/assets/img/card/8.svg') no-repeat left top/cover;
+   background: url('${hostname}/assets/img/card/8.svg') no-repeat left top/cover;
 }
 /* Owner Card End */
 
@@ -252,7 +257,7 @@ body{
     </div>
     <div id="card-img" class="card-img">
     <div class="card-qrcode">
-    <img src="http://127.0.0.1:3000/generate/qrs/{{id}}-UserQr.png">
+    <img src="{{qr}}">
     </div>
     </div>
     </main>
@@ -267,6 +272,6 @@ body{
         VALID: <span>{{validate}}</span>
     </div>
     </footer>
-</div></div></body></html>`
-}
-export default generateCardTemplateEn
+</div></div></body></html>`;
+};
+export default generateCardTemplateEn;
