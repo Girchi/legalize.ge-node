@@ -22,10 +22,7 @@ head
   // Template Main CSS File
   link(href='../assets/css/style.css' rel='stylesheet')
   link(href='../assets/css/user.css' rel='stylesheet')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js')
-  script(src='../assets/js/qrcode.min.js')
-  script(src='https://unpkg.com/pdf-lib@1.4.0')
-  script(src='https://unpkg.com/downloadjs@1.4.7')
+
 // ======= Header =======
 header#header.fixed-top
   .container.d-flex.align-items-center.justify-content-between
@@ -65,16 +62,15 @@ header#header.fixed-top
       span.main-status= ge.status
       each val in ge.other_statuses
         span= val
-    #qrcode
-  p#quote.quote
-    | &#x10E1;&#x10D0;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D8; &#x10D3;&#x10D0; &#x10E2;&#x10D8;&#x10DE;&#x10DD;&#x10D2;&#x10E0;&#x10D0;&#x10E4;&#x10D8;&#x10E3;&#x10DA;&#x10D8; &#x10D8;&#x10DC;&#x10D3;&#x10E3;&#x10E1;&#x10E2;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10E3;&#x10E8;&#x10D8;&#x10DC;&#x10D0;&#x10D0;&#x10E0;&#x10E1;&#x10DD; &#x10E2;&#x10D4;&#x10E5;&#x10E1;&#x10E2;&#x10D8;&#x10D0;. &#x10D8;&#x10D2;&#x10D8; &#x10E1;&#x10E2;&#x10D0;&#x10DC;&#x10D3;&#x10D0;&#x10E0;&#x10E2;&#x10D0;&#x10D3; 1500-&#x10D8;&#x10D0;&#x10DC;&#x10D8; &#x10EC;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10D3;&#x10D0;&#x10DC; &#x10D8;&#x10E5;&#x10EA;&#x10D0;, &#x10E0;&#x10DD;&#x10D3;&#x10D4;&#x10E1;&#x10D0;&#x10EA; &#x10E3;&#x10EA;&#x10DC;&#x10DD;&#x10D1;&#x10DB;&#x10D0; &#x10DB;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D0;&#x10D5;&#x10DB;&#x10D0; &#x10D0;&#x10DB;&#x10EC;&#x10E7;&#x10DD;&#x10D1; &#x10D3;&#x10D0;&#x10D6;&#x10D2;&#x10D0;&#x10D6;&#x10D4;.
+    
+  
   #cards.cards(class=`card-${en.status}`)
     #card-front.card-side
       header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
       main.card-main
         .card-info
           span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-          h4= ge.name
+          h4= `${ge.name} ${ge.surname}`
           span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
           h4= ge.b_date
         .card-info
@@ -97,7 +93,7 @@ header#header.fixed-top
       main.card-main
         .card-info
           span Name & Surname
-          h4= en.name
+          h4= `${en.name} ${en.surname}`
           span Birth Date
           h4= ge.b_date
         .card-info
@@ -107,6 +103,7 @@ header#header.fixed-top
           h4=en.n
         #card-img.card-img
           .card-qrcode
+            img(src=qr)
       footer.card-footer
         .bedge
           .bedge-icon
@@ -210,7 +207,6 @@ script(src='../assets/vendor/purecounter/purecounter.js')
 script(src='../assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
 script(src='../assets/js/main.js')
-script(src='../assets/js/inneruser.js')
 // For img to pdf
 script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
