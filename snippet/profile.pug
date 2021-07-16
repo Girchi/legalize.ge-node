@@ -62,7 +62,9 @@ header#header.fixed-top
     img.user-info--pic(src=`${ge.img}` alt='')
     .user-info--text
       h4= `${ge.name} ${ge.surname}`
-      span= ge.status
+      span.main-status= ge.status
+      each val in ge.other_statuses
+        span= val
     #qrcode
   p#quote.quote
     | &#x10E1;&#x10D0;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D8; &#x10D3;&#x10D0; &#x10E2;&#x10D8;&#x10DE;&#x10DD;&#x10D2;&#x10E0;&#x10D0;&#x10E4;&#x10D8;&#x10E3;&#x10DA;&#x10D8; &#x10D8;&#x10DC;&#x10D3;&#x10E3;&#x10E1;&#x10E2;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10E3;&#x10E8;&#x10D8;&#x10DC;&#x10D0;&#x10D0;&#x10E0;&#x10E1;&#x10DD; &#x10E2;&#x10D4;&#x10E5;&#x10E1;&#x10E2;&#x10D8;&#x10D0;. &#x10D8;&#x10D2;&#x10D8; &#x10E1;&#x10E2;&#x10D0;&#x10DC;&#x10D3;&#x10D0;&#x10E0;&#x10E2;&#x10D0;&#x10D3; 1500-&#x10D8;&#x10D0;&#x10DC;&#x10D8; &#x10EC;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10D3;&#x10D0;&#x10DC; &#x10D8;&#x10E5;&#x10EA;&#x10D0;, &#x10E0;&#x10DD;&#x10D3;&#x10D4;&#x10E1;&#x10D0;&#x10EA; &#x10E3;&#x10EA;&#x10DC;&#x10DD;&#x10D1;&#x10DB;&#x10D0; &#x10DB;&#x10D1;&#x10D4;&#x10ED;&#x10D3;&#x10D0;&#x10D5;&#x10DB;&#x10D0; &#x10D0;&#x10DB;&#x10EC;&#x10E7;&#x10DD;&#x10D1; &#x10D3;&#x10D0;&#x10D6;&#x10D2;&#x10D0;&#x10D6;&#x10D4;.
