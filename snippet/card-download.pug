@@ -38,7 +38,7 @@ body
   // ======= main =======
   main.leaderboard__profiles.container.addList
     each val in arr  
-      a#pdfId(href=`../assets/pdf/${val}` download target='_blank')
+      a#pdfId(href=`../generate/pdf/${val}` download target='_blank')
         article.leaderboard__profile
           span.leaderboard__value
             span= val

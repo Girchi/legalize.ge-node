@@ -14,6 +14,7 @@ const __dirname = dirname(__filename);
 app.set("view engine", "pug");
 
 app.use("/assets", express.static('assets'));
+app.use("/generate", express.static('generate'));
 
 app.get("/", (req, res) => {
     async function latestUsers() {
@@ -64,7 +65,7 @@ app.get("/user/:id", (req, res) => {
 
 app.get("/cards-download", (req, res) => {
 
-    let arr=fs.readdirSync('assets/pdf')
+    let arr=fs.readdirSync('generate/pdf')
     res.render(__dirname + "/snippet/card-download", { arr: arr});
 });
 
