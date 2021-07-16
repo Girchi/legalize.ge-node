@@ -173,7 +173,8 @@ main#main
           - for(let i = 0; i < 6; i++)
               .swiper-slide
                 .testimonial-item
-                  img.testimonial-img(src=`${arr[i].img}` alt='user image')
+                  a(href=`user/${arr[i].id}`)
+                    img.testimonial-img(src=`${arr[i].img}` alt='user image')
                   h3= `${arr[i].name} ${arr[i].surname}`
                   h4= arr[i].status
           // testimonial items
