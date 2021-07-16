@@ -76,7 +76,7 @@ body{
 .card-main {
     display: flex;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 50px 0 40px;
     flex: 1;
 }
 
@@ -120,7 +120,7 @@ body{
 
 .card-footer {
     background-color: transparent;
-    padding: 24px 40px 24px;
+    padding: 24px 50px 24px 40px;
     border: 0;
     font-size: 18px;
     color: #040505;
@@ -252,7 +252,7 @@ body{
     </div>
     <div id="card-img" class="card-img">
     <div class="card-qrcode">
-    <img src="http://127.0.0.1:3000/assets/legalize-qr.png">
+    <img src="http://127.0.0.1:3000/generate/card-imgs/other/legalize-qr.png">
     </div>
     </div>
     </main>

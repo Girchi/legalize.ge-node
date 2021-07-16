@@ -4,19 +4,13 @@ import generateCardTemplateEn from './assets/js/generateBackCardTemplate.js'
 import nodeHtmlToImage from 'node-html-to-image'
 
 import fetch from 'node-fetch';
-
-import font2base64 from 'node-font2base64'
-const _data = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-nino-mtavruli-bold-webfont.woff2')
-const _data2 = font2base64.encodeToDataUrlSync('./assets/fonts/bpg-web-002-caps-webfont.woff2')
+import * as fss from 'fs';
 
 async function fetchUsers() {
     const response = await fetch('http://127.0.0.1:3000/assets/js/users.json');
     const users = await response.json()
     return users.data
 }
-
-let a = 0
-let num = 0
 
 async function card2png(){
 
@@ -27,28 +21,26 @@ async function card2png(){
   let status;
   let bday;
   let validate;
-  let surname;
   let qr;
-  let idnum;
-  let statusen;
-  let name;
 
   let badge;
   let users = await fetchUsers()
 
   console.log("works...")
- 
-  for (let i = 0; i < users.length; i++){
 
-    let namee = users[num].ge.name + " " + users[num].ge.surname //ignore this
-    let nameen = users[num].en.name + " " + users[num].en.surname //ignore this
+  let imgCounter=fss.readdirSync('generate/card-imgs').length - 1
+  
+  for (let i = parseInt(imgCounter / 2); i < users.length; i++){
+
+    let namee = users[i].ge.name + " " + users[i].ge.surname //ignore this
+    let nameen = users[i].en.name + " " + users[i].en.surname //ignore this
 
     const front = () => {
 
       nodeHtmlToImage({
-        output: `./assets/cards/${num}-front.jpg`,
+        output: `./generate/card-imgs/${i}-front.jpg`,
         html: generateCardTemplateGe(badge,namesurname, id, number, img, status, qr, bday, validate),
-        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[num].en.status}.png` ,statusen:users[num].en.status, namesurname: namee,idnum:users[num].ge.idnum, id: users[num].ge.id, number: users[num].ge.number, img: users[num].ge.img, status:users[num].ge.status, bday:users[num].ge.b_date, validate:users[num].ge.validation,  surname:users[num].ge.surname}
+        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[i].en.status}.png` ,statusen:users[i].en.status, namesurname: namee,idnum:users[i].ge.idnum, id: users[i].ge.id, number: users[i].ge.number, img: users[i].ge.img, status:users[i].ge.status, bday:users[i].ge.b_date, validate:users[i].ge.validation,  surname:users[i].ge.surname}
         })
         .then(() => console.log(`${i} frontcard created successfully!'`))
     }
@@ -58,15 +50,14 @@ async function card2png(){
     const back = () => {
         
       nodeHtmlToImage({
-        output: `./assets/cards/${num}-back.jpg`,
+        output: `./generate/card-imgs/${i}-back.jpg`,
         html: generateCardTemplateEn(namesurname, id, number, img, status, qr, bday, validate),
-        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[num].en.status}.png` , namesurname: nameen, idnum:users[num].ge.idnum, id: users[num].en.id, number: users[num].en.number, img: users[num].en.img, status:users[num].en.status, bday:users[num].en.b_date, validate:users[num].en.validation,  surname:users[num].en.surname}
+        content: {badge: `http://127.0.0.1:3000/assets/img/card/${users[i].en.status}.png` , namesurname: nameen, idnum:users[i].ge.idnum, id: users[i].en.id, number: users[i].en.number, img: users[i].en.img, status:users[i].en.status, bday:users[i].en.b_date, validate:users[i].en.validation,  surname:users[i].en.surname}
         })
         .then(() => console.log(`${i} backcard created successfully!'`))
     }
     
     back()
-    num++;
     
   }
 
