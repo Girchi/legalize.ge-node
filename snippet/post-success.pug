@@ -1,0 +1,12 @@
+doctype html
+include parts/links-in-header
+link(rel="stylesheet", href="../assets/css/post.css")
+include parts/header
+
+.post-container
+    img.img(src=`${image}`)
+    p.text=data.message
+    p.author=data.name
+
+include parts/footer
+include parts/js_scripts
