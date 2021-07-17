@@ -4,15 +4,32 @@ import { dirname } from "path";
 import fetch from "node-fetch";
 import * as fs from "fs";
 import QRCode from "qrcode";
+import bodyParser from "body-parser";
+import multer from 'multer';
 
 const app = express();
+const fileStorageEngine = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './assets/serverImages')
+  },
+    filename: (req, file, cb) => {
+      cb(null, `${file.originalname}`);
+    }
+  }
+);
+
+// const fileStorageEngine = multer.memoryStorage();
+const upload = multer({storage: fileStorageEngine});
+
 const port = 3000;
 const hostname = "127.0.0.1";
 const hostname2 = "http://127.0.0.1:3000";
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.set("view engine", "pug");
 
 app.use("/assets", express.static("assets"));
@@ -52,6 +69,18 @@ app.get("/users", (req, res) => {
 app.get("/constitution", (req, res) => {
   res.render(__dirname + "/snippet/constitution");
 });
+
+app.get("/create-post", (req, res) => {
+  res.render(__dirname + "/snippet/create-post")
+})
+
+app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
+  res.render(__dirname + "/snippet/post-success", {
+    data: req.body, 
+    image: `./assets/serverImages/${req.file.originalname}`
+  });
+});
+
 
 // --------------------Card Sides----------------
 
