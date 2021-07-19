@@ -64,7 +64,7 @@ header#header.fixed-top
         span= val
     
   
-  #cards.cards(class=`card-${en.status}`)
+  #cards.cards(class=`card-${en.status.replace(" ", '')}`)
     #card-front.card-side
       header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
       main.card-main
@@ -83,7 +83,7 @@ header#header.fixed-top
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${en.status}.png` alt='bedge')
+            img.img-fluid(src=`/assets/img/card/${en.status.replace(" ", '')}.png` alt='bedge')
           h6=  ge.status
         div
           | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
@@ -107,7 +107,7 @@ header#header.fixed-top
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${en.status}.png` alt='bedge')
+            img.img-fluid(src=`/assets/img/card/${en.status.replace(" ", '')}.png` alt='bedge')
           h6=  en.status
         div
           | VALID: 
