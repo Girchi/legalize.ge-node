@@ -22,33 +22,11 @@ head
 
   // Template Main CSS File
   link(href='assets/css/style.css' rel='stylesheet')
+
 // ======= Header =======
-header#header.fixed-top
-  .container.d-flex.align-items-center.justify-content-between
-    h1.logo
-      a(href='/')
-        img(src='assets/img/kanafi.png' alt='cannabis')
-    nav#navbar.navbar
-      ul
-        li
-          a.nav-link.scrollto.active(href='#hero') &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#about') &#x10E8;&#x10D4;&#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10D1;
-        li
-          a.nav-link.scrollto(href='#testimonials') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#services') &#x10DE;&#x10E0;&#x10D8;&#x10DC;&#x10EA;&#x10D8;&#x10DE;&#x10D4;&#x10D1;&#x10D8;
-        li
-          a.nav-link.scrollto.o(href='#portfolio') &#x10DE;&#x10E0;&#x10DD;&#x10D3;&#x10E3;&#x10E5;&#x10E2;&#x10D4;&#x10D1;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#team') &#x10D2;&#x10E3;&#x10DC;&#x10D3;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#faq') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10DD;&#x10D1;&#x10D0;
-        li
-          a.getstarted.scrollto(href='https://www.girchi.com/donate/project/legalize') &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10D2;&#x10D5;&#x10D8;&#x10D4;&#x10E0;&#x10D7;&#x10D3;&#x10D8;
-      i.bi.bi-list.mobile-nav-toggle
-    // .navbar
+include parts/header.pug
 // End Header
+
 // ======= Hero Section =======
 section#hero.d-flex
   .container.position-relative(data-aos='fade-up' data-aos-delay='100')
@@ -170,13 +148,13 @@ main#main
       .testimonials-slider.swiper-container(data-aos='fade-up' data-aos-delay='100')
         #latestUsers.swiper-wrapper
           ul#usersList.list-group
-          - for(let i = 0; i < 6; i++)
+          - for(let i = arr.length - 1; i > arr.length - 6; i--)
               .swiper-slide
                 .testimonial-item
-                  a(href=`user/${arr[i].id}`)
+                  a(href=`user/${i}`)
                     img.testimonial-img(src=`${arr[i].img}` alt='user image')
-                  h3= `${arr[i].name} ${arr[i].surname}`
-                  h4= arr[i].status
+                    h3= `${arr[i].name} ${arr[i].surname}`
+                    h4= arr[i].status.geo
           // testimonial items
         // <div class="swiper-pagination"></div>
         a.users-btn(href='users') &#x10E1;&#x10E0;&#x10E3;&#x10DA;&#x10D8; &#x10E1;&#x10D8;&#x10D0;
@@ -501,86 +479,11 @@ main#main
                 | &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10D7;&#x10D0; &#x10D5;&#x10D8;&#x10DC;&#x10D0;&#x10DD;&#x10D1;&#x10D0; &#x10D3;&#x10D0; &#x10DB;&#x10D0;&#x10D7;&#x10D8; &#x10EC;&#x10D5;&#x10DA;&#x10D8;&#x10DA;&#x10D8; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;&#x10E8;&#x10D8; &#x10EC;&#x10D0;&#x10E0;&#x10DB;&#x10DD;&#x10D0;&#x10D3;&#x10D2;&#x10D4;&#x10DC;&#x10E1; &#x10E1;&#x10D0;&#x10EF;&#x10D0;&#x10E0;&#x10DD; &#x10D8;&#x10DC;&#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0;&#x10EA;&#x10D8;&#x10D0;&#x10E1;.
   // End Frequently Asked Questions Section
 // End #main
+
 // ======= Footer =======
-footer#footer
-  .footer-top
-    .container
-      .row
-        .col-lg-3.col-md-6.footer-contact
-          h3 Legalize.ge
-          p
-            | &#x10D7;&#x10D1;&#x10D8;&#x10DA;&#x10D8;&#x10E1;&#x10D8;
-            br
-            |               &#x10D7;&#x10D0;&#x10D5;&#x10D8;&#x10E1;&#x10E3;&#x10E4;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10D4;&#x10D3;&#x10D0;&#x10DC;&#x10D8;
-            br
-            |               9 &#x10D0;&#x10DE;&#x10E0;&#x10D8;&#x10DA;&#x10D8;&#x10E1; &#x10E5;&#x10E3;&#x10E9;&#x10D0; #3/5
-            br
-            br
-            strong &#x10D4;&#x10DB;&#x10D0;&#x10D8;&#x10DA;&#x10D8;
-            |  info@legalize.ge
-            br
-        .col-lg-2.col-md-6.footer-links
-          h4 &#x10DC;&#x10D0;&#x10D5;&#x10D8;&#x10D2;&#x10D0;&#x10EA;&#x10D8;&#x10D0;
-          ul
-            li
-              i.bx.bx-chevron-right
-              a(href='#hero') &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              a(href='#about') &#x10E9;&#x10D5;&#x10D4;&#x10DC;&#x10E1; &#x10E8;&#x10D4;&#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10D1;
-            li
-              i.bx.bx-chevron-right
-              a(href='#testimonials') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              a(href='#services') &#x10DE;&#x10E0;&#x10D8;&#x10DC;&#x10EA;&#x10D8;&#x10DE;&#x10D4;&#x10D1;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              a(href='#portfolio') &#x10DE;&#x10E0;&#x10DD;&#x10D3;&#x10E3;&#x10E5;&#x10E2;&#x10D4;&#x10D1;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              a(href='#team') &#x10D2;&#x10E3;&#x10DC;&#x10D3;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              a(href='#faq') &#x10EC;&#x10D4;&#x10D5;&#x10E0;&#x10DD;&#x10D1;&#x10D0;
-        .col-lg-3.col-md-6.footer-links
-          h4 &#x10DE;&#x10E0;&#x10D8;&#x10DC;&#x10EA;&#x10D8;&#x10DE;&#x10D4;&#x10D1;&#x10D8;
-          ul
-            li
-              i.bx.bx-chevron-right
-              |  &#x10DB;&#x10D0;&#x10E0;&#x10D7;&#x10D5;&#x10D0;
-            li
-              i.bx.bx-chevron-right
-              |  &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10E1;&#x10D0;&#x10D5;&#x10DA;&#x10D4;&#x10D1;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              |  &#x10EE;&#x10D0;&#x10E0;&#x10EF;&#x10D4;&#x10D1;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              |  &#x10E1;&#x10D0;&#x10EF;&#x10D0;&#x10E0;&#x10DD;&#x10DD;&#x10D1;&#x10D0;
-            li
-              i.bx.bx-chevron-right
-              |  &#x10D9;&#x10DD;&#x10DC;&#x10E4;&#x10DA;&#x10D8;&#x10E5;&#x10E2;&#x10D4;&#x10D1;&#x10D8;
-            li
-              i.bx.bx-chevron-right
-              |  &#x10D3;&#x10D0;&#x10E4;&#x10E3;&#x10EB;&#x10DC;&#x10D4;&#x10D1;&#x10D0;
-  .container.d-md-flex.py-4
-    .me-md-auto.text-center.text-md-start
-      .copyright
-        | &copy; &#x10E7;&#x10D5;&#x10D4;&#x10DA;&#x10D0; &#x10E1;&#x10D0;&#x10D0;&#x10D5;&#x10E2;&#x10DD;&#x10E0;&#x10DD; &#x10E3;&#x10E4;&#x10DA;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10D5;&#x10D6;&#x10D4;&#x10EA; &#x10D2;&#x10D0;&#x10D5;&#x10D8;&#x10D0;&#x10E0;&#x10D4;&#x10D7;.
-        strong
-          span  &#x10D2;&#x10D8;&#x10E0;&#x10E9;&#x10D8;
-      .credits
-    .social-links.text-center.text-md-right.pt-3.pt-md-0
-      a.twitter(href='https://twitter.com/girchiparty' target='_blank')
-        i.bx.bxl-twitter
-      a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
-        i.bx.bxl-facebook
-      a.instagram(href='https://www.instagram.com/girchiparty/' target='_blank')
-        i.bx.bxl-instagram
-      a.linkedin(href='https://ge.linkedin.com/company/%E1%83%92%E1%83%98%E1%83%A0%E1%83%A9%E1%83%98-girchi' target='_blank')
-        i.bx.bxl-linkedin
+include parts/footer.pug
 // End Footer
+
 #preloader
 a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
   i.bi.bi-arrow-up-short
