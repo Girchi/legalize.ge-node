@@ -6,8 +6,8 @@ head
   meta(content='' name='description')
   meta(content='' name='keywords')
   // Favicons
-  link(href='/assets/img/kanafi.png' rel='icon')
-  link(href='/assets/img/apple-touch-icon.png' rel='apple-touch-icon')
+  link(href='../assets/img/kanafi.png' rel='icon')
+  link(href='../assets/img/apple-touch-icon.png' rel='apple-touch-icon')
   // Google Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
@@ -28,63 +28,91 @@ include parts/header.pug
 // End Header
 
 // ======= Main =======
-#userinfo-container.container.pb-4
-  .user-info
-    img.user-info--pic(src=`${img}` alt='')
-    .user-info--text
-      h4= `${name} ${surname}`
-      span.main-status= status.geo
-      each val in other_statuses.geo
-        span= val
-    
-  #cards.cards(class=`card-${status.eng.replace(" ", '')}`)
+
+form.card-form.container(action='http://127.0.0.1:3000/custom-card' method='POST' enctype="multipart/form-data")
+  .mb-3
+    label.form-label სახელი
+    input.form-control(type='text' name="name" required)
+  .mb-3
+    label.form-label გვარი
+    input.form-control(type='text' name="surname" required)
+  .mb-3
+    label.form-label პირადი ნომერი
+    input.form-control(type='text' name="id_number" required)
+  .mb-3
+    label.form-label დაბადების თარიღი
+    input.form-control(type='date' name="birth_date" required)
+  .mb-3 
+    label.form-label სტატუსის არჩევა
+    select.form-select(name='status')
+      option(value='გროუერი') გროუერი
+      option(value='მწეველი') მწეველი
+      option(value='მეწარმე') მეწარმე
+      option(value='ქომაგი') ქომაგი
+      option(value='დამფუძნებელი') დამფუძნებელი
+      option(value='CBD') CBD
+      option(value='ინვესტორი') ინვესტორი
+      option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
+  .mb-3
+    label.form-label ამოწურვის ვადა
+    input.form-control(type='date' name="validation" required)
+  .mb-3
+    label.form-label.w-100 ფოტოს ატვირთვა
+    input.form-control-file(type='file' for='image' name="image" value='Choose Image' required)
+
+  button.btn.btn-success(type='submit') გენერირება
+
+
+
+#userinfo-container.container.pb-4  
+  #cards.cards(class=`card-${otherData.status.toLowerCase().replace(" ","")}`)
     #card-front.card-side
       header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
       main.card-main
         .card-info
           span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-          h4= `${name} ${surname}`
+          h4= `${data.name} ${data.surname}`
           span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
-          h4= birth_date
+          h4= data.birth_date
         .card-info
           span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= id_number
+          h4= data.id_number
           span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= card_number
+          h4= `00${otherData.card_number}`
         #card-img.card-img
-          img.img-fluid(src=`${img}` alt='user')
+          img.img-fluid(src=image alt='user')
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${status.eng.replace(" ", '')}.png` alt='bedge')
-          h6= status.geo
+            img.img-fluid(src=`/assets/img/card/${otherData.status.replace(" ", '')}.png` alt='bedge')
+          h6= data.status.replace('_', ' ')
         div
           | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-          span= validation 
+          span= `${data.validation}` 
     #card-back.card-side
       header.card-header CANNABIS LOVERS SOCIETY
       main.card-main
         .card-info
           span Name & Surname
-          h4= `${name} ${surname}`
+          h4= `${otherData.name} ${otherData.surname}`
           span Birth Date
-          h4= birth_date
+          h4= data.birth_date
         .card-info
           span Personal Number
-          h4= id_number
+          h4= data.id_number
           span Number
-          h4= card_number
+          h4= `00${otherData.card_number}`
         #card-img.card-img
           .card-qrcode
-            img(src=qr)
+            img(src= QRValue)
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${status.eng.replace(" ", '')}.png` alt='bedge')
-          h6= status.eng
+            img.img-fluid(src=`/assets/img/card/${otherData.status.replace(" ", '')}.png` alt='bedge')
+          h6= `${otherData.status}` 
         div
           | VALID: 
-          span= validation
+          span= `${data.validation}` 
 
  
 // ======= Footer =======
