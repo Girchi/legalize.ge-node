@@ -216,6 +216,7 @@
   font-size: 22px;
   color: #040505;
   margin-bottom: 12px;
+  text-transform: capitalize;
 }
 
 .card-img {
@@ -502,32 +503,7 @@
 }
 /* Owner Card End */
 
-.btn-default {
-  background: #327f37;
-  padding: 8px 20px;
-  border-radius: 4px;
-  color: #fff;
-  transition: 500ms ease;
-  margin-right: 1rem;
-}
-
-.btn-default:hover {
-  transform: scale(1.05);
-  color: #fff;
-}
-
-.btn-switch {
-  border: none;
-  padding: 0;
-  background-color: transparent;
-  font-size: 2.5rem;
-  color: #327f37;
-  cursor: none;
-  transition: 500ms ease;
-  line-height: 0;
-}
-
-.btn-switch:hover {
-  transform: scale(1.05);
-  color: #3f8d45;
+/* Card Form Styles */
+.card-form {
+  margin-top: 6rem;
 }

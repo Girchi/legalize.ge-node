@@ -57,11 +57,11 @@ header#header.fixed-top
   ul#myUL
     each user in arr
       li
-        a.user--li(href=`user/${user.id}`)
+        a.user--li(href=`user/${arr.indexOf(user)}`)
           img.user-pic(src=`${user.img}`)
           span.user--name= `${user.name} ${user.surname}`
   br
-  p#underUl                   
+  p#underUl= `სულ მომხმარებელთა რაოდენობა - ${arr.length}`                  
 // ======= Footer =======
 footer#footer
   .footer-top
@@ -155,4 +155,3 @@ script(src='/assets/vendor/purecounter/purecounter.js')
 script(src='/assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
 script(src='/assets/js/main.js')
-//- script(src='/assets/js/user.js')

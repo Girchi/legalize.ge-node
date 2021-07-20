@@ -5,20 +5,19 @@ import fetch from "node-fetch";
 import * as fs from "fs";
 import QRCode from "qrcode";
 import bodyParser from "body-parser";
-import multer from 'multer';
+import multer from "multer";
 
 const app = express();
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './assets/serverImages')
+    cb(null, "./assets/serverImages");
   },
-    filename: (req, file, cb) => {
-      cb(null, `${file.originalname}`);
-    }
-  }
-);
+  filename: (req, file, cb) => {
+    cb(null, `${file.originalname}`);
+  },
+});
 
-const upload = multer({storage: fileStorageEngine});
+const upload = multer({ storage: fileStorageEngine });
 const port = 3000;
 const hostname = "127.0.0.1";
 const hostname2 = "http://127.0.0.1:3000";
@@ -33,12 +32,13 @@ app.use("/generate", express.static("generate"));
 
 app.get("/", (req, res) => {
   async function latestUsers() {
-    const userArray = await fetch("http://127.0.0.1:3000/assets/js/users.json");
+    const userArray = await fetch(`${hostname2}/assets/js/users.json`);
     const users = await userArray.json();
     res.render(__dirname + "/snippet/index", {
-      arr: users.data.map((element) => element.ge),
+      arr: users.data,
     });
-  } try {
+  }
+  try {
     latestUsers();
   } catch (error) {
     console.log(error);
@@ -47,12 +47,13 @@ app.get("/", (req, res) => {
 
 app.get("/users", (req, res) => {
   async function callTheAPI() {
-    const response = await fetch("http://127.0.0.1:3000/assets/js/users.json");
+    const response = await fetch(`${hostname2}/assets/js/users.json`);
     const users = await response.json();
     res.render(__dirname + "/snippet/users", {
-      arr: users.data.map((element) => element.ge),
+      arr: users.data,
     });
-  } try {
+  }
+  try {
     callTheAPI();
   } catch (error) {
     console.log("Something went wrong..");
@@ -65,16 +66,15 @@ app.get("/constitution", (req, res) => {
 });
 
 app.get("/create-post", (req, res) => {
-  res.render(__dirname + "/snippet/create-post")
-})
+  res.render(__dirname + "/snippet/create-post");
+});
 
 app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
   res.render(__dirname + "/snippet/post-success", {
-    data: req.body, 
-    image: `./assets/serverImages/${req.file.originalname}`
+    data: req.body,
+    image: `./assets/serverImages/${req.file.originalname}`,
   });
 });
-
 
 // --------------------Card Sides----------------
 
@@ -94,8 +94,8 @@ const generateQR = (text) => {
 };
 
 app.get("/user/:id", (req, res) => {
-  async function fetchUsers() {
-    const response = await fetch(`http://127.0.0.1:3000/assets/js/users.json`);
+  async function callTheAPI() {
+    const response = await fetch(`${hostname2}/assets/js/users.json`);
     const users = await response.json();
 
     let QRValue = await generateQR(`${hostname2}/user/${req.params.id}`);
@@ -104,12 +104,130 @@ app.get("/user/:id", (req, res) => {
 
     res.render(__dirname + "/snippet/profile", obj);
   }
-  fetchUsers();
+  try {
+    callTheAPI();
+  } catch (error) {
+    console.log("Something went wrong..");
+    throw new Error(error);
+  }
 });
 
+// Customize Cards Page
+function convertLetters(str) {
+  const objectOfLetters = {
+    ქ: "Q",
+    წ: "TS",
+    ე: "E",
+    რ: "R",
+    ტ: "T",
+    ყ: "Y",
+    უ: "U",
+    ი: "I",
+    ო: "O",
+    პ: "P",
+    ა: "A",
+    ს: "S",
+    დ: "D",
+    ფ: "F",
+    გ: "G",
+    ჰ: "H",
+    ჯ: "J",
+    კ: "K",
+    ლ: "L",
+    ზ: "Z",
+    ხ: "KH",
+    ც: "C",
+    ვ: "V",
+    ბ: "B",
+    ნ: "N",
+    მ: "M",
+    ღ: "GH",
+    თ: "T",
+    შ: "SH",
+    ჟ: "J",
+    ძ: "DZ",
+    ჩ: "CH",
+  };
+  const lettersArray = str.split("");
+
+  const mappedArray = lettersArray.map((letter) => {
+    return objectOfLetters[letter];
+  });
+
+  return mappedArray.join("");
+}
+
+app.get("/custom-card", (req, res) => {
+  (async () => {
+    const response = await fetch(`${hostname2}/assets/js/users.json`);
+    const users = await response.json();
+    const usersLength = users.data.length;
+
+    let data = {
+      name: "სახელი",
+      surname: "გვარი",
+      id_number: "0100101010",
+      birth_date: "08/04/2000",
+      status: "მეწარმე",
+      validation: "01/09/2030",
+    };
+    const QRValue = await generateQR(`${hostname2}/user/${usersLength}`);
+    const otherData = {
+      name: "name",
+      surname: "surname",
+      status: "grower",
+      card_number: usersLength,
+    };
+
+    res.render(__dirname + "/snippet/custom-card", {
+      data,
+      otherData,
+      QRValue,
+      image: `./assets/img/girchi.png`,
+    });
+  })();
+});
+
+app.post(
+  "/custom-card",
+  [urlencodedParser, upload.single("image")],
+  (req, res) => {
+    (async () => {
+      const response = await fetch(`${hostname2}/assets/js/users.json`);
+      const users = await response.json();
+      const usersLength = users.data.length;
+
+      let statuses = {
+        გროუერი: "grower",
+        მწეველი: "smoker",
+        მეწარმე: "owner",
+        ქომაგი: "supporter",
+        დამფუძნებელი: "founder",
+        CBD: "CBD",
+        ინვესტორი: "investor",
+        ოქროს_ინვესტორი: "golden investor",
+      };
+      const QRValue = await generateQR(`${hostname2}/user/${usersLength}`);
+      const otherData = {
+        name: convertLetters(req.body.name),
+        surname: convertLetters(req.body.surname),
+        status: statuses[req.body.status],
+        card_number: usersLength,
+      };
+
+      res.render(__dirname + "/snippet/custom-card", {
+        data: req.body,
+        otherData,
+        QRValue,
+        image: `./assets/serverImages/${req.file.originalname}`,
+      });
+    })();
+  }
+);
+
 app.get("/cards-download", (req, res) => {
-  let arr = fs.readdirSync("generate/pdf");
-  res.render(__dirname + "/snippet/card-download", { arr: arr });
+  let PDFDirectory = fs.readdirSync("generate/pdf");
+  res.render(__dirname + "/snippet/card-download", { PDFDirectory });
 });
 
 app.listen(port, hostname, () =>
