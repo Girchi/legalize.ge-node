@@ -1,15 +1,6 @@
 const hostname = "http://127.0.0.1:3000";
 
-const generateCardTemplateGe = function (
-  namesurname,
-  id,
-  number,
-  img,
-  status,
-  qr,
-  bday,
-  validate
-) {
+const generateCardTemplateGe = function () {
   return `<html><style>
       
 @import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css");
@@ -107,6 +98,7 @@ body{
     color: #040505;
     margin: 0 0 18px 0;
     padding: 0;
+    text-transform: capitalize;
 }
 
 .card-img {
@@ -235,21 +227,21 @@ body{
 
 
 </style>
-<body><div id="cards" class="cards card-{{statusen}}">
+<body><div id="cards" class="cards card-{{class}}">
   <div id="card-front" class="card-side">
   <header class="card-header">კანაფის მოყვარულთა საზოგადოება</header>
   <main class="card-main">
       <div class="card-info">
       <span>სახელი გვარი</span>
-      <h4>{{namesurname}}</h4>
+      <h4>{{name}} {{surname}}</h4>
       <span>დაბადების თარიღი</span>
-      <h4>{{bday}}</h4>
+      <h4>{{birth_date}}</h4>
       </div>
       <div class="card-info">
       <span>პირადი ნომერი</span>
-      <h4>{{idnum}}</h4>
+      <h4>{{id_number}}</h4>
       <span>ნომერი</span>
-      <h4>{{n}}</h4>
+      <h4>{{card_number}}</h4>
       </div>
       <div id="card-img" class="card-img">
           <img class="img-fluid" src="${hostname}{{img}}" alt="user">
@@ -258,12 +250,12 @@ body{
   <footer class="card-footer">
       <div class="bedge">
           <div class="bedge-icon">
-              <img class="img-fluid" src="{{badge}}" alt="bedge">
+              <img class="img-fluid" src="${hostname}/assets/img/card/{{class}}.png" alt="bedge">
           </div>
           {{status}}
       </div>
       <div>
-          ძალაშია: <span>{{validate}}</span>
+          ძალაშია: <span>{{validation}}</span>
       </div>
   </footer>
 </div></div></body></html>`;

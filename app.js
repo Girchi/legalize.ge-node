@@ -17,6 +17,61 @@ const fileStorageEngine = multer.diskStorage({
   },
 });
 
+let statuses = {
+  გროუერი: "grower",
+  მწეველი: "smoker",
+  მეწარმე: "owner",
+  ქომაგი: "supporter",
+  დამფუძნებელი: "founder",
+  CBD: "cbd",
+  ინვესტორი: "investor",
+  ოქროს_ინვესტორი: "golden investor",
+};
+
+function convertLetters(str) {
+  const objectOfLetters = {
+    ქ: "q",
+    წ: "ts",
+    ე: "e",
+    რ: "r",
+    ტ: "t",
+    ყ: "y",
+    უ: "u",
+    ი: "i",
+    ო: "o",
+    პ: "p",
+    ა: "a",
+    ს: "s",
+    დ: "d",
+    ფ: "f",
+    გ: "g",
+    ჰ: "h",
+    ჯ: "j",
+    კ: "k",
+    ლ: "l",
+    ზ: "z",
+    ხ: "kh",
+    ც: "c",
+    ვ: "v",
+    ბ: "b",
+    ნ: "n",
+    მ: "m",
+    ღ: "gh",
+    თ: "t",
+    შ: "sh",
+    ჟ: "j",
+    ძ: "dz",
+    ჩ: "ch",
+  };
+  const lettersArray = str.split("");
+
+  const mappedArray = lettersArray.map((letter) => {
+    return objectOfLetters[letter];
+  });
+
+  return mappedArray.join("");
+}
+
 const upload = multer({ storage: fileStorageEngine });
 const port = 3000;
 const hostname = "127.0.0.1";
@@ -98,11 +153,19 @@ app.get("/user/:id", (req, res) => {
     const response = await fetch(`${hostname2}/assets/js/users.json`);
     const users = await response.json();
 
-    let QRValue = await generateQR(`${hostname2}/user/${req.params.id}`);
-    let obj = users.data[req.params.id];
-    obj.qr = QRValue;
-
-    res.render(__dirname + "/snippet/profile", obj);
+    const QRValue = await generateQR(`${hostname2}/user/${req.params.id}`);
+    const data = users.data[req.params.id];
+    const otherData = {
+      name: convertLetters(data.name),
+      surname: convertLetters(data.surname),
+      status: statuses[data.status.replace(" ", "_")],
+      class: statuses[data.status.replace(" ", "_")].replace(" ", ""),
+    };
+    res.render(__dirname + "/snippet/profile", {
+      data,
+      otherData,
+      QRValue,
+    });
   }
   try {
     callTheAPI();
@@ -113,50 +176,6 @@ app.get("/user/:id", (req, res) => {
 });
 
 // Customize Cards Page
-function convertLetters(str) {
-  const objectOfLetters = {
-    ქ: "Q",
-    წ: "TS",
-    ე: "E",
-    რ: "R",
-    ტ: "T",
-    ყ: "Y",
-    უ: "U",
-    ი: "I",
-    ო: "O",
-    პ: "P",
-    ა: "A",
-    ს: "S",
-    დ: "D",
-    ფ: "F",
-    გ: "G",
-    ჰ: "H",
-    ჯ: "J",
-    კ: "K",
-    ლ: "L",
-    ზ: "Z",
-    ხ: "KH",
-    ც: "C",
-    ვ: "V",
-    ბ: "B",
-    ნ: "N",
-    მ: "M",
-    ღ: "GH",
-    თ: "T",
-    შ: "SH",
-    ჟ: "J",
-    ძ: "DZ",
-    ჩ: "CH",
-  };
-  const lettersArray = str.split("");
-
-  const mappedArray = lettersArray.map((letter) => {
-    return objectOfLetters[letter];
-  });
-
-  return mappedArray.join("");
-}
-
 app.get("/custom-card", (req, res) => {
   (async () => {
     const response = await fetch(`${hostname2}/assets/js/users.json`);
@@ -168,7 +187,7 @@ app.get("/custom-card", (req, res) => {
       surname: "გვარი",
       id_number: "0100101010",
       birth_date: "08/04/2000",
-      status: "მეწარმე",
+      status: "გროუერი",
       validation: "01/09/2030",
     };
     const QRValue = await generateQR(`${hostname2}/user/${usersLength}`);
@@ -176,6 +195,7 @@ app.get("/custom-card", (req, res) => {
       name: "name",
       surname: "surname",
       status: "grower",
+      class: "grower",
       card_number: usersLength,
     };
 
@@ -197,21 +217,12 @@ app.post(
       const users = await response.json();
       const usersLength = users.data.length;
 
-      let statuses = {
-        გროუერი: "grower",
-        მწეველი: "smoker",
-        მეწარმე: "owner",
-        ქომაგი: "supporter",
-        დამფუძნებელი: "founder",
-        CBD: "CBD",
-        ინვესტორი: "investor",
-        ოქროს_ინვესტორი: "golden investor",
-      };
       const QRValue = await generateQR(`${hostname2}/user/${usersLength}`);
       const otherData = {
         name: convertLetters(req.body.name),
         surname: convertLetters(req.body.surname),
         status: statuses[req.body.status],
+        class: statuses[req.body.status.replace(" ", "_")].replace(" ", ""),
         card_number: usersLength,
       };
 
