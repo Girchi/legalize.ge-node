@@ -8,14 +8,8 @@
       "birth_date": "19.05.1982",
       "validation": "13/09/2025",
       "img": "/assets/img/users/იაგოხვიჩია.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     },
 
     {
@@ -26,14 +20,8 @@
       "birth_date": "28.02.1972",
       "validation": "13/09/2025",
       "img": "/assets/img/users/ვახტანგმეგრელიშვილი.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი", "გროუერი"],
-        "eng": ["founder", "grower"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი", "გროუერი"]
     },
     {
       "card_number": "0003",
@@ -43,14 +31,8 @@
       "birth_date": "08.06.1990",
       "validation": "13/09/2025",
       "img": "/assets/img/users/ლევანჯგერენაია.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "card_number": "0004",
@@ -60,14 +42,8 @@
       "birth_date": "09.07.1991",
       "validation": "13/09/2025",
       "img": "/assets/img/users/ოთოზაკალაშვილი.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "card_number": "0005",
@@ -77,14 +53,8 @@
       "birth_date": "09.07.1991",
       "validation": "13/09/2025",
       "img": "/assets/img/users/მარიამშენგელია.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "name": "რუსუდან",
@@ -94,14 +64,8 @@
       "birth_date": "23.07.1997",
       "validation": "13/09/2025",
       "img": "/assets/img/users/რუსუდანაბუაშვილი.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status":"მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "card_number": "0007",
@@ -111,14 +75,8 @@
       "birth_date": "18/11/1988",
       "validation": "13/09/2025",
       "img": "/assets/img/users/ჰერმანსაბო.jpg",
-      "status": {
-        "geo": "ქომაგი",
-        "eng": "supporter"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "ქომაგი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "card_number": "0008",
@@ -128,14 +86,8 @@
       "birth_date": "10/07/1982",
       "validation": "13/09/2025",
       "img": "/assets/img/users/ალექსანდრერაქვიაშვილი.jpg",
-      "status": {
-        "geo": "ქომაგი",
-        "eng": "supporter"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "ქომაგი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "card_number": "0009",
@@ -145,14 +97,8 @@
       "birth_date": "20/07/1989",
       "validation": "13/09/2025",
       "img": "/assets/img/users/დავითწურწუმია.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     },
     {
       "card_number": "0010",
@@ -162,14 +108,8 @@
       "birth_date": "25/08/1998",
       "validation": "13/09/2025",
       "img": "/assets/img/users/ავთანდილლაბაძე.jpg",
-      "status": {
-        "geo": "მწეველი",
-        "eng": "smoker"
-      },
-      "other_statuses": {
-        "geo": ["დამფუძნებელი"],
-        "eng": ["founder"]
-      }
+      "status": "მწეველი",
+      "other_statuses": ["დამფუძნებელი"]
     }
   ]
 }

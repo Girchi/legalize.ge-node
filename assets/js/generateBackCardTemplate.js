@@ -1,15 +1,6 @@
 const hostname = "http://127.0.0.1:3000";
 
-const generateCardTemplateEn = function (
-  namesurname,
-  id,
-  number,
-  img,
-  status,
-  qr,
-  bday,
-  validate
-) {
+const generateCardTemplateEn = function () {
   return `<html><style>
   @import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css");
 
@@ -104,6 +95,7 @@ body{
     color: #040505;
     margin: 0 0 18px 0;
     padding: 0;
+    text-transform: capitalize;
 }
 
 .card-img {
@@ -239,37 +231,37 @@ body{
 
 
   </style>
-  <body><div id="cards" class="cards card-{{status}}">
+  <body><div id="cards" class="cards card-{{class}}">
   <div id="card-back" class="card-side">
   <header class="card-header">CANNABIS LOVERS SOCIETY</header>
     <main class="card-main">
     <div class="card-info">
     <span>name surname</span>
-    <h4>{{namesurname}}</h4>
+    <h4>{{nameEN}} {{surnameEN}}</h4>
     <span>date of birth</span>
-    <h4>{{bday}}</h4>
+    <h4>{{birth_date}}</h4>
     </div>
     <div class="card-info">
     <span>personal number</span>
-    <h4>{{idnum}}</h4>
+    <h4>{{id_number}}</h4>
     <span>number</span>
-    <h4>{{n}}</h4>
+    <h4>{{card_number}}</h4>
     </div>
     <div id="card-img" class="card-img">
     <div class="card-qrcode">
-    <img src="{{qr}}">
+    <img src="{{QRValue}}">
     </div>
     </div>
     </main>
     <footer class="card-footer">
     <div class="bedge">
         <div class="bedge-icon">
-            <img class="img-fluid" src="{{badge}}">
+            <img class="img-fluid" src="${hostname}/assets/img/card/{{class}}.png" alt="bedge">
         </div>
-        {{status}}
+        {{statusEN}}
     </div>
     <div>
-        VALID: <span>{{validate}}</span>
+        VALID: <span>{{validation}}</span>
     </div>
     </footer>
 </div></div></body></html>`;

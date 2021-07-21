@@ -6,14 +6,9 @@ import nodeHtmlToImage from "node-html-to-image";
 import fetch from "node-fetch";
 import * as fss from "fs";
 import QRCode from "qrcode";
+import { asPDFName } from "pdf-lib";
 
 const hostname = "http://127.0.0.1:3000";
-
-async function fetchUsers() {
-  const response = await fetch(`${hostname}/assets/js/users.json`);
-  const users = await response.json();
-  return users.data;
-}
 
 const generateQR = (text) => {
   var opts = {
@@ -30,97 +25,104 @@ const generateQR = (text) => {
   return generatedval;
 };
 
-async function card2png() {
-  let namesurname;
-  let number;
-  let img;
-  let id;
-  let status;
-  let bday;
-  let validate;
-  let qr;
-  let n;
+let statuses = {
+  გროუერი: "grower",
+  მწეველი: "smoker",
+  მეწარმე: "owner",
+  ქომაგი: "supporter",
+  დამფუძნებელი: "founder",
+  CBD: "cbd",
+  ინვესტორი: "investor",
+  ოქროს_ინვესტორი: "golden investor",
+};
 
-  let badge;
-  let users = await fetchUsers();
+function convertLetters(str) {
+  const objectOfLetters = {
+    ქ: "q",
+    წ: "ts",
+    ე: "e",
+    რ: "r",
+    ტ: "t",
+    ყ: "y",
+    უ: "u",
+    ი: "i",
+    ო: "o",
+    პ: "p",
+    ა: "a",
+    ს: "s",
+    დ: "d",
+    ფ: "f",
+    გ: "g",
+    ჰ: "h",
+    ჯ: "j",
+    კ: "k",
+    ლ: "l",
+    ზ: "z",
+    ხ: "kh",
+    ც: "c",
+    ვ: "v",
+    ბ: "b",
+    ნ: "n",
+    მ: "m",
+    ღ: "gh",
+    თ: "t",
+    შ: "sh",
+    ჟ: "j",
+    ძ: "dz",
+    ჩ: "ch",
+  };
+  const lettersArray = str.split("");
 
-  console.log("works...");
+  const mappedArray = lettersArray.map((letter) => {
+    return objectOfLetters[letter];
+  });
 
-  let imgCounter = fss.readdirSync("generate/card-imgs").length;
-  let imgToContinue = parseInt(imgCounter / 2);
-
-  for (let i = imgToContinue; i < users.length; i++) {
-    let namee = users[i].ge.name + " " + users[i].ge.surname;
-    let nameen = users[i].en.name + " " + users[i].en.surname;
-    let QRValue = await generateQR(`${hostname}/user/${users[i].ge.id}`);
-
-    const front = () => {
-      nodeHtmlToImage({
-        output: `./generate/card-imgs/${i}-front.jpg`,
-        html: generateCardTemplateGe(
-          badge,
-          namesurname,
-          id,
-          number,
-          n,
-          img,
-          status,
-          qr,
-          bday,
-          validate
-        ),
-        content: {
-          badge: `${hostname}/assets/img/card/${users[i].en.status.replace(" ", "")}.png`,
-          statusen: users[i].en.status,
-          namesurname: namee,
-          idnum: users[i].ge.idnum,
-          n: users[i].ge.n,
-          id: users[i].ge.id,
-          number: users[i].ge.number,
-          img: users[i].ge.img,
-          status: users[i].ge.status,
-          bday: users[i].ge.b_date,
-          validate: users[i].ge.validation,
-          surname: users[i].ge.surname,
-        },
-      }).then(() => console.log(`${i} frontcard created successfully!'`));
-    };
-
-    front();
-
-    const back = () => {
-      nodeHtmlToImage({
-        output: `./generate/card-imgs/${i}-back.jpg`,
-        html: generateCardTemplateEn(
-          namesurname,
-          id,
-          number,
-          img,
-          n,
-          status,
-          qr,
-          bday,
-          validate
-        ),
-        content: {
-          badge: `${hostname}/assets/img/card/${users[i].en.status.replace(" ", "")}.png`,
-          qr: QRValue,
-          namesurname: nameen,
-          idnum: users[i].ge.idnum,
-          n: users[i].ge.n,
-          id: users[i].ge.id,
-          number: users[i].en.number,
-          img: users[i].en.img,
-          status: users[i].en.status,
-          bday: users[i].en.b_date,
-          validate: users[i].en.validation,
-          surname: users[i].en.surname,
-        },
-      }).then(() => console.log(`${i} backcard created successfully!'`));
-    };
-
-    back();
-  }
+  return mappedArray.join("");
 }
 
-card2png();
+const imgCounter = fss.readdirSync("generate/card-imgs").length;
+const imgToContinue = parseInt(imgCounter / 2);
+
+(async () => {
+  const response = await fetch(`${hostname}/assets/js/users.json`);
+  const usersJSON = await response.json();
+  const users = usersJSON.data;
+
+  for (let i = imgToContinue; i < users.length; i++) {
+    const QRValue = await generateQR(`${hostname}/user/${i}`);
+
+    nodeHtmlToImage({
+      output: `./generate/card-imgs/${i}-front.jpg`,
+      html: generateCardTemplateGe(),
+      content: {
+        name: users[i].name,
+        surname: users[i].surname,
+        card_number: users[i].card_number,
+        id_number: users[i].id_number,
+        birth_date: users[i].birth_date,
+        img: users[i].img,
+        validation: users[i].validation,
+        status: users[i].status,
+        class: statuses[users[i].status.replace(" ", "_")].replace(" ", ""),
+      },
+    }).then(() => console.log(`${i} frontcard created successfully!'`));
+
+    nodeHtmlToImage({
+      output: `./generate/card-imgs/${i}-back.jpg`,
+      html: generateCardTemplateEn(),
+      content: {
+        card_number: users[i].card_number,
+        id_number: users[i].id_number,
+        birth_date: users[i].birth_date,
+        validation: users[i].validation,
+        class: statuses[users[i].status.replace(" ", "_")].replace(" ", ""),
+
+        nameEN: convertLetters(users[i].name),
+        surnameEN: convertLetters(users[i].surname),
+        statusEN: statuses[users[i].status.replace(" ", "_")],
+        QRValue: QRValue,
+      },
+    }).then(() => console.log(`${i} backcard created successfully!'`));
+  }
+  console.log("Works...");
+})();

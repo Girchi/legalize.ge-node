@@ -23,83 +23,83 @@ head
   link(href='/assets/css/style.css' rel='stylesheet')
   link(href='/assets/css/user.css' rel='stylesheet')
 
-// ======= Header =======
-include parts/header.pug
-// End Header
+  // ======= Header =======
+  include parts/header.pug
+  // End Header
 
-// ======= Main =======
+  // ======= Main =======
+.container
+  form#card-form.card-form.row(action='http://127.0.0.1:3000/custom-card' method='POST' enctype="multipart/form-data")
+    .mb-3.col-4
+      label.form-label სახელი
+      input.form-control(type='text' id="nameInput" name="name" required)
+    .mb-3.col-4
+      label.form-label გვარი
+      input.form-control(type='text' id="surnameInput" name="surname" required)
+    .mb-3.col-4
+      label.form-label პირადი ნომერი
+      input.form-control(type='text' id="idNumInput" name="id_number" maxlength='11' required)
+    .mb-3.col-4
+      label.form-label დაბადების თარიღი
+      input.form-control(type='date' id="dateInput" name="birth_date" required)
+    .mb-3.col-4
+      label.form-label სტატუსის არჩევა
+      select.form-select(name='status' id="statusInput")
+        option(value='გროუერი') გროუერი
+        option(value='მწეველი') მწეველი
+        option(value='მეწარმე') მეწარმე
+        option(value='ქომაგი') ქომაგი
+        option(value='დამფუძნებელი') დამფუძნებელი
+        option(value='CBD') CBD
+        option(value='ინვესტორი') ინვესტორი
+        option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
+    .mb-3.col-4
+      label.form-label ამოწურვის ვადა
+      input.form-control(type='date' name="validation" id="validInput" required)
+    .mb-3.col
+      label.form-label.w-100 ფოტოს ატვირთვა
+      input.form-control-file(type='file' for='image' id="imageInput" name="image" value='Choose Image' required)
 
-form.card-form.container(action='http://127.0.0.1:3000/custom-card' method='POST' enctype="multipart/form-data")
-  .mb-3
-    label.form-label სახელი
-    input.form-control(type='text' name="name" required)
-  .mb-3
-    label.form-label გვარი
-    input.form-control(type='text' name="surname" required)
-  .mb-3
-    label.form-label პირადი ნომერი
-    input.form-control(type='text' name="id_number" required)
-  .mb-3
-    label.form-label დაბადების თარიღი
-    input.form-control(type='date' name="birth_date" required)
-  .mb-3 
-    label.form-label სტატუსის არჩევა
-    select.form-select(name='status')
-      option(value='გროუერი') გროუერი
-      option(value='მწეველი') მწეველი
-      option(value='მეწარმე') მეწარმე
-      option(value='ქომაგი') ქომაგი
-      option(value='დამფუძნებელი') დამფუძნებელი
-      option(value='CBD') CBD
-      option(value='ინვესტორი') ინვესტორი
-      option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
-  .mb-3
-    label.form-label ამოწურვის ვადა
-    input.form-control(type='date' name="validation" required)
-  .mb-3
-    label.form-label.w-100 ფოტოს ატვირთვა
-    input.form-control-file(type='file' for='image' name="image" value='Choose Image' required)
-
-  button.btn.btn-success(type='submit') გენერირება
+    button.btn.btn-success(type='submit') გენერირება
 
 
 
 #userinfo-container.container.pb-4  
-  #cards.cards(class=`card-${otherData.status.toLowerCase().replace(" ","")}`)
+  #cards.cards(class=`card-${otherData.class}`)
     #card-front.card-side
       header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
       main.card-main
         .card-info
           span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-          h4= `${data.name} ${data.surname}`
+          h4#cardFullName= `${data.name} ${data.surname}`
           span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
-          h4= data.birth_date
+          h4#cardDate= data.birth_date
         .card-info
           span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= data.id_number
+          h4#cardIdNum= data.id_number
           span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
           h4= `00${otherData.card_number}`
         #card-img.card-img
-          img.img-fluid(src=image alt='user')
+          img#cardImage.img-fluid(src=image alt='user')
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${otherData.status.replace(" ", '')}.png` alt='bedge')
-          h6= data.status.replace('_', ' ')
+            img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
+          h6#cardStatus= data.status.replace('_', ' ')
         div
           | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-          span= `${data.validation}` 
+          span#cardValid= `${data.validation}` 
     #card-back.card-side
       header.card-header CANNABIS LOVERS SOCIETY
       main.card-main
         .card-info
-          span Name & Surname
-          h4= `${otherData.name} ${otherData.surname}`
+          span Name Surname
+          h4#cardFullName= `${otherData.name} ${otherData.surname}`
           span Birth Date
-          h4= data.birth_date
+          h4#cardDate= data.birth_date
         .card-info
           span Personal Number
-          h4= data.id_number
+          h4#cardIdNum= data.id_number
           span Number
           h4= `00${otherData.card_number}`
         #card-img.card-img
@@ -108,11 +108,11 @@ form.card-form.container(action='http://127.0.0.1:3000/custom-card' method='POST
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${otherData.status.replace(" ", '')}.png` alt='bedge')
-          h6= `${otherData.status}` 
+            img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
+          h6#cardStatus= `${otherData.status}` 
         div
           | VALID: 
-          span= `${data.validation}` 
+          span#cardValid= `${data.validation}` 
 
  
 // ======= Footer =======
@@ -132,6 +132,7 @@ script(src='/assets/vendor/purecounter/purecounter.js')
 script(src='/assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
 script(src='/assets/js/main.js')
+script(src='/assets/js/customizecard.js')
 // For img to pdf
 script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')

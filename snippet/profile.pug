@@ -30,61 +30,61 @@ include parts/header.pug
 // ======= Main =======
 #userinfo-container.container.pb-4
   .user-info
-    img.user-info--pic(src=`${img}` alt='')
+    img.user-info--pic(src=`${data.img}` alt='')
     .user-info--text
-      h4= `${name} ${surname}`
-      span.main-status= status.geo
-      each val in other_statuses.geo
+      h4= `${data.name} ${data.surname}`
+      span.main-status= data.status
+      each val in data.other_statuses
         span= val
     
-  #cards.cards(class=`card-${status.eng.replace(" ", '')}`)
+  #cards.cards(class=`card-${otherData.class}`)
     #card-front.card-side
       header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
       main.card-main
         .card-info
           span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-          h4= `${name} ${surname}`
+          h4= `${data.name} ${data.surname}`
           span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
-          h4= birth_date
+          h4= data.birth_date
         .card-info
           span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= id_number
+          h4= data.id_number
           span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= card_number
+          h4= data.card_number
         #card-img.card-img
-          img.img-fluid(src=`${img}` alt='user')
+          img.img-fluid(src=`${data.img}` alt='user')
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${status.eng.replace(" ", '')}.png` alt='bedge')
-          h6= status.geo
+            img.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='bedge')
+          h6= data.status
         div
           | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-          span= validation 
+          span= data.validation 
     #card-back.card-side
       header.card-header CANNABIS LOVERS SOCIETY
       main.card-main
         .card-info
           span Name & Surname
-          h4= `${name} ${surname}`
+          h4= `${otherData.name} ${otherData.surname}`
           span Birth Date
-          h4= birth_date
+          h4= data.birth_date
         .card-info
           span Personal Number
-          h4= id_number
+          h4= data.id_number
           span Number
-          h4= card_number
+          h4= data.card_number
         #card-img.card-img
           .card-qrcode
-            img(src=qr)
+            img(src=QRValue)
       footer.card-footer
         .bedge
           .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${status.eng.replace(" ", '')}.png` alt='bedge')
-          h6= status.eng
+            img.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='bedge')
+          h6= otherData.status
         div
           | VALID: 
-          span= validation
+          span= data.validation
 
  
 // ======= Footer =======
