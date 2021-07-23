@@ -32,16 +32,16 @@ head
   form#card-form.card-form.row(action='http://127.0.0.1:3000/custom-card' method='POST' enctype="multipart/form-data")
     .mb-3.col-4
       label.form-label სახელი
-      input.form-control(type='text' id="nameInput" name="name" required)
+      input.form-control(type='text' id="nameInput" name="name" )
     .mb-3.col-4
       label.form-label გვარი
-      input.form-control(type='text' id="surnameInput" name="surname" required)
+      input.form-control(type='text' id="surnameInput" name="surname" )
     .mb-3.col-4
       label.form-label პირადი ნომერი
-      input.form-control(type='text' id="idNumInput" name="id_number" maxlength='11' required)
+      input.form-control(type='text' id="idNumInput" name="id_number" maxlength='11' )
     .mb-3.col-4
       label.form-label დაბადების თარიღი
-      input.form-control(type='date' id="dateInput" name="birth_date" required)
+      input.form-control(type='date' id="dateInput" name="birth_date" )
     .mb-3.col-4
       label.form-label სტატუსის არჩევა
       select.form-select(name='status' id="statusInput")
@@ -55,10 +55,10 @@ head
         option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
     .mb-3.col-4
       label.form-label ამოწურვის ვადა
-      input.form-control(type='date' name="validation" id="validInput" required)
+      input.form-control(type='date' name="validation" id="validInput" )
     .mb-3.col
       label.form-label.w-100 ფოტოს ატვირთვა
-      input.form-control-file(type='file' for='image' id="imageInput" name="image" value='Choose Image' required)
+      input.form-control-file(type='file' for='image' id="imageInput" name="image" value='Choose Image' )
 
     button.btn.btn-success(type='submit') გენერირება
 
@@ -85,7 +85,7 @@ head
         .bedge
           .bedge-icon
             img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
-          h6#cardStatus= data.status.replace('_', ' ')
+          div#cardStatus= data.status.replace('_', ' ')
         div
           | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
           span#cardValid= `${data.validation}` 
@@ -109,7 +109,7 @@ head
         .bedge
           .bedge-icon
             img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
-          h6#cardStatus= `${otherData.status}` 
+          div#cardStatus= `${otherData.status}` 
         div
           | VALID: 
           span#cardValid= `${data.validation}` 
@@ -133,7 +133,3 @@ script(src='/assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
 script(src='/assets/js/main.js')
 script(src='/assets/js/customizecard.js')
-// For img to pdf
-script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
-script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
-script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')

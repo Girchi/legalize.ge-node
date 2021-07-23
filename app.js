@@ -208,33 +208,33 @@ app.get("/custom-card", (req, res) => {
   })();
 });
 
-app.post(
-  "/custom-card",
-  [urlencodedParser, upload.single("image")],
-  (req, res) => {
-    (async () => {
-      const response = await fetch(`${hostname2}/assets/js/users.json`);
-      const users = await response.json();
-      const usersLength = users.data.length;
+// app.post(
+//   "/custom-card",
+//   [urlencodedParser, upload.single("image")],
+//   (req, res) => {
+//     (async () => {
+//       const response = await fetch(`${hostname2}/assets/js/users.json`);
+//       const users = await response.json();
+//       const usersLength = users.data.length;
 
-      const QRValue = await generateQR(`${hostname2}/user/${usersLength}`);
-      const otherData = {
-        name: convertLetters(req.body.name),
-        surname: convertLetters(req.body.surname),
-        status: statuses[req.body.status],
-        class: statuses[req.body.status.replace(" ", "_")].replace(" ", ""),
-        card_number: usersLength,
-      };
+//       const QRValue = await generateQR(`${hostname2}/user/${usersLength}`);
+//       const otherData = {
+//         name: convertLetters(req.body.name),
+//         surname: convertLetters(req.body.surname),
+//         status: statuses[req.body.status],
+//         class: statuses[req.body.status.replace(" ", "_")].replace(" ", ""),
+//         card_number: usersLength,
+//       };
 
-      res.render(__dirname + "/snippet/custom-card", {
-        data: req.body,
-        otherData,
-        QRValue,
-        image: `./assets/serverImages/${req.file.originalname}`,
-      });
-    })();
-  }
-);
+//       res.render(__dirname + "/snippet/custom-card", {
+//         data: req.body,
+//         otherData,
+//         QRValue,
+//         image: `./assets/serverImages/${req.file.originalname}`,
+//       });
+//     })();
+//   }
+// );
 
 app.get("/cards-download", (req, res) => {
   let PDFDirectory = fs.readdirSync("generate/pdf");
