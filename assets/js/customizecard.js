@@ -56,10 +56,14 @@ function convertLetters(str) {
 const cardForm = document.getElementById("card-form");
 const cards = document.getElementById("cards");
 
+let nameValue;
+let surnameValue;
+let idNumValue;
+
 cardForm.addEventListener("keyup", () => {
-  const nameValue = document.getElementById("nameInput").value;
-  const surnameValue = document.getElementById("surnameInput").value;
-  const idNumValue = document.getElementById("idNumInput").value;
+  nameValue = document.getElementById("nameInput").value;
+  surnameValue = document.getElementById("surnameInput").value;
+  idNumValue = document.getElementById("idNumInput").value;
 
   const cardFullName = document.querySelectorAll("#cardFullName");
   const cardIdNum = document.querySelectorAll("#cardIdNum");
@@ -76,12 +80,18 @@ cardForm.addEventListener("keyup", () => {
   }
 });
 
+let dateValue;
+let statusValue;
+let validValue;
+
+let statusClass;
+let status;
+let statusEN;
+
 cardForm.addEventListener("change", () => {
-  const dateValue = document
-    .getElementById("dateInput")
-    .value.replace(/[-]/gi, "/");
-  const statusValue = document.getElementById("statusInput").value;
-  const validValue = document
+  dateValue = document.getElementById("dateInput").value.replace(/[-]/gi, "/");
+  statusValue = document.getElementById("statusInput").value;
+  validValue = document
     .getElementById("validInput")
     .value.replace(/[-]/gi, "/");
 
@@ -90,9 +100,9 @@ cardForm.addEventListener("change", () => {
   const cardValid = document.querySelectorAll("#cardValid");
   const cardBadge = document.querySelectorAll("#cardBadge");
 
-  const statusClass = statuses[statusValue].replace(" ", "");
-  const status = statusValue.replace("_", " ");
-  const statusEN = statuses[statusValue];
+  statusClass = statuses[statusValue].replace(" ", "");
+  status = statusValue.replace("_", " ");
+  statusEN = statuses[statusValue];
 
   if (statusValue) {
     cards.classList.remove(cards.classList[1]);
@@ -114,4 +124,8 @@ const cardImage = document.querySelector("#cardImage");
 
 imageInput.addEventListener("change", function () {
   cardImage.src = URL.createObjectURL(this.files[0]);
+});
+
+cardForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 });
