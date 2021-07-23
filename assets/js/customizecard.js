@@ -57,26 +57,33 @@ const cardForm = document.getElementById("card-form");
 const cards = document.getElementById("cards");
 
 let nameValue;
-let surnameValue;
 let idNumValue;
+let cardNumValue;
 
 cardForm.addEventListener("keyup", () => {
   nameValue = document.getElementById("nameInput").value;
-  surnameValue = document.getElementById("surnameInput").value;
   idNumValue = document.getElementById("idNumInput").value;
+  cardNumValue = document.getElementById("cardNumInput").value;
 
   const cardFullName = document.querySelectorAll("#cardFullName");
   const cardIdNum = document.querySelectorAll("#cardIdNum");
+  const cardNum = document.querySelectorAll("#cardNum");
 
-  if (nameValue || surnameValue) {
-    cardFullName[0].textContent = `${nameValue} ${surnameValue}`;
-    cardFullName[1].textContent = `${convertLetters(
-      nameValue
-    )} ${convertLetters(surnameValue)}`;
+  if (nameValue) {
+    const firstName = nameValue.split(" ")[0];
+    const lastName = nameValue.split(" ")[1];
+
+    cardFullName[0].textContent = nameValue;
+    if (lastName) {
+      cardFullName[1].textContent = `${convertLetters(
+        firstName
+      )} ${convertLetters(lastName)}`;
+    }
   }
 
   for (let i = 0; i < 2; i++) {
     if (idNumValue) cardIdNum[i].textContent = idNumValue;
+    if (cardNumValue) cardNum[i].textContent = cardNumValue;
   }
 });
 

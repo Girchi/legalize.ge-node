@@ -1,14 +1,14 @@
-/* @import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css"); */
-/* @import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css"); */
+@import url("//cdn.web-fonts.ge/fonts/bpg-web-002/css/bpg-web-002.min.css");
+@import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli-bold/css/bpg-nino-mtavruli-bold.min.css");
 
-@font-face {
+/* @font-face {
   font-family: "BPG WEB 002";
   src: url("../fonts/bpg-web-002-webfont.woff2") format("woff2");
 }
 @font-face {
   font-family: "BPG Nino Mtavruli Bold";
   src: url("../fonts/bpg-nino-mtavruli-bold-webfont.woff2") format("woff2");
-}
+} */
 
 .user-search {
   height: fit-content;
@@ -516,4 +516,9 @@
 /* Card Form Styles */
 .card-form {
   margin-top: 6rem;
+}
+
+.card-form .btn {
+  width: calc(100% - 20px);
+  margin: auto;
 }
