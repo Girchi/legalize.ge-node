@@ -78,7 +78,7 @@ head
           span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
           h4#cardIdNum= data.id_number
           span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4#cardNum= `00${otherData.card_number}`
+          h4#cardNum= otherData.card_number
         #card-img.card-img
           img#cardImage.img-fluid(src=image alt='user')
       footer.card-footer
@@ -88,7 +88,7 @@ head
           div#cardStatus= data.status.replace('_', ' ')
         div
           | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-          span#cardValid= `${data.validation}` 
+          span#cardValid= data.validation
     #card-back.card-side
       header.card-header CANNABIS LOVERS SOCIETY
       main.card-main
@@ -101,7 +101,7 @@ head
           span Personal Number
           h4#cardIdNum= data.id_number
           span Number
-          h4#cardNum= `00${otherData.card_number}`
+          h4#cardNum= otherData.card_number
         #card-img.card-img
           .card-qrcode
             img(src= QRValue)
@@ -109,10 +109,10 @@ head
         .bedge
           .bedge-icon
             img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
-          div#cardStatus= `${otherData.status}` 
+          div#cardStatus= otherData.status
         div
           | VALID: 
-          span#cardValid= `${data.validation}` 
+          span#cardValid= data.validation
 
  
 // ======= Footer =======
@@ -132,4 +132,4 @@ script(src='/assets/vendor/purecounter/purecounter.js')
 script(src='/assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
 script(src='/assets/js/main.js')
-script(src='/assets/js/customizecard.js')
+script(type="module" src='/assets/js/customizeCard.js')
