@@ -1,40 +1,44 @@
 import { PDFDocument } from "pdf-lib";
-import fs from "fs";
 import fetch from "node-fetch";
-import * as fss from "fs";
+import * as fs from "fs";
 
 const hostname = "http://127.0.0.1:3000";
 
 // --Generate PDFs--
-async function embedImages() {
-  let jpgUrl, jpgImageBytes, jpgImage, jpgDims;
-  const pdfDoc = await PDFDocument.create();
-  const page = pdfDoc.addPage();
+(async () => {
+  let cardsDir = fs.readdirSync("generate/card-imgs");
+  let PDFShouldBe = parseInt(cardsDir.length / 10);
 
-  // Add background
-  jpgUrl = `${hostname}/generate/bg.jpg`;
-  jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
-  jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-  jpgDims = jpgImage.scale(0.24);
-  page.drawImage(jpgImage, {
-    x: 0,
-    y: page.getHeight() - jpgDims.height,
-    width: jpgDims.width,
-    height: jpgDims.height,
-  });
+  console.log(cardsDir, PDFShouldBe);
 
-  // Fill with user card images
-  let positionY = page.getHeight() - 177;
+  for (let pdfCount = 0; pdfCount < PDFShouldBe; pdfCount++) {
+    let jpgUrl, jpgImageBytes, jpgImage, jpgDims;
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage();
 
-  let imgCounter = fss.readdirSync("generate/card-imgs").length;
-  let pdfCounter = fss.readdirSync("generate/pdf").length;
-  let PDFShouldBe = parseInt(imgCounter / 10);
-  let imgToContinue = pdfCounter * 5;
+    // Add background
+    jpgUrl = `${hostname}/generate/bg.jpg`;
+    jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
+    jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+    jpgDims = jpgImage.scale(0.24);
+    page.drawImage(jpgImage, {
+      x: 0,
+      y: page.getHeight() - jpgDims.height,
+      width: jpgDims.width,
+      height: jpgDims.height,
+    });
 
-  if (PDFShouldBe > pdfCounter) {
+    // Fill with user card images
+    let positionY = page.getHeight() - 177;
+
+    let imgToContinue = pdfCount * 10;
+    let front = imgToContinue;
+    let back = imgToContinue + 1;
+
     for (let i = imgToContinue; i < imgToContinue + 5; i++) {
+
       // Card back side
-      jpgUrl = `${hostname}/generate/card-imgs/${i}-front.jpg`;
+      jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[back]}`;
       jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
       jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
       jpgDims = jpgImage.scale(0.405);
@@ -46,7 +50,7 @@ async function embedImages() {
       });
 
       // Card front side
-      jpgUrl = `${hostname}/generate/card-imgs/${i}-back.jpg`;
+      jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[front]}`;
       jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
       jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
       jpgDims = jpgImage.scale(0.405);
@@ -59,6 +63,8 @@ async function embedImages() {
 
       // Y position changes when one image set
       positionY -= 162.5;
+      front+=2;
+      back+=2;
     }
 
     const pdfBytes = await pdfDoc.save();
@@ -70,11 +76,10 @@ async function embedImages() {
     };
 
     // Saves into local folder
-    fs.writeFile(`./generate/pdf/${pdfCounter}.pdf`, pdfBytes, callback);
-  } else {
-    console.log("All pdf created based on provided images");
-    console.log("There must be 5 unused image to set in pdf");
+    fs.writeFile(`./generate/pdf/${pdfCount}.pdf`, pdfBytes, callback);
   }
-}
 
-embedImages();
+  // Else
+  console.log("All pdf created based on provided images");
+  console.log("There must be 5 unused clean set of images to fill pdf");
+})();
