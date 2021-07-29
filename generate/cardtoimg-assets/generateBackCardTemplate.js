@@ -18,7 +18,6 @@ const generateCardTemplateEn = function () {
         flex-direction: column;
         gap: 16px;
         margin-bottom: 1rem;
-
     }
 
     .card-side {
