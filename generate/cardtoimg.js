@@ -24,24 +24,20 @@ const hostname = "http://127.0.0.1:3000";
     const QRValue = await generateQR(`${hostname}/user/${i}`);
 
     if (!fs.existsSync(frontPath)) {
-      nodeHtmlToImage({
+      await nodeHtmlToImage({
         output: `./generate/card-imgs/${users[i].card_number}-front.jpg`,
         html: generateCardTemplateGe(),
         content: {
           name: users[i].name,
           surname: users[i].surname,
-          card_number: users[i].card_number,
-          id_number: users[i].id_number,
-          birth_date: users[i].birth_date,
           img: users[i].img,
-          validation: users[i].validation,
           status: users[i].status,
           class: statuses[users[i].status.replace(" ", "_")].replace(" ", ""),
         },
       }).then(() => console.log(`${i} frontcard created successfully!'`));
     }
     if (!fs.existsSync(backPath)) {
-      nodeHtmlToImage({
+      await nodeHtmlToImage({
         output: `./generate/card-imgs/${users[i].card_number}-back.jpg`,
         html: generateCardTemplateEn(),
         content: {
@@ -49,7 +45,6 @@ const hostname = "http://127.0.0.1:3000";
           id_number: users[i].id_number,
           birth_date: users[i].birth_date,
           validation: users[i].validation,
-          class: statuses[users[i].status.replace(" ", "_")].replace(" ", ""),
 
           nameEN: convertLetters(users[i].name),
           surnameEN: convertLetters(users[i].surname),

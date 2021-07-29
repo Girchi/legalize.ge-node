@@ -1,4 +1,4 @@
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument, degrees } from "pdf-lib";
 import fetch from "node-fetch";
 import * as fs from "fs";
 
@@ -32,8 +32,8 @@ const hostname = "http://127.0.0.1:3000";
     let positionY = page.getHeight() - 177;
 
     let imgToContinue = pdfCount * 10;
-    let front = imgToContinue;
-    let back = imgToContinue + 1;
+    let back = imgToContinue;
+    let front = imgToContinue + 1;
 
     for (let i = imgToContinue; i < imgToContinue + 5; i++) {
 
@@ -41,24 +41,26 @@ const hostname = "http://127.0.0.1:3000";
       jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[back]}`;
       jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
       jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-      jpgDims = jpgImage.scale(0.405);
+      jpgDims = jpgImage.scale(0.321);
       page.drawImage(jpgImage, {
-        x: 29,
+        x: 286,
         y: positionY,
-        width: jpgDims.width + 2,
-        height: jpgDims.height + 1,
+        width: jpgDims.width,
+        height: jpgDims.height,
+        rotate: degrees(90),
       });
 
       // Card front side
       jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[front]}`;
       jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
       jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-      jpgDims = jpgImage.scale(0.405);
+      jpgDims = jpgImage.scale(0.321);
       page.drawImage(jpgImage, {
-        x: 309.5,
+        x: 567,
         y: positionY,
-        width: jpgDims.width + 2,
-        height: jpgDims.height + 1,
+        width: jpgDims.width,
+        height: jpgDims.height,
+        rotate: degrees(90),
       });
 
       // Y position changes when one image set

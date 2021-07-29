@@ -38,54 +38,46 @@ include parts/header.pug
         span= val
     
   #cards.cards(class=`card-${otherData.class}`)
-    #card-front.card-side
-      header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
-      main.card-main
-        .card-info
-          span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-          h4= `${data.name} ${data.surname}`
-          span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
-          h4= data.birth_date
-        .card-info
-          span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= data.id_number
-          span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4= data.card_number
-        #card-img.card-img
-          img.img-fluid(src=`${data.img}` alt='user')
-      footer.card-footer
-        .bedge
-          .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='bedge')
-          h6= data.status
-        div
-          | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-          span= data.validation 
-    #card-back.card-side
-      header.card-header CANNABIS LOVERS SOCIETY
-      main.card-main
-        .card-info
-          span Name & Surname
-          h4= `${otherData.name} ${otherData.surname}`
-          span Birth Date
-          h4= data.birth_date
-        .card-info
-          span Personal Number
-          h4= data.id_number
-          span Number
-          h4= data.card_number
-        #card-img.card-img
-          .card-qrcode
-            img(src=QRValue)
-      footer.card-footer
-        .bedge
-          .bedge-icon
-            img.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='bedge')
-          h6= otherData.status
-        div
-          | VALID: 
-          span= data.validation
 
+    //- Card Front Side
+    div.card-side
+      img.card-bg-0(src="/assets/img/kanafi.png", alt="cannabis")
+      img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
+      img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
+      header.card-header
+        h3= `${data.name} ${data.surname}`
+        span= data.status
+      main.card-main
+        div.bedges
+          img(src=`/assets/img/card/${otherData.class}.png` alt='bedge')
+        img.profile-img(src=`${data.img}` alt='user')
+      footer.card-footer
+         h2 კანაფის მოყვარულთა საზოგადოება
+
+    //- Card Back Side
+    div.card-side
+      img.card-bg-0(src="/assets/img/kanafi.png", alt="cannabis")
+      img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
+      img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
+      header.card-header
+        h3= `${otherData.name} ${otherData.surname}`
+        span= otherData.status
+      main.card-main
+        span DATE OF BIRTH
+        h4= data.birth_date
+
+        span PERSONAL NUMBER
+        h4= data.id_number
+
+        span CARD NUMBER
+        h4= data.card_number
+
+        span VALID
+        h4= data.validation
+
+        img.qrcode-img(src=QRValue)
+      footer.card-footer
+        h2 CANNABIS LOVERS SOCIETY
  
 // ======= Footer =======
 include parts/footer.pug
