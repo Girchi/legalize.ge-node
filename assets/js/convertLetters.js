@@ -27,7 +27,7 @@ function convertLetters(str) {
     ნ: "n",
     მ: "m",
     ღ: "gh",
-    თ: "th",
+    თ: "t",
     შ: "sh",
     ჟ: "zh",
     ძ: "dz",
