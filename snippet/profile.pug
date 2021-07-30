@@ -37,7 +37,7 @@ include parts/header.pug
       each val in data.other_statuses
         span= val
     
-  #cards.cards(class=`card-${otherData.class}`)
+  #cards.cards(class=`card-${engData.class}`)
 
     //- Card Front Side
     div.card-side
@@ -49,7 +49,8 @@ include parts/header.pug
         span= data.status
       main.card-main
         div.bedges
-          img(src=`/assets/img/card/${otherData.class}.png` alt='bedge')
+          - for(let i = 0; i < engData.fullStatusClasses.length; i++)
+            img(src=`/assets/img/card/${engData.fullStatusClasses[i]}.png` alt='bedge')
         img.profile-img(src=`${data.img}` alt='user')
       footer.card-footer
          h2 კანაფის მოყვარულთა საზოგადოება
@@ -60,8 +61,8 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= `${otherData.name} ${otherData.surname}`
-        span= otherData.status
+        h3= `${engData.name} ${engData.surname}`
+        span= engData.status
       main.card-main
         span DATE OF BIRTH
         h4= data.birth_date

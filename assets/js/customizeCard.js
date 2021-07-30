@@ -3,13 +3,14 @@ import convertLetters from "./convertLetters.js";
 const cardForm = document.getElementById("card-form");
 const cards = document.getElementById("cards");
 const cardFullName = document.querySelectorAll("#cardFullName");
-const cardIdNum = document.querySelectorAll("#cardIdNum");
-const cardNum = document.querySelectorAll("#cardNum");
+const cardIdNum = document.getElementById("cardIdNum");
+const cardNum = document.getElementById("cardNum");
 
-const cardDate = document.querySelectorAll("#cardDate");
+const cardDate = document.getElementById("cardDate");
+const cardValid = document.getElementById("cardValid");
 const cardStatus = document.querySelectorAll("#cardStatus");
-const cardValid = document.querySelectorAll("#cardValid");
-const cardBadge = document.querySelectorAll("#cardBadge");
+const cardBadges = document.getElementById("bedges");
+console.log(cardBadges)
 
 function changeInputData() {
   const nameValue = document.getElementById("nameInput").value;
@@ -24,21 +25,14 @@ function changeInputData() {
     cardFullName[0].textContent = nameValue;
     cardFullName[1].textContent = convertedName;
   }
-
-  for (let i = 0; i < 2; i++) {
-    if (idNumValue) cardIdNum[i].textContent = idNumValue;
-    if (cardNumValue) cardNum[i].textContent = cardNumValue;
-  }
+  if (idNumValue) cardIdNum.textContent = idNumValue;
+  if (cardNumValue) cardNum.textContent = cardNumValue;
 }
 
 async function changeSelectData() {
-  const dateValue = document
-    .getElementById("dateInput")
-    .value.replace(/[-]/gi, "/");
+  const dateValue = document.getElementById("dateInput").value;
   const statusValue = document.getElementById("statusInput").value;
-  const validValue = document
-    .getElementById("validInput")
-    .value.replace(/[-]/gi, "/");
+  const validValue = document.getElementById("validInput").value;
 
   const response = await fetch(`assets/js/statuses.json`);
   const statuses = await response.json();
@@ -53,13 +47,14 @@ async function changeSelectData() {
 
     cardStatus[0].textContent = status;
     cardStatus[1].textContent = statusEN;
-  }
 
-  for (let i = 0; i < 2; i++) {
-    if (dateValue) cardDate[i].textContent = dateValue;
-    cardBadge[i].src = `/assets/img/card/${statusClass}.png`;
-    if (validValue) cardValid[i].textContent = validValue;
-  }
+    cardBadges.innerHTML = `
+      <img src="/assets/img/card/${statusClass}.png">
+    `;
+    }
+
+    if (dateValue) cardDate.textContent = dateValue;
+    if (validValue) cardValid.textContent = validValue;
 }
 
 cardForm.addEventListener("keyup", changeInputData);

@@ -87,7 +87,7 @@ const generateCardTemplateEn = function () {
     .card-header {
       background-color: transparent;
       border: 0;
-      padding: 27.5px 25px 0 25px;
+      padding: 40px 40px 0 40px;
       margin-bottom: 5rem;
     }
     
@@ -102,7 +102,7 @@ const generateCardTemplateEn = function () {
     }
     
     .card-main {
-      padding:0 25px;
+      padding:0 40px;
       flex: 1;
     }
     
@@ -119,10 +119,10 @@ const generateCardTemplateEn = function () {
     
     .bedges {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       position: absolute;
       left: 25px;
-      bottom: 112.5px;
+      bottom: 135.5px;
     }
     
     .bedges img {
@@ -130,6 +130,8 @@ const generateCardTemplateEn = function () {
       height: 90px;
       border-radius: 50%;
       object-fit: cover;
+      background: #fff;
+      margin-top: -1.5rem;
     }
     
     .profile-img {
@@ -153,11 +155,10 @@ const generateCardTemplateEn = function () {
     }
     
     .card-footer {
-      height: 60.5px;
       background-color: #6EAC43;
       display: flex;
       align-items: center;
-      padding: 25px;
+      padding: 50px 0 65px 40px;
     }
     
     .card-footer:last-child {

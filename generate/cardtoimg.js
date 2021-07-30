@@ -9,6 +9,13 @@ import convertLetters from "../assets/js/convertLetters.js";
 import generateQR from "../assets/js/generateQR.js";
 
 const hostname = "http://127.0.0.1:3000";
+function statusToClass(word, statuses) {
+  return statuses[word.replace(" ", "_")].replace(" ", "")
+}
+
+function statusToEngStatus(word, statuses) {
+  return statuses[word.replace(" ", "_")]
+}
 
 (async () => {
   const response = await fetch(`${hostname}/assets/js/users.json`);
@@ -23,6 +30,15 @@ const hostname = "http://127.0.0.1:3000";
     const backPath = `./generate/card-imgs/${users[i].card_number}-back.jpg`;
     const QRValue = await generateQR(`${hostname}/user/${i}`);
 
+    // Creates img tags for current user's badges
+    const fullBedgesClasses = [statusToClass(users[i].status, statuses), ...users[i].other_statuses.map(word => statusToClass(word, statuses))];
+    let fullBedgesContainer = '';
+    fullBedgesClasses.forEach(bedgeClass => {
+      fullBedgesContainer += `
+        <img src="${hostname}/assets/img/card/${bedgeClass}.png" /> 
+      `
+    })
+
     if (!fs.existsSync(frontPath)) {
       await nodeHtmlToImage({
         output: `./generate/card-imgs/${users[i].card_number}-front.jpg`,
@@ -32,7 +48,8 @@ const hostname = "http://127.0.0.1:3000";
           surname: users[i].surname,
           img: users[i].img,
           status: users[i].status,
-          class: statuses[users[i].status.replace(" ", "_")].replace(" ", ""),
+          class: statusToClass(users[i].status, statuses),
+          fullBedgesContainer: fullBedgesContainer, 
         },
       }).then(() => console.log(`${i} frontcard created successfully!'`));
     }
@@ -48,7 +65,7 @@ const hostname = "http://127.0.0.1:3000";
 
           nameEN: convertLetters(users[i].name),
           surnameEN: convertLetters(users[i].surname),
-          statusEN: statuses[users[i].status.replace(" ", "_")],
+          statusEN: statusToEngStatus(users[i].status, statuses),
           QRValue: QRValue,
         },
       }).then(() => console.log(`${i} backcard created successfully!'`));

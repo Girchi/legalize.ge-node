@@ -1,5 +1,7 @@
 const hostname = "http://127.0.0.1:3000";
 
+
+
 const generateCardTemplateGe = function () {
   return `
   <html>
@@ -81,7 +83,7 @@ const generateCardTemplateGe = function () {
     .card-header {
       background-color: transparent;
       border: 0;
-      padding: 27.5px 25px 0 25px;
+      padding: 40px 40px 0 40px;
       margin-bottom: 5rem;
     }
     
@@ -96,7 +98,7 @@ const generateCardTemplateGe = function () {
     }
     
     .card-main {
-      padding:0 25px;
+      padding:0 40px;
       flex: 1;
     }
     
@@ -113,10 +115,10 @@ const generateCardTemplateGe = function () {
     
     .bedges {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       position: absolute;
-      left: 25px;
-      bottom: 125.5px;
+      left: 40px;
+      bottom: 145.5px;
     }
     
     .bedges img {
@@ -124,6 +126,8 @@ const generateCardTemplateGe = function () {
       height: 90px;
       border-radius: 50%;
       object-fit: cover;
+      background: #fff;
+      margin-top: -1.5rem;
     }
     
     .profile-img {
@@ -147,11 +151,10 @@ const generateCardTemplateGe = function () {
     }
     
     .card-footer {
-      height: 60.5px;
       background-color: #6EAC43;
       display: flex;
       align-items: center;
-      padding: 25px;
+      padding: 50px 0 65px 40px;
     }
     
     .card-footer:last-child {
@@ -176,7 +179,7 @@ const generateCardTemplateGe = function () {
         </header>
         <main class="card-main">
             <div class="bedges">
-                <img src="${hostname}/assets/img/card/{{class}}.png">
+              {{{fullBedgesContainer}}}
             </div>
             <img src="${hostname}{{img}}" class="profile-img"  alt="user">
         </main>

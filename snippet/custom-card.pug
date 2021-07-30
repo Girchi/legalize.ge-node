@@ -40,7 +40,7 @@ head
       label.form-label დაბადების თარიღი
       input.form-control(type='date' id="dateInput" name="birth_date" maxlength='5' )
     .mb-3.col-12.col-sm-6.col-lg-4
-      label.form-label სტატუსის არჩევა
+      label.form-label მთავარი სტატუსის არჩევა
       select.form-select(name='status' id="statusInput")
         option(value='გროუერი') გროუერი
         option(value='მწეველი') მწეველი
@@ -50,6 +50,19 @@ head
         option(value='CBD') CBD
         option(value='ინვესტორი') ინვესტორი
         option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
+
+    .mb-3.col-12.col-sm-6.col-lg-4
+      label.form-label დამატებითი სტატუსების არჩევა
+      select.form-select(name='status' id="statusInput")
+        option(value='გროუერი') გროუერი
+        option(value='მწეველი') მწეველი
+        option(value='მეწარმე') მეწარმე
+        option(value='ქომაგი') ქომაგი
+        option(value='დამფუძნებელი') დამფუძნებელი
+        option(value='CBD') CBD
+        option(value='ინვესტორი') ინვესტორი
+        option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
+
     .mb-3.col-12.col-sm-6.col-lg-4
       label.form-label ბარათის ნომერი
       input.form-control(type='text' id="cardNumInput" name="card_number" )
@@ -63,56 +76,47 @@ head
     button.btn.btn-success(type='submit') გენერირება
 
 
+  #cards.cards(class=`card-${engData.class}`)
+    //- Card Front Side
+    div.card-side
+      img.card-bg-0(src="/assets/img/kanafi.png", alt="cannabis")
+      img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
+      img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
+      header.card-header
+        h3#cardFullName= `${data.name} ${data.surname}`
+        span#cardStatus= data.status
+      main.card-main
+        div.bedges#bedges
+          - for(let i = 0; i < engData.fullStatusClasses.length; i++)
+            img(src=`/assets/img/card/${engData.fullStatusClasses[i]}.png` alt='bedge')
+        img#cardImage.profile-img(src=`${image}` alt='user')
+      footer.card-footer
+         h2 კანაფის მოყვარულთა საზოგადოება
 
-#userinfo-container.container.pb-4  
-  #cards.cards(class=`card-${otherData.class}`)
-    #card-front.card-side
-      header.card-header &#x10D9;&#x10D0;&#x10DC;&#x10D0;&#x10E4;&#x10D8;&#x10E1; &#x10DB;&#x10DD;&#x10E7;&#x10D5;&#x10D0;&#x10E0;&#x10E3;&#x10DA;&#x10D7;&#x10D0; &#x10E1;&#x10D0;&#x10D6;&#x10DD;&#x10D2;&#x10D0;&#x10D3;&#x10DD;&#x10D4;&#x10D1;&#x10D0;
+    //- Card Back Side
+    div.card-side
+      img.card-bg-0(src="/assets/img/kanafi.png", alt="cannabis")
+      img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
+      img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
+      header.card-header
+        h3#cardFullName= `${engData.name} ${engData.surname}`
+        span#cardStatus= engData.status
       main.card-main
-        .card-info
-          span &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-          h4#cardFullName= `${data.name} ${data.surname}`
-          span &#x10D3;&#x10D0;&#x10D1;&#x10D0;&#x10D3;&#x10D4;&#x10D1;&#x10D8;&#x10E1; &#x10D7;&#x10D0;&#x10E0;&#x10D8;&#x10E6;&#x10D8;
-          h4#cardDate= data.birth_date
-        .card-info
-          span &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8; &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4#cardIdNum= data.id_number
-          span &#x10DC;&#x10DD;&#x10DB;&#x10D4;&#x10E0;&#x10D8;
-          h4#cardNum= otherData.card_number
-        #card-img.card-img
-          img#cardImage.img-fluid(src=image alt='user')
+        span DATE OF BIRTH
+        h4#cardDate= data.birth_date
+
+        span PERSONAL NUMBER
+        h4#cardIdNum= data.id_number
+
+        span CARD NUMBER
+        h4#cardNum= engData.card_number
+
+        span VALID
+        h4#cardValid= data.validation
+
+        img.qrcode-img(src=QRValue)
       footer.card-footer
-        .bedge
-          .bedge-icon
-            img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
-          div#cardStatus= data.status.replace('_', ' ')
-        div
-          | &#x10EB;&#x10D0;&#x10DA;&#x10D0;&#x10E8;&#x10D8;&#x10D0;: 
-          span#cardValid= data.validation
-    #card-back.card-side
-      header.card-header CANNABIS LOVERS SOCIETY
-      main.card-main
-        .card-info
-          span Name Surname
-          h4#cardFullName= `${otherData.name} ${otherData.surname}`
-          span Birth Date
-          h4#cardDate= data.birth_date
-        .card-info
-          span Personal Number
-          h4#cardIdNum= data.id_number
-          span Number
-          h4#cardNum= otherData.card_number
-        #card-img.card-img
-          .card-qrcode
-            img(src= QRValue)
-      footer.card-footer
-        .bedge
-          .bedge-icon
-            img#cardBadge.img-fluid(src=`/assets/img/card/${otherData.class}.png` alt='badge')
-          div#cardStatus= otherData.status
-        div
-          | VALID: 
-          span#cardValid= data.validation
+        h2 CANNABIS LOVERS SOCIETY
 
  
 // ======= Footer =======

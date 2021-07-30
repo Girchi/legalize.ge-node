@@ -57,21 +57,30 @@ app.listen(port, "127.0.0.1", () =>
     });
   });
 
+  function statusToClass(word) {
+    return statuses[word.replace(" ", "_")].replace(" ", "")
+  }
+
+  function statusToEngStatus(word) {
+    return statuses[word.replace(" ", "_")]
+  }
+
   // User Cards Page Route
   app.get("/user/:id", (req, res) => {
     const data = users.data[req.params.id];
-    const otherData = {
+    console.log(data)
+    const engData = {
       name: convertLetters(data.name),
       surname: convertLetters(data.surname),
-      status: statuses[data.status.replace(" ", "_")],
-      class: statuses[data.status.replace(" ", "_")].replace(" ", ""),
+      status: statusToEngStatus(data.status),
+      class: statusToClass(data.status),
+      fullStatusClasses: [statusToClass(data.status), ...data.other_statuses.map(word => statusToClass(word))]
     };
-
     (async () => {
       const QRValue = await generateQR(`${hostname}/user/${req.params.id}`);
       res.render(__dirname + "/snippet/profile", {
         data,
-        otherData,
+        engData,
         QRValue,
       });
     })();
@@ -86,13 +95,15 @@ app.listen(port, "127.0.0.1", () =>
       birth_date: "08/04/2000",
       status: "გროუერი",
       validation: "01/09/2030",
+      other_statuses: ["დამფუძნებელი", "ოქროს ინვესტორი"]
     };
-    const otherData = {
+    const engData = {
       name: "name",
       surname: "surname",
       status: "grower",
       class: "grower",
       card_number: 1000,
+      fullStatusClasses: [statusToClass(data.status), ...data.other_statuses.map(word => statusToClass(word))]
     };
 
     (async () => {
@@ -100,7 +111,7 @@ app.listen(port, "127.0.0.1", () =>
 
       res.render(__dirname + "/snippet/custom-card", {
         data,
-        otherData,
+        engData,
         QRValue,
         image: `./assets/img/girchi.png`,
       });
@@ -111,7 +122,7 @@ app.listen(port, "127.0.0.1", () =>
     "/custom-card",
     [urlencodedParser, upload.single("image")],
     (req, res) => {
-      const otherData = {
+      const engData = {
         name: convertLetters(req.body.name),
         surname: convertLetters(req.body.surname),
         status: statuses[req.body.status],
@@ -123,7 +134,7 @@ app.listen(port, "127.0.0.1", () =>
         const QRValue = await generateQR(`legalize.ge`);
         res.render(__dirname + "/snippet/custom-card", {
           data: req.body,
-          otherData,
+          engData,
           QRValue,
           image: `./assets/serverImages/${req.file.originalname}`,
         });

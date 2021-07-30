@@ -233,11 +233,14 @@
   background-color: transparent;
   border: 0;
   padding: 27.5px 25px 0 25px;
-  margin-bottom: 12px;
+  margin-bottom: 5rem;
+
 }
 
 .card-header h3 {
   font-size: 25px;
+  margin-bottom: 1rem;
+
 }
 
 .card-header span {
@@ -258,12 +261,12 @@
 
 .card-main h4 {
   font-size: 27.5px;
-  margin: 12.5px 0 30px;
+  margin: 14px 0 60px;
 }
 
 .bedges {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   position: absolute;
   left: 25px;
   bottom: 112.5px;
@@ -274,6 +277,8 @@
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
+  background: #fff;
+  margin-top: -1.5rem;
 }
 
 .profile-img {
