@@ -68,7 +68,7 @@ app.listen(port, "127.0.0.1", () =>
   // User Cards Page Route
   app.get("/user/:id", (req, res) => {
     const data = users.data[req.params.id];
-    console.log(data)
+
     const engData = {
       name: convertLetters(data.name),
       surname: convertLetters(data.surname),
