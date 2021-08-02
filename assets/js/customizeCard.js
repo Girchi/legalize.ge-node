@@ -1,15 +1,15 @@
 import convertLetters from "./convertLetters.js";
 
+// Input assets for other statuses
 $(document).ready(function(){
-
   let multipleCancelButton = new Choices('#multipleStatusInput', {
   removeItemButton: true,
   maxItemCount:7,
   searchResultLimit:8,
   renderChoiceLimit:8
   });
-  
-  });
+});
+
 
 const cardForm = document.getElementById("card-form");
 const cards = document.getElementById("cards");
@@ -22,6 +22,7 @@ const cardValid = document.getElementById("cardValid");
 const cardStatus = document.querySelectorAll("#cardStatus");
 const cardBadges = document.getElementById("bedges");
 
+// Changes data on input with keyboard
 function changeInputData() {
   const nameValue = document.getElementById("nameInput").value;
   const idNumValue = document.getElementById("idNumInput").value;
@@ -39,6 +40,7 @@ function changeInputData() {
   if (cardNumValue) cardNum.textContent = cardNumValue;
 }
 
+// Changes data on select item
 async function changeSelectData() {
   const response = await fetch(`assets/js/statuses.json`);
   const statuses = await response.json();
@@ -78,10 +80,8 @@ async function changeSelectData() {
 
 cardForm.addEventListener("keyup", changeInputData);
 cardForm.addEventListener("change", changeSelectData);
-cardForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
 
+// Import image on browser
 const imageInput = document.getElementById("imageInput");
 const cardImage = document.querySelector("#cardImage");
 

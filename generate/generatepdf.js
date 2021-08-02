@@ -9,8 +9,6 @@ const hostname = "http://127.0.0.1:3000";
   let cardsDir = fs.readdirSync("generate/card-imgs");
   let PDFShouldBe = parseInt(cardsDir.length / 10);
 
-  console.log(cardsDir, PDFShouldBe);
-
   for (let pdfCount = 0; pdfCount < PDFShouldBe; pdfCount++) {
     let jpgUrl, jpgImageBytes, jpgImage, jpgDims;
     const pdfDoc = await PDFDocument.create();
@@ -29,7 +27,7 @@ const hostname = "http://127.0.0.1:3000";
     });
 
     // Fill with user card images
-    let positionY = page.getHeight() - 177;
+    let positionY = page.getHeight() - 177.5;
 
     let imgToContinue = pdfCount * 10;
     let back = imgToContinue;
@@ -37,28 +35,28 @@ const hostname = "http://127.0.0.1:3000";
 
     for (let i = imgToContinue; i < imgToContinue + 5; i++) {
 
-      // Card back side
-      jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[back]}`;
-      jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
-      jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-      jpgDims = jpgImage.scale(0.321);
-      page.drawImage(jpgImage, {
-        x: 286,
-        y: positionY,
-        width: jpgDims.width,
-        height: jpgDims.height,
-        rotate: degrees(90),
-      });
-
       // Card front side
       jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[front]}`;
       jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
       jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
       jpgDims = jpgImage.scale(0.321);
       page.drawImage(jpgImage, {
+        x: 286.5,
+        y: positionY,
+        width: jpgDims.width + 1.5,
+        height: jpgDims.height + 0.5,
+        rotate: degrees(90),
+      });
+
+      // Card back side
+      jpgUrl = `${hostname}/generate/card-imgs/${cardsDir[back]}`;
+      jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
+      jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+      jpgDims = jpgImage.scale(0.321);
+      page.drawImage(jpgImage, {
         x: 567,
         y: positionY,
-        width: jpgDims.width,
+        width: jpgDims.width + 1.5,
         height: jpgDims.height,
         rotate: degrees(90),
       });

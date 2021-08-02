@@ -12,7 +12,6 @@ const hostname = "http://127.0.0.1:3000";
 function statusToClass(word, statuses) {
   return statuses[word.replace(" ", "_")].replace(" ", "")
 }
-
 function statusToEngStatus(word, statuses) {
   return statuses[word.replace(" ", "_")]
 }
@@ -28,7 +27,7 @@ function statusToEngStatus(word, statuses) {
   for (let i = 0; i < users.length; i++) {
     const frontPath = `./generate/card-imgs/${users[i].card_number}-front.jpg`;
     const backPath = `./generate/card-imgs/${users[i].card_number}-back.jpg`;
-    const QRValue = await generateQR(`${hostname}/user/${i}`);
+    const QRValue = await generateQR(`legalize.ge/user/${users[i].card_number}`);
 
     // Creates img tags for current user's badges
     const fullBedgesClasses = [statusToClass(users[i].status, statuses), ...users[i].other_statuses.map(word => statusToClass(word, statuses))];

@@ -145,8 +145,8 @@ const generateCardTemplateEn = function () {
     }
     
     .qrcode-img {
-      width: 105px;
-      height: 105px;
+      width: 115px;
+      height: 115px;
       object-fit: cover;
       position: absolute;
       right: 50px;

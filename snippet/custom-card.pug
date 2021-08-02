@@ -82,20 +82,21 @@ head
     button.btn.btn-success(type='submit') გენერირება
 
 
-  #cards.cards(class=`card-${engData.class}`)
+  #cards.cards
     //- Card Front Side
     div.card-side.card-front
       img.card-bg-0(src="/assets/img/kanafi.png", alt="cannabis")
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3#cardFullName= `${data.name} ${data.surname}`
-        span#cardStatus= data.status
+        h3#cardFullName სახელი გვარი
+        span#cardStatus გროუერი
       main.card-main
         div.bedges#bedges
-          - for(let i = 0; i < engData.fullStatusClasses.length; i++)
-            img(src=`/assets/img/card/${engData.fullStatusClasses[i]}.png` alt='bedge')
-        img#cardImage.profile-img(src=`${image}` alt='user')
+          img(src=`/assets/img/card/grower.png` alt='badge')
+          img(src=`/assets/img/card/founder.png` alt='badge')
+          img(src=`/assets/img/card/goldeninvestor.png` alt='badge')
+        img#cardImage.profile-img(src=`/assets/img/girchi.png` alt='user')
       footer.card-footer
          h2 კანაფის მოყვარულთა საზოგადოება
 
@@ -105,22 +106,22 @@ head
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3#cardFullName= `${engData.name} ${engData.surname}`
-        span#cardStatus= engData.status
+        h3#cardFullName name surname
+        span#cardStatus grower
       main.card-main
         span DATE OF BIRTH
-        h4#cardDate= data.birth_date
+        h4#cardDate 08/04/2000
 
         span PERSONAL NUMBER
-        h4#cardIdNum= data.id_number
+        h4#cardIdNum 0100101010
 
         span CARD NUMBER
-        h4#cardNum= engData.card_number
+        h4#cardNum 1000
 
         span VALID
-        h4#cardValid= data.validation
+        h4#cardValid 01/09/2030
 
-        img.qrcode-img(src=QRValue)
+        img.qrcode-img(src="/assets/img/legalizeqr.png")
       footer.card-footer
         h2 CANNABIS LOVERS SOCIETY
 

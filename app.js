@@ -67,7 +67,8 @@ app.listen(port, "127.0.0.1", () =>
 
   // User Cards Page Route
   app.get("/user/:id", (req, res) => {
-    const data = users.data[req.params.id];
+
+    const data = users.data.find(user => user.card_number === req.params.id)
 
     const engData = {
       name: convertLetters(data.name),
@@ -88,57 +89,17 @@ app.listen(port, "127.0.0.1", () =>
 
   // Customize Cards Page Routes
   app.get("/custom-card", (req, res) => {
-    let data = {
-      name: "სახელი",
-      surname: "გვარი",
-      id_number: "0100101010",
-      birth_date: "08/04/2000",
-      status: "გროუერი",
-      validation: "01/09/2030",
-      other_statuses: ["დამფუძნებელი", "ოქროს ინვესტორი"]
-    };
-    const engData = {
-      name: "name",
-      surname: "surname",
-      status: "grower",
-      class: "grower",
-      card_number: 1000,
-      fullStatusClasses: [statusToClass(data.status), ...data.other_statuses.map(word => statusToClass(word))]
-    };
-
-    (async () => {
-      const QRValue = await generateQR(`legalize.ge`);
-
-      res.render(__dirname + "/snippet/custom-card", {
-        data,
-        engData,
-        QRValue,
-        image: `./assets/img/girchi.png`,
-      });
-    })();
+    res.render(__dirname + "/snippet/custom-card");
   });
 
   app.post(
     "/custom-card",
     [urlencodedParser, upload.single("image")],
     (req, res) => {
-      const engData = {
-        name: convertLetters(req.body.name),
-        surname: convertLetters(req.body.surname),
-        status: statuses[req.body.status],
-        class: statuses[req.body.status.replace(" ", "_")].replace(" ", ""),
-        card_number: 1000,
-      };
-
-      (async () => {
-        const QRValue = await generateQR(`legalize.ge`);
-        res.render(__dirname + "/snippet/custom-card", {
-          data: req.body,
-          engData,
-          QRValue,
-          image: `./assets/serverImages/${req.file.originalname}`,
-        });
-      })();
+      const userInformation = req.body;
+      const userImagePath = req.file.path;
+      console.log(userInformation, userImagePath)
+      res.render(__dirname + "/snippet/custom-card");
     }
   );
 
