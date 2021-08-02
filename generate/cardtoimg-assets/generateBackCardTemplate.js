@@ -39,8 +39,8 @@ const generateCardTemplateEn = function () {
     
     .card-bg-0 {
       position: absolute;
-      right: -20%;
-      top: -14%;
+      right: -17%;
+      top: -12%;
       width: 320px;
       height: 320px;
       opacity: 0.15;
@@ -49,41 +49,24 @@ const generateCardTemplateEn = function () {
     
     .card-bg-1 {
       position: absolute;
-      left: 7.5%;
-      top: 9.5%;
-      width: 200px;
-      height: 200px;
-      opacity: 0.26;
-    }
-    
-    .card-bg-2 {
-      position: absolute;
-      left: 16%;
-      top: 4%;
-      width: 100%;
-      height: 100%;
-      opacity: 0.26;
-      z-index: -1;
-    }
-    
-    .card-side:last-child .card-bg-1{
-      left: auto;
-      right: 17.5%;
-      top: 15%;
+      right: 18.5%;
+      top: 17.5%;
       width: 150px;
       height: 150px;
       opacity: 0.09;
     }
     
-    .card-side:last-child .card-bg-2{
-      left: -40px;
-      top: 60px;
-      width: 86%;
+    .card-bg-2 {
+      position: absolute;
+      left: -49px;
+      top: 76px;
+      width: 87%;
       opacity: 0.09;
       transform: scaleX(-1);
       height: 90%;
+      z-index: -1;
     }
-    
+
     .card-header {
       background-color: transparent;
       border: 0;

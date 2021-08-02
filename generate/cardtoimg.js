@@ -50,7 +50,7 @@ function statusToEngStatus(word, statuses) {
           class: statusToClass(users[i].status, statuses),
           fullBedgesContainer: fullBedgesContainer, 
         },
-      }).then(() => console.log(`${i} frontcard created successfully!'`));
+      }).then(() => console.log(`${users[i].card_number} frontcard created successfully!'`));
     }
     if (!fs.existsSync(backPath)) {
       await nodeHtmlToImage({
@@ -67,7 +67,7 @@ function statusToEngStatus(word, statuses) {
           statusEN: statusToEngStatus(users[i].status, statuses),
           QRValue: QRValue,
         },
-      }).then(() => console.log(`${i} backcard created successfully!'`));
+      }).then(() => console.log(`${users[i].card_number} backcard created successfully!'`));
     }
   }
   console.log("Works...");

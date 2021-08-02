@@ -18,7 +18,7 @@ const generateCardTemplateGe = function () {
    
     /* Card Styles */
     .card-side {
-      font-family: "BPG Square Banner Caps 2013", sans-serif;
+      font-family: "BPG Nino Mtavruli Bold", sans-serif;
       width: 500.775px;
       height: 802.5px;
       border: 2px solid #ddd;
@@ -29,18 +29,6 @@ const generateCardTemplateGe = function () {
       text-transform: uppercase;
       position: relative;
       overflow: hidden;
-    }
-    
-    .card-side:first-child {
-      font-family: "BPG Nino Mtavruli Bold", sans-serif;
-    }
-    
-    .card-side:first-child .card-header h3 {
-      font-size: 22.5px;
-    }
-    
-    .card-side:first-child .card-header span {
-      font-size: 17.5px;
     }
 
     .card-side * {
@@ -53,8 +41,8 @@ const generateCardTemplateGe = function () {
     
     .card-bg-0 {
       position: absolute;
-      right: -20%;
-      top: -14%;
+      right: -17%;
+      top: -12%;
       width: 320px;
       height: 320px;
       opacity: 0.15;
@@ -88,12 +76,12 @@ const generateCardTemplateGe = function () {
     }
     
     .card-header h3 {
-      font-size: 25px;
+      font-size: 22.5px;
       margin-bottom: 1rem;
     }
     
     .card-header span {
-      font-size: 15px;
+      font-size: 17.5px;
       color: #6EAC43;
     }
     
@@ -118,7 +106,7 @@ const generateCardTemplateGe = function () {
       flex-direction: column-reverse;
       position: absolute;
       left: 40px;
-      bottom: 145.5px;
+      bottom: 155.5px;
     }
     
     .bedges img {
