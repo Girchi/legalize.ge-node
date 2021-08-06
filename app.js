@@ -78,7 +78,7 @@ app.listen(port, "127.0.0.1", () =>
       fullStatusClasses: [statusToClass(data.status), ...data.other_statuses.map(word => statusToClass(word))]
     };
     (async () => {
-      const QRValue = await generateQR(`${hostname}/user/${req.params.id}`);
+      const QRValue = await generateQR(`legalize.ge/user/${req.params.id}`);
       res.render(__dirname + "/snippet/profile", {
         data,
         engData,

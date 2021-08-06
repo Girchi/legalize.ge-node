@@ -80,7 +80,7 @@ const generateCardTemplateEn = function () {
     }
     
     .card-header span {
-      font-size: 15px;
+      font-size: 18px;
       color: #6EAC43;
     }
     
@@ -98,35 +98,9 @@ const generateCardTemplateEn = function () {
     .card-main h4 {
       font-size: 27.5px;
       margin: 14px 0 60px;
+      letter-spacing: -1px;
     }
-    
-    .bedges {
-      display: flex;
-      flex-direction: column-reverse;
-      position: absolute;
-      left: 25px;
-      bottom: 135.5px;
-    }
-    
-    .bedges img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #fff;
-      margin-top: -1.5rem;
-    }
-    
-    .profile-img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      position: absolute;
-      right: 60px;
-      top: 435px;
-    }
-    
+
     .qrcode-img {
       width: 115px;
       height: 115px;
@@ -138,10 +112,11 @@ const generateCardTemplateEn = function () {
     }
     
     .card-footer {
+      height: 135px;
       background-color: #6EAC43;
       display: flex;
       align-items: center;
-      padding: 50px 0 65px 40px;
+      justify-content: center;
     }
     
     .card-footer:last-child {
@@ -149,8 +124,9 @@ const generateCardTemplateEn = function () {
     }
     
     .card-footer h2{
-      font-size: 20px;
-      color: #FFFFFF;
+      font-size: 24px;
+      color: #000;
+      margin-bottom: 1rem;
     }
     
   </style>
@@ -174,8 +150,8 @@ const generateCardTemplateEn = function () {
         <span>span CARD NUMBER</span>
         <h4>{{card_number}}</h4>
 
-        <span>VALID</span>
-        <h4>{{validation}}</h4>
+        <span>DATE OF REGISTRATION</span>
+        <h4>{{registration}}</h4>
 
         <img class="qrcode-img" src="{{QRValue}}">
     </main>

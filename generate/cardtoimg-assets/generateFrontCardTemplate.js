@@ -76,12 +76,12 @@ const generateCardTemplateGe = function () {
     }
     
     .card-header h3 {
-      font-size: 22.5px;
+      font-size: 27px;
       margin-bottom: 1rem;
     }
     
     .card-header span {
-      font-size: 17.5px;
+      font-size: 21px;
       color: #6EAC43;
     }
     
@@ -106,7 +106,7 @@ const generateCardTemplateGe = function () {
       flex-direction: column-reverse;
       position: absolute;
       left: 40px;
-      bottom: 155.5px;
+      bottom: 150px;
     }
     
     .bedges img {
@@ -126,6 +126,8 @@ const generateCardTemplateGe = function () {
       position: absolute;
       right: 60px;
       top: 435px;
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
     }
     
     .qrcode-img {
@@ -139,10 +141,11 @@ const generateCardTemplateGe = function () {
     }
     
     .card-footer {
+      height: 135px;
       background-color: #6EAC43;
       display: flex;
       align-items: center;
-      padding: 50px 0 65px 40px;
+      justify-content: center;
     }
     
     .card-footer:last-child {
@@ -150,8 +153,9 @@ const generateCardTemplateGe = function () {
     }
     
     .card-footer h2{
-      font-size: 20px;
-      color: #FFFFFF;
+      font-size: 24px;
+      color: #000;
+      margin-bottom: 1rem;
     }
     
   </style>

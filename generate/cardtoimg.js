@@ -60,7 +60,7 @@ function statusToEngStatus(word, statuses) {
           card_number: users[i].card_number,
           id_number: users[i].id_number,
           birth_date: users[i].birth_date,
-          validation: users[i].validation,
+          registration: users[i].registration,
 
           nameEN: convertLetters(users[i].name),
           surnameEN: convertLetters(users[i].surname),
