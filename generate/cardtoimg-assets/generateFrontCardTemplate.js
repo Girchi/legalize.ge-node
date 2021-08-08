@@ -10,6 +10,18 @@ const generateCardTemplateGe = function () {
     @import url("http://cdn.web-fonts.ge/fonts/bpg-square-banner-2013/css/bpg-square-banner-2013.min.css");
     @import url("http://cdn.web-fonts.ge/fonts/bpg-square-banner-caps-2013/css/bpg-square-banner-caps-2013.min.css");
     
+    @font-face {
+      font-family: 'DM Galaktioni';
+      src: url('../../assets/fonts/DMGalaktioni.eot');
+      src: url('../../assets/fonts/DMGalaktioni.eot?#iefix') format('embedded-opentype'),
+          url('../../assets/fonts/DMGalaktioni.woff2') format('woff2'),
+          url('../../assets/fonts/DMGalaktioni.woff') format('woff'),
+          url('../../assets/fonts/DMGalaktioni.ttf') format('truetype'),
+          url('../../assets/fonts/DMGalaktioni.svg#../fonts/DMGalaktioni') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
 
     body{
       width: 500.775px;
@@ -41,20 +53,20 @@ const generateCardTemplateGe = function () {
     
     .card-bg-0 {
       position: absolute;
-      right: -17%;
-      top: -12%;
-      width: 320px;
-      height: 320px;
+      right: -14%;
+      top: -8%;
+      width: 300px;
+      height: 300px;
       opacity: 0.15;
       transform: rotate(210deg);
     }
     
     .card-bg-1 {
       position: absolute;
-      left: 7.5%;
-      top: 9.5%;
-      width: 200px;
-      height: 200px;
+      left: 9.5%;
+      top: 11.5%;
+      width: 180px;
+      height: 180px;
       opacity: 0.26;
     }
     
@@ -71,7 +83,7 @@ const generateCardTemplateGe = function () {
     .card-header {
       background-color: transparent;
       border: 0;
-      padding: 40px 40px 0 40px;
+      padding: 60px 0 0 40px;
       margin-bottom: 5rem;
     }
     
@@ -153,9 +165,12 @@ const generateCardTemplateGe = function () {
     }
     
     .card-footer h2{
-      font-size: 24px;
+      font-family: DM Galaktioni;
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 1px;
       color: #000;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
     
   </style>

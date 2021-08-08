@@ -39,27 +39,27 @@ const generateCardTemplateEn = function () {
     
     .card-bg-0 {
       position: absolute;
-      right: -17%;
-      top: -12%;
-      width: 320px;
-      height: 320px;
+      right: -14%;
+      top: -8%;
+      width: 300px;
+      height: 300px;
       opacity: 0.15;
       transform: rotate(210deg);
     }
     
     .card-bg-1 {
       position: absolute;
-      right: 18.5%;
-      top: 17.5%;
-      width: 150px;
-      height: 150px;
+      right: 19.5%;
+      top: 19.5%;
+      width: 140px;
+      height: 140px;
       opacity: 0.09;
     }
     
     .card-bg-2 {
       position: absolute;
       left: -49px;
-      top: 76px;
+      top: 85px;
       width: 87%;
       opacity: 0.09;
       transform: scaleX(-1);
@@ -70,13 +70,14 @@ const generateCardTemplateEn = function () {
     .card-header {
       background-color: transparent;
       border: 0;
-      padding: 40px 40px 0 40px;
+      padding: 60px 0 0 40px;
       margin-bottom: 5rem;
     }
     
     .card-header h3 {
       font-size: 25px;
       margin-bottom: 1rem;
+      font-weight: bold;
     }
     
     .card-header span {
@@ -125,6 +126,8 @@ const generateCardTemplateEn = function () {
     
     .card-footer h2{
       font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
       color: #000;
       margin-bottom: 1rem;
     }

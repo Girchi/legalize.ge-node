@@ -2,6 +2,19 @@
 @import url("//cdn.web-fonts.ge/fonts/bpg-square-banner-2013/css/bpg-square-banner-2013.min.css");
 @import url("//cdn.web-fonts.ge/fonts/bpg-square-banner-caps-2013/css/bpg-square-banner-caps-2013.min.css");
 
+@font-face {
+  font-family: 'DM Galaktioni';
+  src: url('../fonts/DMGalaktioni.eot');
+  src: url('../fonts/DMGalaktioni.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/DMGalaktioni.woff2') format('woff2'),
+      url('../fonts/DMGalaktioni.woff') format('woff'),
+      url('../fonts/DMGalaktioni.ttf') format('truetype'),
+      url('../fonts/DMGalaktioni.svg#../fonts/DMGalaktioni') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .user-search {
   height: fit-content;
   margin-top: 10rem;
@@ -252,6 +265,12 @@
   right: 50px;
   top: 50%;
   transform: translateY(-60%);
+}
+
+.card-front .card-footer h2{
+  font-family: DM Galaktioni;
+  font-size: 36px;
+  font-weight: bold;
 }
 
 .card-footer {
