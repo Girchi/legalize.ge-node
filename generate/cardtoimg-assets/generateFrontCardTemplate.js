@@ -83,7 +83,7 @@ const generateCardTemplateGe = function () {
     .card-header {
       background-color: transparent;
       border: 0;
-      padding: 60px 0 0 40px;
+      padding: 50px 0 0 40px;
       margin-bottom: 5rem;
     }
     
@@ -166,11 +166,11 @@ const generateCardTemplateGe = function () {
     
     .card-footer h2{
       font-family: DM Galaktioni;
-      font-size: 36px;
+      font-size: 41px;
       font-weight: bold;
-      letter-spacing: 1px;
+      // letter-spacing: 1px;
       color: #000;
-      margin-bottom: 2rem;
+      margin-bottom: 2.7rem;
     }
     
   </style>
