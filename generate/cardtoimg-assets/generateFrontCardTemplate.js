@@ -181,12 +181,12 @@ const generateCardTemplateGe = function () {
         <img class="card-bg-1" src="${hostname}/assets/img/card/newbg1.png" alt="cannabis">
         <img class="card-bg-2" src="${hostname}/assets/img/card/newbg2.png" alt="cannabis statue">
         <header class="card-header">
-            <h3>{{name}} {{surname}}</h3>
+            <h3>{{name}}</h3>
             <span>{{status}}</span>
         </header>
         <main class="card-main">
             <div class="bedges">
-              {{{fullBedgesContainer}}}
+              {{{fullBadgesContainer}}}
             </div>
             <img src="${hostname}{{img}}" class="profile-img"  alt="user">
         </main>

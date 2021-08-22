@@ -7,7 +7,6 @@ head
   meta(content='' name='keywords')
   // Favicons
   link(href='assets/img/kanafi.png' rel='icon')
-  link(href='assets/img/apple-touch-icon.png' rel='apple-touch-icon')
   // Google Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
@@ -36,7 +35,7 @@ section#hero.d-flex
         img.hero-img(src='assets/img/kanafi.png' alt='cannabis')
         h2 &#x10E0;&#x10D0;&#x10E1;&#x10D0;&#x10EA;&#x10D0; &#x10D3;&#x10D0;&#x10E1;&#x10D7;&#x10D4;&#x10E1; &#x10E8;&#x10D4;&#x10DC;&#x10D8;&#x10D0;
     .text-center
-      a.btn-get-started.scrollto(href='https://www.girchi.com/donate/project/legalize') &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10D2;&#x10D5;&#x10D8;&#x10D4;&#x10E0;&#x10D7;&#x10D3;&#x10D8;
+      a.btn-get-started.registerBtn.scrollto(href='https://www.girchi.com/donate/project/legalize') &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10D2;&#x10D5;&#x10D8;&#x10D4;&#x10E0;&#x10D7;&#x10D3;&#x10D8;
     .row.icon-boxes
       .col-md-6.col-lg-3.d-flex.align-items-stretch.mb-5.mb-lg-0(data-aos='zoom-in' data-aos-delay='200')
         .icon-box
@@ -148,13 +147,13 @@ main#main
       .testimonials-slider.swiper-container(data-aos='fade-up' data-aos-delay='100')
         #latestUsers.swiper-wrapper
           ul#usersList.list-group
-          - for(let i = arr.length - 1; i > arr.length - 6; i--)
+          - for(let i = 0; i < 7; i++)
               .swiper-slide
                 .testimonial-item
-                  a(href=`user/${arr[i].card_number}`)
-                    img.testimonial-img(src=`${arr[i].img}` alt='user image')
-                    h3= `${arr[i].name} ${arr[i].surname}`
-                    h4= arr[i].status
+                  a(href=`user/${allUser[i].user_id}`)
+                    img.testimonial-img(src=`${allUser[i].img}` alt='user image')
+                    h3= allUser[i].name
+                    h4= allUser[i].status
           // testimonial items
         // <div class="swiper-pagination"></div>
         a.users-btn(href='users') &#x10E1;&#x10E0;&#x10E3;&#x10DA;&#x10D8; &#x10E1;&#x10D8;&#x10D0;

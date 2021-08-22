@@ -7,7 +7,6 @@ head
   meta(content='' name='keywords')
   // Favicons
   link(href='../assets/img/kanafi.png' rel='icon')
-  link(href='../assets/img/apple-touch-icon.png' rel='apple-touch-icon')
   // Google Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
@@ -34,6 +33,9 @@ head
   // ======= Main =======
 .container
   form#card-form.card-form.row(action='http://127.0.0.1:3000/custom-card' method='POST' enctype="multipart/form-data")
+    .mb-3.col-12.col-sm-6.col-lg-4(style="display:none")
+      label.form-label USERID
+      input.form-control(type='text' id="idInput" name="user_id" )
     .mb-3.col-12.col-sm-6.col-lg-4
       label.form-label სახელი და გვარი
       input.form-control(type='text' id="nameInput" name="name" )
@@ -45,7 +47,7 @@ head
       input.form-control(type='date' id="dateInput" name="birth_date" maxlength='5' )
     .mb-3.col-12.col-sm-6.col-lg-4
       label.form-label მთავარი სტატუსის არჩევა
-      select.form-select(name='status' id="statusInput")
+      select.form-select(name='status' id="statusInput" )
         option(value='გროუერი') გროუერი
         option(value='მწეველი') მწეველი
         option(value='მეწარმე') მეწარმე
@@ -55,17 +57,9 @@ head
         option(value='ინვესტორი') ინვესტორი
         option(value='ოქროს_ინვესტორი') ოქროს ინვესტორი
 
-
-    .mb-3.col-12.col-sm-6.col-lg-4
-      label.form-label ბარათის ნომერი
-      input.form-control(type='text' id="cardNumInput" name="card_number" )
-    .mb-3.col-12.col-sm-6.col-lg-4
-      label.form-label ამოწურვის ვადა
-      input.form-control(type='date' name="validation" id="validInput" )
-
     .mb-3.col-12.col-sm-6.col-lg-4
       label.form-label დამატებითი სტატუსების არჩევა
-      select.form-select(name='multiplestatuses' id="multipleStatusInput" multiple)
+      select.form-select(name='other_statuses' id="multipleStatusInput" multiple )
         option(value='გროუერი') გროუერი
         option(value='მწეველი') მწეველი
         option(value='მეწარმე') მეწარმე
@@ -77,9 +71,9 @@ head
 
     .mb-3.col-12.col-sm-6.col-lg-4
       label.form-label.w-100 ფოტოს ატვირთვა
-      input.form-control-file(type='file' for='image' id="imageInput" name="image" value='Choose Image' )
+      input.form-control-file(type='file' for='image' id="imageInput" name="image" value='Choose Image' required)
 
-    button.btn.btn-success(type='submit') გენერირება
+    button.btn.btn-success(type='submit') ბარათის გენერირება
 
 
   #cards.cards
@@ -110,18 +104,18 @@ head
         span#cardStatus grower
       main.card-main
         span DATE OF BIRTH
-        h4#cardDate 08/04/2000
+        h4#cardDate 2000-08-04
 
         span PERSONAL NUMBER
         h4#cardIdNum 0100101010
 
         span CARD NUMBER
-        h4#cardNum 1000
+        h4#cardNum= newCardNum
 
         span DATE OF REGISTRATION
-        h4#cardValid 01/07/2021
+        h4#cardRegister 01-07-2021
 
-        img.qrcode-img(src="/assets/img/legalizeqr.png")
+        img.qrcode-img(src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAklEQVR4AewaftIAAANOSURBVO3BMW4kMRDAQFLY/3+ZlzYcyBiMfVagKoH4jyoZ1Bgq2VBjqGRQY6hkUGOjkkGN/2hxHWVxHWVxHeXDF5X8IDUeUGOoZEONoZIHKnmgkh+kxrC4jrK4jrK4jvLhG2o8UMlB1NhQY6jkATUeqGRjcR1lcR1lcR3lwx+rZFBjUGOo5IFKNtQ4yOI6yuI6yuI6yofDVTKosVHJoMZQyVDJQRbXURbXURbXUT58o5JfpMYLlWxUMqgxVPJCJT9ocR1lcR1lcR3lwxdq/KFKBjWGSgY1hkoGNYZKBjWGSjbU+EWL6yiL6yiL6yhW/CU1Nip5QI0HKjnI4jrK4jrK4jrKh2+o8UAlgxpDJRuVDGpsVPJAJYMaL1SyocYDi+soi+soi+soH16qZFBjqOSFSl6oZFBjo5INNR6o5IHFdZTFdZTFdZQPX6gxVDKosVHJoMYfUmOoZFBjUGOjkkGNoZJBjQcW11EW11EW11E+fEONB9QYKnlBjaGSjUo21BgqGdQYKhnUeKCSQY2NxXWUxXWUxXUUKyY1hkoGNYZKBjU2KhnUGCp5QY2hkg01HqhkUOMHLa6jLK6jLK6jCMRGJRtqDJX8IjV+UCU/SI2hkgcW11EW11EW11E+fFHJoMZQyQNqbFQyqLFRyQtqDGq8UMlQyYYaG4vrKIvrKIvrKAIxVLKhxlDJoMZQyaDGRiUbavygSgY1HqjkBTWGxXWUxXWUxXWUD79MjY1KBjWGSoZKBjU2KhnUGNR4QY0XKhkW11EW11EW11Gs+EtqPFDJoMZQyYYaG5U8oMZQyaDGUMnG4jrK4jrK4jqKQPxHlWyo8UAlG2o8UMmgxlDJoMZGJYMaG4vrKIvrKIvrKB++qOQHqfFCJS9UsqHGRiUPVLJRyaDGsLiOsriOsriO8uEbajxQyQNqbKgxVLKhxkYlG2q8oMYDlQyL6yiL6yiL6ygfDlPJA2oMlWyosVHJoMZQyaDGA5UMagyL6yiL6yiL6ygfDqPGUMmgxguVDGpsVDKoMVTygxbXURbXURbXUT58o5JfVMmGGkMlgxqDGkMlgxpDJYMaQyVDJYMaQyUvLK6jLK6jLK6jfPhCjT+kxguVHESNBxbXURbXURbXUf4BQTPp4IX4NmoAAAAASUVORK5CYII=")
       footer.card-footer
         h2 CANNABIS LOVERS SOCIETY
 

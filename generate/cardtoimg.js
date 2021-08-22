@@ -5,70 +5,66 @@ import nodeHtmlToImage from "node-html-to-image";
 
 import fetch from "node-fetch";
 import * as fs from "fs";
-import convertLetters from "../assets/js/convertLetters.js";
-import generateQR from "../assets/js/generateQR.js";
+import convertLetters from "../users-assets/js/convertLetters.js";
+import generateQR from "../users-assets/js/generateQR.js";
+import statusChanger from "../users-assets/js/statusChanger.js";
 
 const hostname = "http://127.0.0.1:3000";
-function statusToClass(word, statuses) {
-  return statuses[word.replace(" ", "_")].replace(" ", "")
-}
-function statusToEngStatus(word, statuses) {
-  return statuses[word.replace(" ", "_")]
-}
+
+const usersJsons = fs.readdirSync("users-assets/usersJsons");
+const usersCounter = usersJsons.length;
 
 (async () => {
-  const response = await fetch(`${hostname}/assets/js/users.json`);
-  const usersJSON = await response.json();
-  const users = usersJSON.data;
+  for (let i = 0; i < usersCounter; i++) {
+    const currentJsonName = usersJsons[i];
+    const userResponse = await fetch(`${hostname}/users-assets/usersJsons/${currentJsonName}`);
+    const user = await userResponse.json();
 
-  const statusResponse = await fetch(`${hostname}/assets/js/statuses.json`);
-  const statuses = await statusResponse.json();
+    const currentCardNum = user.card_number;
+    const currentUserID = user.user_id;
 
-  for (let i = 0; i < users.length; i++) {
-    const frontPath = `./generate/card-imgs/${users[i].card_number}-front.jpg`;
-    const backPath = `./generate/card-imgs/${users[i].card_number}-back.jpg`;
-    const QRValue = await generateQR(`legalize.ge/user/${users[i].card_number}`);
-
+    const frontPath = `./generate/card-imgs/${currentCardNum}-front.jpg`;
+    const backPath = `./generate/card-imgs/${currentCardNum}-back.jpg`;
+    const QRValue = await generateQR(`legalize.ge/user/${currentUserID}`);
+ 
     // Creates img tags for current user's badges
-    const fullBedgesClasses = [statusToClass(users[i].status, statuses), ...users[i].other_statuses.map(word => statusToClass(word, statuses))];
-    let fullBedgesContainer = '';
-    fullBedgesClasses.forEach(bedgeClass => {
-      fullBedgesContainer += `
-        <img src="${hostname}/assets/img/card/${bedgeClass}.png" /> 
+    const fullBadgesClasses = [statusChanger(user.status, 'class'), ...user.other_statuses.map(word => statusChanger(word, 'class'))];
+    let fullBadgesContainer = '';
+    fullBadgesClasses.forEach(badgeClass => {
+      fullBadgesContainer += `
+        <img src="${hostname}/assets/img/card/${badgeClass}.png" /> 
       `
     })
 
     if (!fs.existsSync(frontPath)) {
       await nodeHtmlToImage({
-        output: `./generate/card-imgs/${users[i].card_number}-front.jpg`,
+        output: `./generate/card-imgs/${currentCardNum}-front.jpg`,
         html: generateCardTemplateGe(),
         content: {
-          name: users[i].name,
-          surname: users[i].surname,
-          img: users[i].img,
-          status: users[i].status,
-          class: statusToClass(users[i].status, statuses),
-          fullBedgesContainer: fullBedgesContainer, 
+          name: user.name,
+          img: user.img,
+          status: statusChanger(user.status, 'clean'),
+          class: statusChanger(user.status, 'class'),
+          fullBadgesContainer, 
         },
-      }).then(() => console.log(`${users[i].card_number} frontcard created successfully!'`));
+      }).then(() => console.log(`${currentCardNum} frontcard created successfully!'`));
     }
     if (!fs.existsSync(backPath)) {
       await nodeHtmlToImage({
-        output: `./generate/card-imgs/${users[i].card_number}-back.jpg`,
+        output: `./generate/card-imgs/${currentCardNum}-back.jpg`,
         html: generateCardTemplateEn(),
         content: {
-          card_number: users[i].card_number,
-          id_number: users[i].id_number,
-          birth_date: users[i].birth_date,
-          registration: users[i].registration,
+          card_number: user.card_number,
+          id_number: user.id_number,
+          birth_date: user.birth_date,
+          registration: user.registration,
 
-          nameEN: convertLetters(users[i].name),
-          surnameEN: convertLetters(users[i].surname),
-          statusEN: statusToEngStatus(users[i].status, statuses),
-          QRValue: QRValue,
+          name: convertLetters(user.name),
+          status: statusChanger(user.status, 'lang'),
+          QRValue,
         },
-      }).then(() => console.log(`${users[i].card_number} backcard created successfully!'`));
+      }).then(() => console.log(`${currentCardNum} backcard created successfully!'`));
     }
+    console.log(`User Number ${currentCardNum} Done...`); 
   }
-  console.log("Works...");
 })();

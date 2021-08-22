@@ -7,7 +7,6 @@ head
   meta(content='' name='keywords')
   // Favicons
   link(href='/assets/img/kanafi.png' rel='icon')
-  link(href='/assets/img/apple-touch-icon.png' rel='apple-touch-icon')
   // Google Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
@@ -32,12 +31,12 @@ include parts/header.pug
   .user-info
     img.user-info--pic(src=`${data.img}` alt='')
     .user-info--text
-      h4= `${data.name} ${data.surname}`
-      span.main-status= data.status
-      each val in data.other_statuses
+      h4= data.name
+      span.main-status= data.cleanStatus
+      each val in data.cleanOtherStatuses
         span= val
     
-  #cards.cards(class=`card-${engData.class}`)
+  #cards.cards(class=`card-${engData.fullStatusClasses[0]}`)
 
     //- Card Front Side
     div.card-side.card-front
@@ -45,8 +44,8 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= `${data.name} ${data.surname}`
-        span= data.status
+        h3= data.name
+        span= data.cleanStatus
       main.card-main
         div.bedges
           - for(let i = 0; i < engData.fullStatusClasses.length; i++)
@@ -61,7 +60,7 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= `${engData.name} ${engData.surname}`
+        h3= engData.name
         span= engData.status
       main.card-main
         span DATE OF BIRTH
@@ -76,7 +75,7 @@ include parts/header.pug
         span DATE OF REGISTRATION
         h4= data.registration
 
-        img.qrcode-img(src=QRValue)
+        img.qrcode-img(src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAklEQVR4AewaftIAAANOSURBVO3BMW4kMRDAQFLY/3+ZlzYcyBiMfVagKoH4jyoZ1Bgq2VBjqGRQY6hkUGOjkkGN/2hxHWVxHWVxHeXDF5X8IDUeUGOoZEONoZIHKnmgkh+kxrC4jrK4jrK4jvLhG2o8UMlB1NhQY6jkATUeqGRjcR1lcR1lcR3lwx+rZFBjUGOo5IFKNtQ4yOI6yuI6yuI6yofDVTKosVHJoMZQyVDJQRbXURbXURbXUT58o5JfpMYLlWxUMqgxVPJCJT9ocR1lcR1lcR3lwxdq/KFKBjWGSgY1hkoGNYZKBjWGSjbU+EWL6yiL6yiL6yhW/CU1Nip5QI0HKjnI4jrK4jrK4jrKh2+o8UAlgxpDJRuVDGpsVPJAJYMaL1SyocYDi+soi+soi+soH16qZFBjqOSFSl6oZFBjo5INNR6o5IHFdZTFdZTFdZQPX6gxVDKosVHJoMYfUmOoZFBjUGOjkkGNoZJBjQcW11EW11EW11E+fEONB9QYKnlBjaGSjUo21BgqGdQYKhnUeKCSQY2NxXWUxXWUxXUUKyY1hkoGNYZKBjU2KhnUGCp5QY2hkg01HqhkUOMHLa6jLK6jLK6jCMRGJRtqDJX8IjV+UCU/SI2hkgcW11EW11EW11E+fFHJoMZQyQNqbFQyqLFRyQtqDGq8UMlQyYYaG4vrKIvrKIvrKAIxVLKhxlDJoMZQyaDGRiUbavygSgY1HqjkBTWGxXWUxXWUxXWUD79MjY1KBjWGSoZKBjU2KhnUGNR4QY0XKhkW11EW11EW11Gs+EtqPFDJoMZQyYYaG5U8oMZQyaDGUMnG4jrK4jrK4jqKQPxHlWyo8UAlG2o8UMmgxlDJoMZGJYMaG4vrKIvrKIvrKB++qOQHqfFCJS9UsqHGRiUPVLJRyaDGsLiOsriOsriO8uEbajxQyQNqbKgxVLKhxkYlG2q8oMYDlQyL6yiL6yiL6ygfDlPJA2oMlWyosVHJoMZQyaDGA5UMagyL6yiL6yiL6ygfDqPGUMmgxguVDGpsVDKoMVTygxbXURbXURbXUT58o5JfVMmGGkMlgxqDGkMlgxpDJYMaQyVDJYMaQyUvLK6jLK6jLK6jfPhCjT+kxguVHESNBxbXURbXURbXUf4BQTPp4IX4NmoAAAAASUVORK5CYII=')
       footer.card-footer
         h2 CANNABIS LOVERS SOCIETY
  

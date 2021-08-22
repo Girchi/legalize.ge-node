@@ -1,4 +1,5 @@
-import convertLetters from "./convertLetters.js";
+import convertLetters from "/users-assets/js/convertLetters.js";
+import statusChanger from "/users-assets/js/statusChanger.js";
 
 // Input assets for other statuses
 $(document).ready(function(){
@@ -15,10 +16,8 @@ const cardForm = document.getElementById("card-form");
 const cards = document.getElementById("cards");
 const cardFullName = document.querySelectorAll("#cardFullName");
 const cardIdNum = document.getElementById("cardIdNum");
-const cardNum = document.getElementById("cardNum");
 
 const cardDate = document.getElementById("cardDate");
-const cardValid = document.getElementById("cardValid");
 const cardStatus = document.querySelectorAll("#cardStatus");
 const cardBadges = document.getElementById("bedges");
 
@@ -26,41 +25,30 @@ const cardBadges = document.getElementById("bedges");
 function changeInputData() {
   const nameValue = document.getElementById("nameInput").value;
   const idNumValue = document.getElementById("idNumInput").value;
-  const cardNumValue = document.getElementById("cardNumInput").value;
 
   if (nameValue) {
-    let convertedName = nameValue
-      .split(" ")
-      .map((word) => convertLetters(word))
-      .join(" ");
     cardFullName[0].textContent = nameValue;
-    cardFullName[1].textContent = convertedName;
+    cardFullName[1].textContent = convertLetters(nameValue);
   }
   if (idNumValue) cardIdNum.textContent = idNumValue;
-  if (cardNumValue) cardNum.textContent = cardNumValue;
 }
 
 // Changes data on select item
-async function changeSelectData() {
-  const response = await fetch(`assets/js/statuses.json`);
-  const statuses = await response.json();
-
+function changeSelectData() {
   const dateValue = document.getElementById("dateInput").value;
-  const validValue = document.getElementById("validInput").value;
 
   const statusValue = document.getElementById("statusInput").value;
   const multipleStatuses = document.querySelectorAll('#multipleStatusInput option:checked');
-  
-  const statusClass = statuses[statusValue].replace(" ", "");
-  const status = statusValue.replace("_", " ");
-  const statusEN = statuses[statusValue];
+  const statusClass = statusChanger(statusValue, 'class');
+  const status = statusChanger(statusValue, 'clean');;
+  const statusEN = statusChanger(statusValue, 'lang');
 
   cardBadges.innerHTML = `
     <img src="/assets/img/card/${statusClass}.png">
   `;
   
-  multipleStatuses.forEach(stat => {
-    const statusClass = statuses[stat.value].replace(" ", "");
+  multipleStatuses.forEach(status => {
+    const statusClass = statusChanger(status.value, 'class');
     cardBadges.innerHTML += `
       <img src="/assets/img/card/${statusClass}.png">
     `
@@ -74,7 +62,6 @@ async function changeSelectData() {
     cardStatus[1].textContent = statusEN;
 
     if (dateValue) cardDate.textContent = dateValue;
-    if (validValue) cardValid.textContent = validValue;
   }
 }
 

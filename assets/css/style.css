@@ -133,7 +133,7 @@ h6 {
   transition: all 0.5s;
   background: #fff;
   z-index: 997;
-  padding: 15px 0;
+  padding: 10px 0;
   border-bottom: 1px solid #e6f2fb;
 }
 
@@ -150,6 +150,7 @@ h6 {
   font-weight: 300;
   letter-spacing: 0.5px;
   font-family: "BPG Arial", sans-serif;
+  flex: 1;
 }
 
 #header .logo a {
@@ -306,6 +307,35 @@ h6 {
   }
 }
 
+.login-info {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  padding: 5px 10px !important;
+  border-radius: 3px;
+  box-shadow: 0px 0 28px 0 rgba(18, 66, 101, 0.08);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.login-info:hover {
+  transform: scale(1.04);
+}
+
+.login-info img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.login-info h4 {
+  font-size: 1rem;
+  margin: 0 0 0 8px;
+  color: #124265;
+  font-weight: bold;
+}
+
 /**
 * Mobile Navigation 
 */
@@ -322,12 +352,30 @@ h6 {
   color: #fff;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1200px) {
   .mobile-nav-toggle {
     display: block;
   }
   .navbar ul {
     display: none;
+  }
+  .login-info {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+  .login-info:hover {
+    transform: translateX(-50%) scale(1.04);;
+  }
+  .login-info img {
+    width: 40px;
+    height: 40px;
+  }
+  .login-info h4 {
+    font-size: 15px;
   }
 }
 
@@ -2035,4 +2083,8 @@ section {
 
 .constitution .type-geo {
   list-style-type: georgian;
+}
+
+.disabled {
+  display: none !important;
 }
