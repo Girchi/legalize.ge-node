@@ -1,26 +1,16 @@
-doctype html
-head
-  meta(charset='utf-8')
-  meta(content='width=device-width, initial-scale=1.0' name='viewport')
-  title Legalize
-  meta(content='' name='description')
-  meta(content='' name='keywords')
-  // Favicons
-  link(href='assets/img/kanafi.png' rel='icon')
-  // Google Fonts
-  link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
-  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
-  // Vendor CSS Files
-  link(href='assets/vendor/aos/aos.css' rel='stylesheet')
-  link(href='assets/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-  link(href='assets/vendor/bootstrap-icons/bootstrap-icons.css' rel='stylesheet')
-  link(href='assets/vendor/boxicons/css/boxicons.min.css' rel='stylesheet')
-  link(href='assets/vendor/glightbox/css/glightbox.min.css' rel='stylesheet')
-  link(href='assets/vendor/remixicon/remixicon.css' rel='stylesheet')
-  link(href='assets/vendor/swiper/swiper-bundle.min.css' rel='stylesheet')
+// ======= Head =======
+include parts/head.pug
+// End Head
 
-  // Template Main CSS File
-  link(href='assets/css/style.css' rel='stylesheet')
+// Template CSS Files
+link(href='assets/css/style.css' rel='stylesheet')
+
+script.
+  let x = !{JSON.stringify(tokenExpired)}
+  if(x === 'expired'){
+    window.localStorage.clear()
+    window.location = '/';
+  }
 
 // ======= Header =======
 include parts/header.pug
@@ -35,7 +25,7 @@ section#hero.d-flex
         img.hero-img(src='assets/img/kanafi.png' alt='cannabis')
         h2 &#x10E0;&#x10D0;&#x10E1;&#x10D0;&#x10EA;&#x10D0; &#x10D3;&#x10D0;&#x10E1;&#x10D7;&#x10D4;&#x10E1; &#x10E8;&#x10D4;&#x10DC;&#x10D8;&#x10D0;
     .text-center
-      a.btn-get-started.registerBtn.scrollto(href='https://www.girchi.com/donate/project/legalize') &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10D2;&#x10D5;&#x10D8;&#x10D4;&#x10E0;&#x10D7;&#x10D3;&#x10D8;
+      a.btn-get-started.scrollto#joinBtn(href='https://www.girchi.com/donate/project/legalize') &#x10E8;&#x10D4;&#x10DB;&#x10DD;&#x10D2;&#x10D5;&#x10D8;&#x10D4;&#x10E0;&#x10D7;&#x10D3;&#x10D8;
     .row.icon-boxes
       .col-md-6.col-lg-3.d-flex.align-items-stretch.mb-5.mb-lg-0(data-aos='zoom-in' data-aos-delay='200')
         .icon-box
@@ -147,13 +137,13 @@ main#main
       .testimonials-slider.swiper-container(data-aos='fade-up' data-aos-delay='100')
         #latestUsers.swiper-wrapper
           ul#usersList.list-group
-          - for(let i = 0; i < 7; i++)
-              .swiper-slide
-                .testimonial-item
-                  a(href=`user/${allUser[i].user_id}`)
-                    img.testimonial-img(src=`${allUser[i].img}` alt='user image')
-                    h3= allUser[i].name
-                    h4= allUser[i].status
+          each user in usersList
+            .swiper-slide
+              .testimonial-item
+                a(href=`user/${user.user_id}`)
+                  img.testimonial-img(src=`${user.img}` alt='user image')
+                  h3= user.name
+                  h4= user.status
           // testimonial items
         // <div class="swiper-pagination"></div>
         a.users-btn(href='users') &#x10E1;&#x10E0;&#x10E3;&#x10DA;&#x10D8; &#x10E1;&#x10D8;&#x10D0;
@@ -483,16 +473,9 @@ main#main
 include parts/footer.pug
 // End Footer
 
-#preloader
-a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
-  i.bi.bi-arrow-up-short
-// Vendor JS Files
-script(src='assets/vendor/aos/aos.js')
-script(src='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-script(src='assets/vendor/glightbox/js/glightbox.min.js')
-script(src='assets/vendor/isotope-layout/isotope.pkgd.min.js')
-script(src='assets/vendor/php-email-form/validate.js')
-script(src='assets/vendor/purecounter/purecounter.js')
-script(src='assets/vendor/swiper/swiper-bundle.min.js')
+// ======= Scripts =======
+include parts/scripts.pug
+// End Scripts
+
 // Template Main JS File
 script(src='assets/js/main.js')

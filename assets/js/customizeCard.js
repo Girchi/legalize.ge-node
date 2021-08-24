@@ -1,5 +1,5 @@
-import convertLetters from "/users-assets/js/convertLetters.js";
-import statusChanger from "/users-assets/js/statusChanger.js";
+import convertLetters from "/assets/js/convertLetters.js";
+import statusChanger from "/assets/js/statusChanger.js";
 
 // Input assets for other statuses
 $(document).ready(function(){
@@ -23,11 +23,11 @@ const cardBadges = document.getElementById("bedges");
 
 // Changes data on input with keyboard
 function changeInputData() {
-  const nameValue = document.getElementById("nameInput").value;
+  let nameValue = document.getElementById("nameInput").value;
   const idNumValue = document.getElementById("idNumInput").value;
 
   if (nameValue) {
-    cardFullName[0].textContent = nameValue;
+    cardFullName[0].textContent = convertLetters(nameValue, 'geo');
     cardFullName[1].textContent = convertLetters(nameValue);
   }
   if (idNumValue) cardIdNum.textContent = idNumValue;

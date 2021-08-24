@@ -1,26 +1,10 @@
-doctype html
-head
-  meta(charset='utf-8')
-  meta(content='width=device-width, initial-scale=1.0' name='viewport')
-  title Legalize
-  meta(content='' name='description')
-  meta(content='' name='keywords')
-  // Favicons
-  link(href='/assets/img/kanafi.png' rel='icon')
-  // Google Fonts
-  link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
-  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous')
-  // Vendor CSS Files
-  link(href='/assets/vendor/aos/aos.css' rel='stylesheet')
-  link(href='/assets/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-  link(href='/assets/vendor/bootstrap-icons/bootstrap-icons.css' rel='stylesheet')
-  link(href='/assets/vendor/boxicons/css/boxicons.min.css' rel='stylesheet')
-  link(href='/assets/vendor/glightbox/css/glightbox.min.css' rel='stylesheet')
-  link(href='/assets/vendor/remixicon/remixicon.css' rel='stylesheet')
-  link(href='/assets/vendor/swiper/swiper-bundle.min.css' rel='stylesheet')
-  // Template Main CSS File
-  link(href='/assets/css/style.css' rel='stylesheet')
-  link(href='/assets/css/user.css' rel='stylesheet')
+// ======= Head =======
+include parts/head.pug
+// End Head
+
+// Template CSS Files
+link(href='/assets/css/style.css' rel='stylesheet')
+link(href='/assets/css/user.css' rel='stylesheet')
 
 // ======= Header =======
 include parts/header.pug
@@ -29,14 +13,14 @@ include parts/header.pug
 // ======= Main =======
 #userinfo-container.container.pb-4
   .user-info
-    img.user-info--pic(src=`${data.img}` alt='')
+    img.user-info--pic(src=`${userData.img}` alt='profile pic')
     .user-info--text
-      h4= data.name
-      span.main-status= data.cleanStatus
-      each val in data.cleanOtherStatuses
+      h4= userData.name
+      span.main-status= userDataConverted.cleanStatuses[0]
+      each val in userDataConverted.cleanStatuses.slice(1)
         span= val
     
-  #cards.cards(class=`card-${engData.fullStatusClasses[0]}`)
+  #cards.cards(class=`card-${userDataConverted.convertedClasses[0]}`)
 
     //- Card Front Side
     div.card-side.card-front
@@ -44,13 +28,13 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= data.name
-        span= data.cleanStatus
+        h3= userData.name
+        span= userDataConverted.cleanStatuses[0]
       main.card-main
         div.bedges
-          - for(let i = 0; i < engData.fullStatusClasses.length; i++)
-            img(src=`/assets/img/card/${engData.fullStatusClasses[i]}.png` alt='bedge')
-        img.profile-img(src=`${data.img}` alt='user')
+          - for(let i = 0; i < userDataConverted.convertedClasses.length; i++)
+            img(src=`/assets/img/card/${userDataConverted.convertedClasses[i]}.png` alt='bedge')
+        img.profile-img(src=`${userData.img}` alt='user')
       footer.card-footer
          h2 კანაფის მოყვარულთა საზოგადოება
 
@@ -60,20 +44,20 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= engData.name
-        span= engData.status
+        h3= userDataConverted.convertedName
+        span= userDataConverted.convertedStatus
       main.card-main
         span DATE OF BIRTH
-        h4= data.birth_date
+        h4= userData.birth_date
 
         span PERSONAL NUMBER
-        h4= data.id_number
+        h4= userData.id_number
 
         span CARD NUMBER
-        h4= data.card_number
+        h4= userData.card_number
 
         span DATE OF REGISTRATION
-        h4= data.registration
+        h4= userData.registration
 
         img.qrcode-img(src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAklEQVR4AewaftIAAANOSURBVO3BMW4kMRDAQFLY/3+ZlzYcyBiMfVagKoH4jyoZ1Bgq2VBjqGRQY6hkUGOjkkGN/2hxHWVxHWVxHeXDF5X8IDUeUGOoZEONoZIHKnmgkh+kxrC4jrK4jrK4jvLhG2o8UMlB1NhQY6jkATUeqGRjcR1lcR1lcR3lwx+rZFBjUGOo5IFKNtQ4yOI6yuI6yuI6yofDVTKosVHJoMZQyVDJQRbXURbXURbXUT58o5JfpMYLlWxUMqgxVPJCJT9ocR1lcR1lcR3lwxdq/KFKBjWGSgY1hkoGNYZKBjWGSjbU+EWL6yiL6yiL6yhW/CU1Nip5QI0HKjnI4jrK4jrK4jrKh2+o8UAlgxpDJRuVDGpsVPJAJYMaL1SyocYDi+soi+soi+soH16qZFBjqOSFSl6oZFBjo5INNR6o5IHFdZTFdZTFdZQPX6gxVDKosVHJoMYfUmOoZFBjUGOjkkGNoZJBjQcW11EW11EW11E+fEONB9QYKnlBjaGSjUo21BgqGdQYKhnUeKCSQY2NxXWUxXWUxXUUKyY1hkoGNYZKBjU2KhnUGCp5QY2hkg01HqhkUOMHLa6jLK6jLK6jCMRGJRtqDJX8IjV+UCU/SI2hkgcW11EW11EW11E+fFHJoMZQyQNqbFQyqLFRyQtqDGq8UMlQyYYaG4vrKIvrKIvrKAIxVLKhxlDJoMZQyaDGRiUbavygSgY1HqjkBTWGxXWUxXWUxXWUD79MjY1KBjWGSoZKBjU2KhnUGNR4QY0XKhkW11EW11EW11Gs+EtqPFDJoMZQyYYaG5U8oMZQyaDGUMnG4jrK4jrK4jqKQPxHlWyo8UAlG2o8UMmgxlDJoMZGJYMaG4vrKIvrKIvrKB++qOQHqfFCJS9UsqHGRiUPVLJRyaDGsLiOsriOsriO8uEbajxQyQNqbKgxVLKhxkYlG2q8oMYDlQyL6yiL6yiL6ygfDlPJA2oMlWyosVHJoMZQyaDGA5UMagyL6yiL6yiL6ygfDqPGUMmgxguVDGpsVDKoMVTygxbXURbXURbXUT58o5JfVMmGGkMlgxqDGkMlgxpDJYMaQyVDJYMaQyUvLK6jLK6jLK6jfPhCjT+kxguVHESNBxbXURbXURbXUf4BQTPp4IX4NmoAAAAASUVORK5CYII=')
       footer.card-footer
@@ -83,16 +67,9 @@ include parts/header.pug
 include parts/footer.pug
 // End Footer
 
-#preloader
-a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
-  i.bi.bi-arrow-up-short
-// Vendor JS Files
-script(src='/assets/vendor/aos/aos.js')
-script(src='/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-script(src='/assets/vendor/glightbox/js/glightbox.min.js')
-script(src='/assets/vendor/isotope-layout/isotope.pkgd.min.js')
-script(src='/assets/vendor/php-email-form/validate.js')
-script(src='/assets/vendor/purecounter/purecounter.js')
-script(src='/assets/vendor/swiper/swiper-bundle.min.js')
+// ======= Scripts =======
+include parts/scripts.pug
+// End Scripts
+
 // Template Main JS File
 script(src='/assets/js/main.js')

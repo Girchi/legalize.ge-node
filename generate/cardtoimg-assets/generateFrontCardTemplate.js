@@ -1,6 +1,5 @@
-const hostname = "http://127.0.0.1:3000";
-
-
+import dotenv from "dotenv"
+dotenv.config()
 
 const generateCardTemplateGe = function () {
   return `
@@ -177,9 +176,9 @@ const generateCardTemplateGe = function () {
 
   <body>
     <div class="card-side">
-        <img class="card-bg-0" src="${hostname}/assets/img/kanafi.png" alt="cannabis">
-        <img class="card-bg-1" src="${hostname}/assets/img/card/newbg1.png" alt="cannabis">
-        <img class="card-bg-2" src="${hostname}/assets/img/card/newbg2.png" alt="cannabis statue">
+        <img class="card-bg-0" src="${process.env.HOSTNAME}/assets/img/kanafi.png" alt="cannabis">
+        <img class="card-bg-1" src="${process.env.HOSTNAME}/assets/img/card/newbg1.png" alt="cannabis">
+        <img class="card-bg-2" src="${process.env.HOSTNAME}/assets/img/card/newbg2.png" alt="cannabis statue">
         <header class="card-header">
             <h3>{{name}}</h3>
             <span>{{status}}</span>
@@ -188,7 +187,7 @@ const generateCardTemplateGe = function () {
             <div class="bedges">
               {{{fullBadgesContainer}}}
             </div>
-            <img src="${hostname}{{img}}" class="profile-img"  alt="user">
+            <img src="${process.env.HOSTNAME}{{img}}" class="profile-img"  alt="user">
         </main>
         <footer class="card-footer">
             <h2>კანაფის მოყვარულთა საზოგადოება</h2>

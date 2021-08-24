@@ -1,21 +1,23 @@
-import express, { response } from "express";
+import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import fetch from "node-fetch";
 import * as fs from "fs";
 import bodyParser from "body-parser";
 import multer from "multer";
+import fetch from "node-fetch";
+import https from "https";
+import FormData from 'form-data';
+import dotenv from "dotenv";
+dotenv.config();
 
-import convertLetters from "./users-assets/js/convertLetters.js";
-import statusChanger from "./users-assets/js/statusChanger.js";
-
-import { userInfo } from "os";
+import convertLetters from "./assets/js/convertLetters.js";
+import statusChanger from "./assets/js/statusChanger.js";
 
 const app = express();
 
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./users-assets/usersImages");
+    cb(null, "./assets/img/users-images");
   },
   filename: (req, file, cb) => {
     cb(null, `${file.originalname}`);
@@ -23,161 +25,231 @@ const fileStorageEngine = multer.diskStorage({
 });
 
 const upload = multer({ storage: fileStorageEngine });
-const port = 3000;
-const hostname = "http://127.0.0.1:3000";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.set("view engine", "pug");
 
-app.use("/users-assets", express.static("users-assets"));
 app.use("/assets", express.static("assets"));
 app.use("/generate", express.static("generate"));
 
-app.listen(port, "127.0.0.1", () =>
-  console.log(`Server running at ${hostname}`)
-);
+const options = {
+  key: fs.readFileSync('https-conf/key.pem'),
+  cert: fs.readFileSync('https-conf/cert.pem')
+};
 
-// Home Page Route
+https.createServer(options, app).listen(process.env.PORT);
+
+
+// Home Page
 app.get("/", (req, res) => {
-  (async () => {
-    let allUser = []
-    const usersJSONList = fs.readdirSync("./users-assets/usersJsons")
 
-    for(const userJSON of usersJSONList){
-      const dataResponse = await fetch(`${hostname}/users-assets/usersJsons/${userJSON}`);
-      const data = await dataResponse.json();
-      data.status = statusChanger(data.status, 'clean')
-      allUser.push(data)
-    }
+  const usersJSONList = fs.readdirSync("./database")
 
-    allUser.sort((a, b) => b.card_number - a.card_number)
+  let tokenExpired = '';
+  if(req.query.param1 != undefined){
+    tokenExpired = req.query.param1;
+  }
 
-    res.render(__dirname + "/snippet/index", {
-      allUser
-    });
-  })();
+  const usersList = usersJSONList
+  .map(userJSON => {
+    userJSON = JSON.parse(fs.readFileSync(`./database/${userJSON}`, 'utf8'))
+    userJSON.status = statusChanger(userJSON.status, 'clean')
+    return userJSON
+  })
+  .sort((a, b) => b.card_number - a.card_number)
+  .slice(0,6)
+
+  res.render(__dirname + "/snippet/index", { usersList, tokenExpired });
+
 });
 
-// Users Page Route
+
+// All Users page
 app.get("/users", (req, res) => {
-  (async () => {
-    let allUser = []
-    const usersJSONList = fs.readdirSync("./users-assets/usersJsons")
 
-    for(const userJSON of usersJSONList){
-        const dataResponse = await fetch(`${hostname}/users-assets/usersJsons/${userJSON}`);
-        const data = await dataResponse.json();
-        allUser.push(data)
-    }
+  const usersJSONList = fs.readdirSync("./database")
 
-    allUser.sort((a, b) => b.card_number - a.card_number)
+  const usersList = usersJSONList
+  .map(userJSON => JSON.parse(fs.readFileSync(`./database/${userJSON}`, 'utf8')))
+  .sort((a, b) => b.card_number - a.card_number)
 
-    res.render(__dirname + "/snippet/users", {
-      allUser
-    });
-  })();
+  res.render(__dirname + "/snippet/users", { usersList });
 });
 
-// Countitution Page Route
+
+// User inner page
+app.get("/user/:id", (req, res) => {
+  try {
+    const userData = JSON.parse(fs.readFileSync(`./database/${req.params.id}.json`, 'utf8'));
+
+    const userDataConverted = {
+      convertedName: convertLetters(userData.name),
+      convertedStatus: statusChanger(userData.status, 'lang'),
+      convertedClasses: [statusChanger(userData.status, 'class'), ...userData.other_statuses.map(status => statusChanger(status, 'class'))],
+      cleanStatuses: [statusChanger(userData.status, 'clean'), ...userData.other_statuses.map(status => statusChanger(status, 'clean'))]
+    };
+    res.render(__dirname + "/snippet/profile", { userDataConverted, userData });
+  } catch (error) {
+    res.redirect(`/custom-card`);
+  }
+});
+
+
+// User data import Page
+app.get("/custom-card", (req, res) => {
+  res.render(__dirname + "/snippet/custom-card", { newCardNum: freeCardNum() });
+});
+
+
+// User verify and save data
+app.post( "/custom-card", [urlencodedParser, upload.single("image")], (req, res) => {
+
+  const reqBody = req.body;
+  const token = reqBody.token;
+
+  fetch(`${process.env.HOSTNAME_GIRCHI}/jsonapi`, { cache: 'no-cache', headers: { 'Authorization': token } })
+  .then(response => {
+    if (response.status === 200) {
+      return response.json();
+    } else if (response.status === 401){
+      console.log('Unauthorized User')
+      res.redirect('/?param1=expired')
+    }
+  })
+  .then(loginData => {
+    if(loginData.meta){
+      const userID = loginData.meta.links.me.meta.id
+      const userExists = fs.existsSync(`./database/${userID}.json`)
+      const userAllowed = userID !== '';
+
+      reqBody.other_statuses == null ? reqBody.other_statuses = [] : 
+      typeof reqBody.other_statuses !== "object" ? reqBody.other_statuses = [reqBody.other_statuses] : true;
+
+      reqBody.token = ''
+      reqBody.img = '/' + req.file.path;
+      reqBody.name = convertLetters(reqBody.name, 'geo')
+      reqBody.card_number = freeCardNum()
+      reqBody.registration = '2021-07-13'
+      reqBody.user_id = userID
+      const stringedData = JSON.stringify(reqBody)
+
+      if(!userExists && userAllowed){
+        
+        fs.writeFileSync(`./database/${userID}.json`, stringedData, err => { if(err) console.log(err) })
+        res.redirect(`/user/${userID}`);
+
+      } else if(userExists && userAllowed){
+
+        const userOldJSON = JSON.parse(fs.readFileSync(`./database/${userID}.json`, 'utf8'));
+        reqBody.card_number = userOldJSON.card_number;
+        const stringedData = JSON.stringify(reqBody)
+
+        fs.writeFileSync(`./database/${userID}.json`, stringedData, err => { if(err) console.log(err) })
+        res.redirect(`/user/${userID}`);
+        
+      } else {
+        res.redirect(`/`);
+      }
+
+    } else {
+      res.redirect(`/`);
+    }
+  })
+
+});
+
+
+// User Authorization
+app.post("/authorization/:accessToken&:expirationTime&:userID", (req, res) => {
+
+// Grant User By Token
+  const formData = new FormData()
+  formData.append("grant_type", "facebook_login_grant");
+  formData.append("client_id", process.env.CLIENT_ID);
+  formData.append("client_secret", process.env.SECRET_KEY);
+  formData.append("facebook_access_token", req.params.accessToken);
+  formData.append("facebook_user_id", req.params.userID);
+  formData.append("facebook_token_expires_in", req.params.expirationTime);
+
+  fetch(`${process.env.HOSTNAME_GIRCHI}/oauth/token`, { method: 'POST', body: formData })
+  .then((response) => {
+    if (response.status === 200) {
+    return response.json();
+    } else if (response.status === 401){
+      res.status(401).json({ error: 'Unauthorized' });
+    }
+  })
+  .then((tokenGrant) => {
+    if(tokenGrant != undefined){
+    const token = `Bearer ${tokenGrant.access_token}`
+
+
+    // Get User Information
+    fetch(`${process.env.HOSTNAME_GIRCHI}/jsonapi`, { cache: 'no-cache', headers: { 'Authorization': token } })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else if (response.status === 401){
+            console.log('Unauthorized User')
+        }
+    })
+    .then(userInfo => {
+      if(userInfo != undefined){
+      const userID = userInfo.meta.links.me.meta.id
+      const userPath = userInfo.meta.links.me.href
+
+      fetch(userPath, { cache: 'no-cache', headers: { 'Authorization': token } })
+      .then(response => response.json())
+      .then(userData => {
+    
+        const userLoginName = userData.data.attributes.name
+        const userFirstName = userData.data.attributes.field_first_name
+        const userLastName = userData.data.attributes.field_last_name
+        const userImgLocation = userData.data.relationships.user_picture.links.related.href
+
+        fetch(userImgLocation, { cache: 'no-cache', headers: { 'Authorization': token } })
+        .then(response => response.json())
+        .then(userImgData => {
+          let userImgPath = userImgData.data ?
+            `${process.env.HOSTNAME_GIRCHI}${userImgData.data.attributes.uri.url}` :
+            `./assets/img/avatar.png`;
+
+          const localStore = { token, userID, userImgPath, userFirstName, userLastName, userLoginName }
+
+          res.send({localStore})    
+        })
+      })
+      }
+    })
+    }
+  })
+});
+
+
+// Countitution Page
 app.get("/constitution", (req, res) => {
   res.render(__dirname + "/snippet/constitution");
 });
 
-// Download PDFs Page Route
+
+// Download PDFs Page
 app.get("/cards-download", (req, res) => {
   let PDFDirectory = fs.readdirSync("generate/pdf");
   res.render(__dirname + "/snippet/card-download", { PDFDirectory });
 });
 
-// User Cards Page Route
-app.get("/user/:id", (req, res) => {
-  (async () => {
-    const dataResponse = await fetch(`${hostname}/users-assets/usersJsons/${req.params.id}.json`);
-    const data = await dataResponse.json();
 
-    data.cleanStatus = statusChanger(data.status, 'clean');
-    data.cleanOtherStatuses = data.other_statuses.map(status => statusChanger(status, 'clean'));
+// Defines free card number
+function freeCardNum() {
+  const usersJSONList = fs.readdirSync("./database")
 
-    const engData = {
-      name: convertLetters(data.name),
-      status: statusChanger(data.status, 'lang'),
-      fullStatusClasses: [statusChanger(data.status, 'class'), ...data.other_statuses.map(word => statusChanger(word, 'class'))]
-    };
+  const usersList = usersJSONList
+  .map(userJSON => JSON.parse(fs.readFileSync(`./database/${userJSON}`, 'utf8')))
+  .sort((a, b) => b.card_number - a.card_number)
 
-    res.render(__dirname + "/snippet/profile", {
-      data,
-      engData,
-    });
-  })();
-});
+  const newCardNum = usersList[0].card_number + 1;
 
-// Customize Cards Page Routes
-app.get("/custom-card", (req, res) => {
-  (async () => {
-    let allUser = []
-    const usersJSONList = fs.readdirSync("./users-assets/usersJsons")
-
-    for(const userJSON of usersJSONList){
-        const dataResponse = await fetch(`${hostname}/users-assets/usersJsons/${userJSON}`);
-        const data = await dataResponse.json();
-        allUser.push(data)
-    }
-
-    allUser.sort((a, b) => b.card_number - a.card_number)
-    const newCardNum = allUser[0].card_number + 1;
-
-    res.render(__dirname + "/snippet/custom-card", {
-      newCardNum
-    });
-  })();
-});
-
-app.post(
-  "/custom-card",
-  [urlencodedParser, upload.single("image")],
-  (req, res) => {
-    (async () => {
-
-      const userInformation = req.body;
-      const userID = userInformation.user_id;
-      const userExists = fs.existsSync(`./users-assets/usersJsons/${userID}.json`)
-
-      if(userInformation.other_statuses == null){
-        userInformation.other_statuses = []
-      }else if(typeof userInformation.other_statuses !== "object"){
-        userInformation.other_statuses = [userInformation.other_statuses]
-      }
-
-      let allUser = []
-      const usersJSONList = fs.readdirSync("./users-assets/usersJsons")
-
-      for(const userJSON of usersJSONList){
-          const dataResponse = await fetch(`${hostname}/users-assets/usersJsons/${userJSON}`);
-          const data = await dataResponse.json();
-          allUser.push(data)
-      }
-
-      allUser.sort((a, b) => b.card_number - a.card_number)
-      const newCardNum = allUser[0].card_number + 1;
-
-      userInformation.img = '/' + req.file.path;
-      userInformation.card_number = newCardNum;
-      userInformation.registration = '2021-07-13'
-      const stringedData = JSON.stringify(userInformation)
-
-      if(!userExists && userID !== ''){
-        fs.writeFile(`./users-assets/usersJsons/${userID}.json`, stringedData, err => { if(err) console.log(err) })
-        res.redirect(`/user/${userID}`);
-      } else if(userExists && userID !== ''){
-        res.redirect(`/user/${userID}`);
-        console.log('User already exists on server')
-      } else {
-        res.redirect(`/`);
-        console.log('You are not logged in')
-      }
-
-    })();
-  }
-);
+  return newCardNum
+}

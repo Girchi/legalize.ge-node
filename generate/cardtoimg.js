@@ -3,36 +3,34 @@ import generateCardTemplateGe from "./cardtoimg-assets/generateFrontCardTemplate
 import generateCardTemplateEn from "./cardtoimg-assets/generateBackCardTemplate.js";
 import nodeHtmlToImage from "node-html-to-image";
 
-import fetch from "node-fetch";
 import * as fs from "fs";
-import convertLetters from "../users-assets/js/convertLetters.js";
-import generateQR from "../users-assets/js/generateQR.js";
-import statusChanger from "../users-assets/js/statusChanger.js";
+import convertLetters from "../assets/js/convertLetters.js";
+import generateQR from "../assets/js/generateQR.js";
+import statusChanger from "../assets/js/statusChanger.js";
 
-const hostname = "http://127.0.0.1:3000";
+import dotenv from "dotenv"
 
-const usersJsons = fs.readdirSync("users-assets/usersJsons");
-const usersCounter = usersJsons.length;
 
 (async () => {
-  for (let i = 0; i < usersCounter; i++) {
-    const currentJsonName = usersJsons[i];
-    const userResponse = await fetch(`${hostname}/users-assets/usersJsons/${currentJsonName}`);
-    const user = await userResponse.json();
+  dotenv.config()
 
-    const currentCardNum = user.card_number;
-    const currentUserID = user.user_id;
+  const sortedUsers = getSortedUsers();
+
+  for(const userData of sortedUsers){
+
+    const currentCardNum = userData.card_number;
+    const currentUserID = userData.user_id;
 
     const frontPath = `./generate/card-imgs/${currentCardNum}-front.jpg`;
     const backPath = `./generate/card-imgs/${currentCardNum}-back.jpg`;
-    const QRValue = await generateQR(`legalize.ge/user/${currentUserID}`);
+    const QRValue = await generateQR(`https://legalize.ge/user/${currentUserID}`);
  
     // Creates img tags for current user's badges
-    const fullBadgesClasses = [statusChanger(user.status, 'class'), ...user.other_statuses.map(word => statusChanger(word, 'class'))];
+    const fullBadgesClasses = [statusChanger(userData.status, 'class'), ...userData.other_statuses.map(status => statusChanger(status, 'class'))];
     let fullBadgesContainer = '';
     fullBadgesClasses.forEach(badgeClass => {
       fullBadgesContainer += `
-        <img src="${hostname}/assets/img/card/${badgeClass}.png" /> 
+        <img src="${process.env.HOSTNAME}/assets/img/card/${badgeClass}.png" /> 
       `
     })
 
@@ -41,10 +39,10 @@ const usersCounter = usersJsons.length;
         output: `./generate/card-imgs/${currentCardNum}-front.jpg`,
         html: generateCardTemplateGe(),
         content: {
-          name: user.name,
-          img: user.img,
-          status: statusChanger(user.status, 'clean'),
-          class: statusChanger(user.status, 'class'),
+          name: userData.name,
+          img: userData.img,
+          status: statusChanger(userData.status, 'clean'),
+          class: statusChanger(userData.status, 'class'),
           fullBadgesContainer, 
         },
       }).then(() => console.log(`${currentCardNum} frontcard created successfully!'`));
@@ -54,13 +52,13 @@ const usersCounter = usersJsons.length;
         output: `./generate/card-imgs/${currentCardNum}-back.jpg`,
         html: generateCardTemplateEn(),
         content: {
-          card_number: user.card_number,
-          id_number: user.id_number,
-          birth_date: user.birth_date,
-          registration: user.registration,
+          card_number: userData.card_number,
+          id_number: userData.id_number,
+          birth_date: userData.birth_date,
+          registration: userData.registration,
 
-          name: convertLetters(user.name),
-          status: statusChanger(user.status, 'lang'),
+          name: convertLetters(userData.name),
+          status: statusChanger(userData.status, 'lang'),
           QRValue,
         },
       }).then(() => console.log(`${currentCardNum} backcard created successfully!'`));
@@ -68,3 +66,17 @@ const usersCounter = usersJsons.length;
     console.log(`User Number ${currentCardNum} Done...`); 
   }
 })();
+
+function getSortedUsers() {
+  let allUser = []
+  const usersJSONList = fs.readdirSync("./database")
+
+  for(const userJSONName of usersJSONList){
+    const userJSON = JSON.parse(fs.readFileSync(`./database/${userJSONName}`, 'utf8'));
+    userJSON.status = statusChanger(userJSON.status, 'clean')
+    allUser.push(userJSON)
+  }
+
+  allUser.sort((a, b) => a.card_number - b.card_number)
+  return allUser
+}

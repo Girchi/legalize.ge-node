@@ -190,7 +190,11 @@ h6 {
 }
 
 .navbar a,
-.navbar a:focus {
+.navbar a:focus,
+.navbar button,
+.navbar button:focus,
+.navbar .getstarted,
+.navbar .getstarted:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -199,16 +203,21 @@ h6 {
   color: #327f37;
   white-space: nowrap;
   transition: 0.3s;
+  border: none;
 }
 
 .navbar a i,
-.navbar a:focus i {
+.navbar a:focus i,
+.navbar button i,
+.navbar button:focus i,
+.navbar .getstarted:focus i{
   font-size: 12px;
   line-height: 0;
   margin-left: 5px;
 }
 
 .navbar a:hover,
+.navbar button:hover,
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover > a {
@@ -311,9 +320,9 @@ h6 {
   display: flex;
   align-items: center;
   margin-left: 1rem;
-  padding: 5px 10px !important;
+  /* padding: 5px 10px !important; */
   border-radius: 3px;
-  box-shadow: 0px 0 28px 0 rgba(18, 66, 101, 0.08);
+  box-shadow: 0px 0 10px 0px rgba(18, 85, 101, 0.18);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -2087,4 +2096,23 @@ section {
 
 .disabled {
   display: none !important;
+}
+
+.logout-btn {
+  display: none;
+  margin-left: 5px;
+  padding: 17px 10px;
+  border: none;
+  box-shadow: 0px 0 10px 0px rgba(18, 85, 101, 0.18);
+  transition: all 0.3s ease-in-out;
+  background: #fff;
+}
+
+.logout-btn:hover {
+  transform: scale(1.08);
+  font-weight: bold;
+}
+
+.logout-btn-active {
+  display: block;
 }
