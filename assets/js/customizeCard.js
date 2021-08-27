@@ -12,19 +12,18 @@ $(document).ready(function(){
 });
 
 
-const cardForm = document.getElementById("card-form");
-const cards = document.getElementById("cards");
+const cardForm = document.querySelector("#cardForm");
 const cardFullName = document.querySelectorAll("#cardFullName");
-const cardIdNum = document.getElementById("cardIdNum");
+const cardIdNum = document.querySelector("#cardIdNum");
 
-const cardDate = document.getElementById("cardDate");
+const cardDate = document.querySelector("#cardDate");
 const cardStatus = document.querySelectorAll("#cardStatus");
-const cardBadges = document.getElementById("bedges");
+const cardBadges = document.querySelector("#bedges");
 
 // Changes data on input with keyboard
 function changeInputData() {
-  let nameValue = document.getElementById("nameInput").value;
-  const idNumValue = document.getElementById("idNumInput").value;
+  let nameValue = document.querySelector("#nameInput").value;
+  const idNumValue = document.querySelector("#idNumInput").value;
 
   if (nameValue) {
     cardFullName[0].textContent = convertLetters(nameValue, 'geo');
@@ -35,9 +34,9 @@ function changeInputData() {
 
 // Changes data on select item
 function changeSelectData() {
-  const dateValue = document.getElementById("dateInput").value;
+  const dateValue = document.querySelector("#dateInput").value;
 
-  const statusValue = document.getElementById("statusInput").value;
+  const statusValue = document.querySelector("#statusInput").value;
   const multipleStatuses = document.querySelectorAll('#multipleStatusInput option:checked');
   const statusClass = statusChanger(statusValue, 'class');
   const status = statusChanger(statusValue, 'clean');;
@@ -55,8 +54,6 @@ function changeSelectData() {
   })
 
   if (statusValue) {
-    cards.classList.remove(cards.classList[1]);
-    cards.classList.add(`card-${statusClass}`);
 
     cardStatus[0].textContent = status;
     cardStatus[1].textContent = statusEN;

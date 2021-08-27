@@ -90,7 +90,7 @@ function setUserInfo(){
     <h4>${userName}</h4>
     `
     loginInfo.href = `/user/${localStore.userID}`
-    loginInfo.style.padding = '5px 10px'
+    loginInfo.classList.add('login-info-active')
     logoutBtn.classList.add('logout-btn-active')
 
     logoutBtn.addEventListener('click', () => {

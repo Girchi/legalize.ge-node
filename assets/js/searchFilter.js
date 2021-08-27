@@ -1,8 +1,9 @@
-function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
+
+searchInput.onkeyup = () => {
+    let input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
+    ul = document.getElementById("usersList");
     li = ul.getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];

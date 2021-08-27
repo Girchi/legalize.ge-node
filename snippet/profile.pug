@@ -11,18 +11,18 @@ include parts/header.pug
 // End Header
 
 // ======= Main =======
-#userinfo-container.container.pb-4
-  .user-info
-    img.user-info--pic(src=`${userData.img}` alt='profile pic')
-    .user-info--text
+.container
+  .profile-header
+    img.user-img(src=`${userData.img}` alt='profile pic')
+    .user-text
       h4= userData.name
       span.main-status= userDataConverted.cleanStatuses[0]
       each val in userDataConverted.cleanStatuses.slice(1)
         span= val
-    
-  #cards.cards(class=`card-${userDataConverted.convertedClasses[0]}`)
+    a#editBtn.edit-btn(href="/custom-card")
+      i.fas.fa-user-edit  
 
-    //- Card Front Side
+  .cards
     div.card-side.card-front
       img.card-bg-0(src="/assets/img/kanafi.png", alt="cannabis")
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
@@ -66,6 +66,15 @@ include parts/header.pug
 // ======= Footer =======
 include parts/footer.pug
 // End Footer
+
+script.
+  let userID = !{JSON.stringify(userData.user_id)}
+  let userIDLocal = JSON.parse(localStorage.getItem('USER')).userID
+  const editBtn = document.getElementById('editBtn')
+  if(userID === userIDLocal){
+    console.log('This is loggined user')
+    editBtn.classList.add('edit-btn-active')
+  }
 
 // ======= Scripts =======
 include parts/scripts.pug

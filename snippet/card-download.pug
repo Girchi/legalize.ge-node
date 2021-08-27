@@ -4,8 +4,6 @@ include parts/head.pug
 
 // Template Main CSS File
 link(href='/assets/css/style.css' rel='stylesheet')
-link(href='/assets/css/user.css' rel='stylesheet')
-link(href='/assets/css/download.css' rel='stylesheet')
 
 body
   // ======= Header =======
@@ -13,14 +11,15 @@ body
   // End Header
 
   // ======= main =======
-  main.leaderboard__profiles.container.addList
+  main.container.documents
     each PDF in PDFDirectory  
-      a#pdfId(href=`../generate/pdf/${PDF}` download target='_blank')
-        article.leaderboard__profile
-          span.leaderboard__value
+      a(href=`/generate/pdf/${PDF}` download target='_blank')
+        article.document-canvas
+          span.document-value
             span= PDF
             span
               i.fas.fa-cloud-download-alt
+
 
   // ======= Footer =======
   include parts/footer.pug

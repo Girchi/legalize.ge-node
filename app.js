@@ -40,7 +40,7 @@ const options = {
 };
 
 https.createServer(options, app).listen(process.env.PORT);
-
+// app.listen(3000)
 
 // Home Page
 app.get("/", (req, res) => {
@@ -99,7 +99,8 @@ app.get("/user/:id", (req, res) => {
 
 // User data import Page
 app.get("/custom-card", (req, res) => {
-  res.render(__dirname + "/snippet/custom-card", { newCardNum: freeCardNum() });
+  const currentDate = new Date().toISOString().slice(0, 10);
+  res.render(__dirname + "/snippet/custom-card", { newCardNum: freeCardNum(), currentDate });
 });
 
 
@@ -119,11 +120,13 @@ app.post( "/custom-card", [urlencodedParser, upload.single("image")], (req, res)
     }
   })
   .then(loginData => {
-    if(loginData.meta){
+    if(loginData.meta != undefined){
       const userID = loginData.meta.links.me.meta.id
       const userExists = fs.existsSync(`./database/${userID}.json`)
-      const userAllowed = userID !== '';
 
+      // Define user permission here
+      const userAllowed = userID !== '';
+      
       reqBody.other_statuses == null ? reqBody.other_statuses = [] : 
       typeof reqBody.other_statuses !== "object" ? reqBody.other_statuses = [reqBody.other_statuses] : true;
 
@@ -131,7 +134,7 @@ app.post( "/custom-card", [urlencodedParser, upload.single("image")], (req, res)
       reqBody.img = '/' + req.file.path;
       reqBody.name = convertLetters(reqBody.name, 'geo')
       reqBody.card_number = freeCardNum()
-      reqBody.registration = '2021-07-13'
+      reqBody.registration = new Date().toISOString().slice(0, 10)
       reqBody.user_id = userID
       const stringedData = JSON.stringify(reqBody)
 
@@ -214,7 +217,7 @@ app.post("/authorization/:accessToken&:expirationTime&:userID", (req, res) => {
         .then(userImgData => {
           let userImgPath = userImgData.data ?
             `${process.env.HOSTNAME_GIRCHI}${userImgData.data.attributes.uri.url}` :
-            `./assets/img/avatar.png`;
+            `/assets/img/avatar.png`;
 
           const localStore = { token, userID, userImgPath, userFirstName, userLastName, userLoginName }
 
