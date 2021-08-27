@@ -120,7 +120,7 @@ app.post( "/custom-card", [urlencodedParser, upload.single("image")], (req, res)
     }
   })
   .then(loginData => {
-    if(loginData.meta != undefined){
+    if(loginData.meta !== undefined){
       const userID = loginData.meta.links.me.meta.id
       const userExists = fs.existsSync(`./database/${userID}.json`)
 
