@@ -6,25 +6,16 @@ Default configuration
 
 For FB authorization
 1. create FB application in https://developers.facebook.com/
-2. change the FB_APP_ID variable with your application ID on:
+2. change the FB_APP_ID variable with your application ID at:
 ```ruby
  assets/js/authorization.js
 ```
 
-NOTE:
-Make sure project uses HTTPS, Facebook only allows domains that use HTTPS.
+NOTE: Make sure project uses HTTPS protocol, Facebook only allows domains that use HTTPS.
 
 
-Cards Generation on Server
-1. generate card images
+Documents with user cards are generating automatically when loading:
 ```ruby
-node generate/cardtopng.js
+  /cards-download
 ```
-2. insert images into pdfs
-```ruby
-node generate/generatepdf.js
-```
-3. location of pdfs
-```ruby
-/cards-download
-```
+

@@ -1,6 +1,3 @@
-import dotenv from "dotenv"
-dotenv.config()
-
 const generateCardTemplateEn = function () {
   return `
   <html>
@@ -137,9 +134,9 @@ const generateCardTemplateEn = function () {
 
   <body>
   <div class="card-side">
-    <img class="card-bg-0" src="${process.env.HOSTNAME}/assets/img/kanafi.png" alt="cannabis">
-    <img class="card-bg-1" src="${process.env.HOSTNAME}/assets/img/card/newbg1.png" alt="cannabis">
-    <img class="card-bg-2" src="${process.env.HOSTNAME}/assets/img/card/newbg2.png" alt="cannabis statue">
+    <img class="card-bg-0" src="{{assetImg1}}" alt="cannabis">
+    <img class="card-bg-1" src="{{assetImg2}}" alt="cannabis">
+    <img class="card-bg-2" src="{{assetImg3}}" alt="cannabis statue">
     <header class="card-header">
         <h3>{{name}}</h3>
         <span>{{status}}</span>

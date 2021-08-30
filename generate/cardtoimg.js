@@ -2,81 +2,78 @@
 import generateCardTemplateGe from "./cardtoimg-assets/generateFrontCardTemplate.js";
 import generateCardTemplateEn from "./cardtoimg-assets/generateBackCardTemplate.js";
 import nodeHtmlToImage from "node-html-to-image";
-
 import * as fs from "fs";
+
 import convertLetters from "../assets/js/convertLetters.js";
 import generateQR from "../assets/js/generateQR.js";
 import statusChanger from "../assets/js/statusChanger.js";
 
-import dotenv from "dotenv"
+async function cardtoimg (body){
+
+  const cardNum = body.card_number;
+  const QRValue = await generateQR(`https://legalize.ge/user/${cardNum}`);
+
+  const profileImg = convertImage(body.img)
+  const assetImg1 = convertImage('/assets/img/kanafi.png')
+  const assetImg2 = convertImage('/assets/img/card/newbg1.png')
+  const assetImg3 = convertImage('/assets/img/card/newbg2.png')
 
 
-(async () => {
-  dotenv.config()
+  const badgeIcon = convertImage(`/assets/img/card/${statusChanger(body.status, 'class')}.png`)
 
-  const sortedUsers = getSortedUsers();
+  // Creates img tags for current user's badges
+  const fullBadgesClasses = [statusChanger(body.status, 'class'), ...body.other_statuses.map(status => statusChanger(status, 'class'))];
+  let fullBadgesContainer = '';
+  fullBadgesClasses.forEach(badgeClass => {
+    const convertedBadge = convertImage(`/assets/img/card/${badgeClass}.png`);
+    fullBadgesContainer += `
+      <img src="${convertedBadge}" /> 
+    `
+  })
 
-  for(const userData of sortedUsers){
+  await nodeHtmlToImage({
+    output: `./generate/card-imgs/${cardNum}-front.jpg`,
+    html: generateCardTemplateGe(),
+    content: {
+      name: body.name,
+      status: statusChanger(body.status, 'clean'),
+      fullBadgesContainer, 
 
-    const currentCardNum = userData.card_number;
-    const currentUserID = userData.user_id;
+      profileImg,
+      assetImg1,
+      assetImg2,
+      assetImg3,
+    },
+  }).then(() => console.log(`${cardNum} frontcard created successfully!'`));
 
-    const frontPath = `./generate/card-imgs/${currentCardNum}-front.jpg`;
-    const backPath = `./generate/card-imgs/${currentCardNum}-back.jpg`;
-    const QRValue = await generateQR(`https://legalize.ge/user/${currentUserID}`);
- 
-    // Creates img tags for current user's badges
-    const fullBadgesClasses = [statusChanger(userData.status, 'class'), ...userData.other_statuses.map(status => statusChanger(status, 'class'))];
-    let fullBadgesContainer = '';
-    fullBadgesClasses.forEach(badgeClass => {
-      fullBadgesContainer += `
-        <img src="${process.env.HOSTNAME}/assets/img/card/${badgeClass}.png" /> 
-      `
-    })
+  await nodeHtmlToImage({
+    output: `./generate/card-imgs/${cardNum}-back.jpg`,
+    html: generateCardTemplateEn(),
+    content: {
+      card_number: body.card_number,
+      id_number: body.id_number,
+      birth_date: body.birth_date,
+      registration: body.registration,
 
-    if (!fs.existsSync(frontPath)) {
-      await nodeHtmlToImage({
-        output: `./generate/card-imgs/${currentCardNum}-front.jpg`,
-        html: generateCardTemplateGe(),
-        content: {
-          name: userData.name,
-          img: userData.img,
-          status: statusChanger(userData.status, 'clean'),
-          class: statusChanger(userData.status, 'class'),
-          fullBadgesContainer, 
-        },
-      }).then(() => console.log(`${currentCardNum} frontcard created successfully!'`));
-    }
-    if (!fs.existsSync(backPath)) {
-      await nodeHtmlToImage({
-        output: `./generate/card-imgs/${currentCardNum}-back.jpg`,
-        html: generateCardTemplateEn(),
-        content: {
-          card_number: userData.card_number,
-          id_number: userData.id_number,
-          birth_date: userData.birth_date,
-          registration: userData.registration,
+      name: convertLetters(body.name),
+      status: statusChanger(body.status, 'lang'),
+      QRValue,
+      assetImg1,
+      assetImg2,
+      assetImg3
+    },
+  }).then(() => console.log(`${cardNum} backcard created successfully!'`));
 
-          name: convertLetters(userData.name),
-          status: statusChanger(userData.status, 'lang'),
-          QRValue,
-        },
-      }).then(() => console.log(`${currentCardNum} backcard created successfully!'`));
-    }
-    console.log(`User Number ${currentCardNum} Done...`); 
-  }
-})();
-
-function getSortedUsers() {
-  let allUser = []
-  const usersJSONList = fs.readdirSync("./database")
-
-  for(const userJSONName of usersJSONList){
-    const userJSON = JSON.parse(fs.readFileSync(`./database/${userJSONName}`, 'utf8'));
-    userJSON.status = statusChanger(userJSON.status, 'clean')
-    allUser.push(userJSON)
-  }
-
-  allUser.sort((a, b) => a.card_number - b.card_number)
-  return allUser
+  console.log(`User Number ${cardNum} Done...`); 
+  
 }
+
+function convertImage(img) {
+  const cleanUrl = img.replace('/', './')
+  const image = fs.readFileSync(cleanUrl);
+  const base64Image = new Buffer.from(image).toString('base64');
+  const dataURI = 'data:image/jpeg;base64,' + base64Image
+  return dataURI
+}
+
+export default cardtoimg;
