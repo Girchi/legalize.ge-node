@@ -11,7 +11,7 @@ import statusChanger from "../assets/js/statusChanger.js";
 async function cardtoimg (body){
 
   const cardNum = body.card_number;
-  const QRValue = await generateQR(`https://legalize.ge/user/${cardNum}`);
+  const QRValue = await generateQR(`https://legalize.ge/user/${body.user_id}`);
 
   const profileImg = convertImage(body.img)
   const assetImg1 = convertImage('/assets/img/kanafi.png')
