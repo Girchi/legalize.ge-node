@@ -41,8 +41,8 @@ const options = {
   cert: fs.readFileSync('https-conf/cert.pem')
 };
 
-https.createServer(options, app).listen(8000);
-console.log(`https://localhost:8000`)
+https.createServer(options, app).listen(3000);
+console.log(`https://localhost:3000`)
 // app.listen(3000)
 
 // Home Page
