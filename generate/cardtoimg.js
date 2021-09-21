@@ -1,53 +1,42 @@
-// import nodeHtmlToImage from 'node-html-to-image'
 import generateCardTemplateGe from "./cardtoimg-assets/generateFrontCardTemplate.js";
 import generateCardTemplateEn from "./cardtoimg-assets/generateBackCardTemplate.js";
 import nodeHtmlToImage from "node-html-to-image";
 import * as fs from "fs";
 
 import convertLetters from "../assets/js/convertLetters.js";
-import generateQR from "../assets/js/generateQR.js";
 import statusChanger from "../assets/js/statusChanger.js";
-
-async function cardtoimg (body){
-
-  const cardNum = body.card_number;
-  const QRValue = await generateQR(`https://legalize.ge/user/${body.user_id}`);
-
-  const profileImg = convertImage(body.img)
-  const assetImg1 = convertImage('/assets/img/kanafi.png')
-  const assetImg2 = convertImage('/assets/img/card/newbg1.png')
-  const assetImg3 = convertImage('/assets/img/card/newbg2.png')
+import generateQR from "../assets/js/generateQR.js";
 
 
-  const badgeIcon = convertImage(`/assets/img/card/${statusChanger(body.status, 'class')}.png`)
+const cardtoimg = async (body) => {
 
-  // Creates img tags for current user's badges
-  const fullBadgesClasses = [statusChanger(body.status, 'class'), ...body.other_statuses.map(status => statusChanger(status, 'class'))];
-  let fullBadgesContainer = '';
-  fullBadgesClasses.forEach(badgeClass => {
-    const convertedBadge = convertImage(`/assets/img/card/${badgeClass}.png`);
-    fullBadgesContainer += `
-      <img src="${convertedBadge}" /> 
-    `
-  })
+  const QRValue = await generateQR(`https://legalize.ge/user/${body.id_number}`);
+  const profileImg = imageEncoder(body.img)
+  const cannabisImg = imageEncoder('/assets/img/kanafi.png')
+  const cannabisImg2 = imageEncoder('/assets/img/card/newbg1.png')
+  const statueImg = imageEncoder('/assets/img/card/newbg2.png')
+
+  // Create image elements for badges
+  const badges = [statusChanger(body.status, 'class'), ...body.other_statuses.map(status => statusChanger(status, 'class'))];
+  let badgeTags = '';
+  badges.forEach(className => badgeTags += ` <img src="${imageEncoder(`/assets/img/card/${className}.png`)}" /> ` )
 
   await nodeHtmlToImage({
-    output: `./generate/card-imgs/${cardNum}-front.jpg`,
+    output: `./generate/card-imgs/${body.card_number}-front.jpg`,
     html: generateCardTemplateGe(),
     content: {
       name: body.name,
       status: statusChanger(body.status, 'clean'),
-      fullBadgesContainer, 
-
+      badgeTags, 
       profileImg,
-      assetImg1,
-      assetImg2,
-      assetImg3,
+      cannabisImg,
+      cannabisImg2,
+      statueImg,
     },
-  }).then(() => console.log(`${cardNum} frontcard created successfully!'`));
+  }).catch((err) => console.log(err));
 
   await nodeHtmlToImage({
-    output: `./generate/card-imgs/${cardNum}-back.jpg`,
+    output: `./generate/card-imgs/${body.card_number}-back.jpg`,
     html: generateCardTemplateEn(),
     content: {
       card_number: body.card_number,
@@ -58,22 +47,43 @@ async function cardtoimg (body){
       name: convertLetters(body.name),
       status: statusChanger(body.status, 'lang'),
       QRValue,
-      assetImg1,
-      assetImg2,
-      assetImg3
+      cannabisImg,
+      cannabisImg2,
+      statueImg,
     },
-  }).then(() => console.log(`${cardNum} backcard created successfully!'`));
+  }).catch((err) => console.log(err));
 
-  console.log(`User Number ${cardNum} Done...`); 
+  console.log(`User ${body.card_number} Card Created...`); 
   
 }
 
-function convertImage(img) {
+const generateCards = async () => {
+
+  const userBodies = fs.readdirSync("./database")
+    .map(userJSON => JSON.parse(fs.readFileSync(`./database/${userJSON}`, 'utf8')))
+    .sort((a, b) => a.card_number - b.card_number)
+
+  for(let body of userBodies){
+    const frontPath = `./generate/card-imgs/${body.card_number}-front.jpg`;
+    const backPath = `./generate/card-imgs/${body.card_number}-back.jpg`;
+
+    if (!fs.existsSync(frontPath) || !fs.existsSync(backPath)) {
+      console.log(`Started Creating Card ${body.card_number}`)
+      await cardtoimg(body)
+    }
+
+  }
+
+}
+
+function imageEncoder(img) {
   const cleanUrl = img.replace('/', './')
-  const image = fs.readFileSync(cleanUrl);
+  let image = fs.readFileSync(cleanUrl);
   const base64Image = new Buffer.from(image).toString('base64');
   const dataURI = 'data:image/jpeg;base64,' + base64Image
   return dataURI
 }
 
-export default cardtoimg;
+generateCards();
+
+export default cardtoimg

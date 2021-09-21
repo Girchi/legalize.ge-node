@@ -18,7 +18,7 @@ const cardIdNum = document.querySelector("#cardIdNum");
 
 const cardDate = document.querySelector("#cardDate");
 const cardStatus = document.querySelectorAll("#cardStatus");
-const cardBadges = document.querySelector("#bedges");
+const cardBadges = document.querySelector("#badges");
 
 // Changes data on input with keyboard
 function changeInputData() {
@@ -54,12 +54,10 @@ function changeSelectData() {
   })
 
   if (statusValue) {
-
     cardStatus[0].textContent = status;
     cardStatus[1].textContent = statusEN;
-
-    if (dateValue) cardDate.textContent = dateValue;
   }
+  if (dateValue) cardDate.textContent = dateValue;
 }
 
 cardForm.addEventListener("keyup", changeInputData);

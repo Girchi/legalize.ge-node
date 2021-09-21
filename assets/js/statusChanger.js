@@ -1,5 +1,5 @@
 
-function statusChanger(status, toSomething){
+function statusChanger(status, type){
     const statuses = {
         გროუერი: "grower",
         მწეველი: "smoker",
@@ -11,9 +11,9 @@ function statusChanger(status, toSomething){
         ოქროს_ინვესტორი: "golden investor"
       }
 
-    if(toSomething === 'class'){
+    if(type === 'class'){
         return statuses[status.replace(" ", "_")].replace(" ", "")
-    } else if (toSomething === 'lang') {
+    } else if (type === 'lang') {
         return statuses[status.replace(" ", "_")]
     } else {
         return status.replace('_', ' ')

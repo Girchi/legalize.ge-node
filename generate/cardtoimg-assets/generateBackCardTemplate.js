@@ -8,7 +8,7 @@ const generateCardTemplateEn = function () {
     
 
     body{
-      width: 500.775px;
+      width: 505px;
       height: 802.5px;
     }
     
@@ -35,7 +35,7 @@ const generateCardTemplateEn = function () {
       line-height: 1;
     }
     
-    .card-bg-0 {
+    .cannabis-img {
       position: absolute;
       right: -14%;
       top: -8%;
@@ -45,7 +45,7 @@ const generateCardTemplateEn = function () {
       transform: rotate(210deg);
     }
     
-    .card-bg-1 {
+    .cannabis-img2 {
       position: absolute;
       right: 19.5%;
       top: 19.5%;
@@ -54,7 +54,7 @@ const generateCardTemplateEn = function () {
       opacity: 0.09;
     }
     
-    .card-bg-2 {
+    .statue-img {
       position: absolute;
       left: -49px;
       top: 85px;
@@ -127,16 +127,16 @@ const generateCardTemplateEn = function () {
       font-weight: bold;
       letter-spacing: 1px;
       color: #000;
-      margin-bottom: 1.7rem;
+      margin-bottom: 1.4rem;
     }
     
   </style>
 
   <body>
   <div class="card-side">
-    <img class="card-bg-0" src="{{assetImg1}}" alt="cannabis">
-    <img class="card-bg-1" src="{{assetImg2}}" alt="cannabis">
-    <img class="card-bg-2" src="{{assetImg3}}" alt="cannabis statue">
+    <img class="cannabis-img" src="{{cannabisImg}}" alt="cannabis">
+    <img class="cannabis-img2" src="{{cannabisImg2}}" alt="cannabis">
+    <img class="statue-img" src="{{statueImg}}" alt="statue">
     <header class="card-header">
         <h3>{{name}}</h3>
         <span>{{status}}</span>
@@ -148,7 +148,7 @@ const generateCardTemplateEn = function () {
         <span>PERSONAL NUMBER</span>
         <h4>{{id_number}}</h4>
 
-        <span>span CARD NUMBER</span>
+        <span>CARD NUMBER</span>
         <h4>{{card_number}}</h4>
 
         <span>DATE OF REGISTRATION</span>

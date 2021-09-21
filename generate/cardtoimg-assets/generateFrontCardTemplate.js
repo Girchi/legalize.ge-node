@@ -20,7 +20,7 @@ const generateCardTemplateGe = function () {
     }
 
     body{
-      width: 500.775px;
+      width: 505px;
       height: 802.5px;
     }
    
@@ -47,7 +47,7 @@ const generateCardTemplateGe = function () {
       line-height: 1;
     }
     
-    .card-bg-0 {
+    .cannabis-img {
       position: absolute;
       right: -14%;
       top: -8%;
@@ -57,7 +57,7 @@ const generateCardTemplateGe = function () {
       transform: rotate(210deg);
     }
     
-    .card-bg-1 {
+    .cannabis-img2 {
       position: absolute;
       left: 9.5%;
       top: 11.5%;
@@ -66,7 +66,7 @@ const generateCardTemplateGe = function () {
       opacity: 0.26;
     }
     
-    .card-bg-2 {
+    .statue-img {
       position: absolute;
       left: 16%;
       top: 4%;
@@ -127,6 +127,7 @@ const generateCardTemplateGe = function () {
     }
     
     .profile-img {
+      display: block;
       width: 160px;
       height: 160px;
       border-radius: 50%;
@@ -166,23 +167,23 @@ const generateCardTemplateGe = function () {
       font-weight: bold;
       // letter-spacing: 1px;
       color: #000;
-      margin-bottom: 2.7rem;
+      margin-bottom: 2.3rem;
     }
     
   </style>
 
   <body>
     <div class="card-side">
-        <img class="card-bg-0" src="{{assetImg1}}" alt="cannabis">
-        <img class="card-bg-1" src="{{assetImg2}}" alt="cannabis">
-        <img class="card-bg-2" src="{{assetImg3}}" alt="cannabis statue">
+    <img class="cannabis-img" src="{{cannabisImg}}" alt="cannabis">
+    <img class="cannabis-img2" src="{{cannabisImg2}}" alt="cannabis">
+    <img class="statue-img" src="{{statueImg}}" alt="statue">
         <header class="card-header">
             <h3>{{name}}</h3>
             <span>{{status}}</span>
         </header>
         <main class="card-main">
             <div class="bedges">
-              {{{fullBadgesContainer}}}
+              {{{badgeTags}}}
             </div>
             <img src="{{profileImg}}" class="profile-img"  alt="user">
         </main>

@@ -289,7 +289,7 @@
   letter-spacing: -1px;
 }
 
-.bedges {
+.badges {
   display: flex;
   flex-direction: column-reverse;
   position: absolute;
@@ -297,7 +297,7 @@
   bottom: 112.5px;
 }
 
-.bedges img {
+.badges img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
