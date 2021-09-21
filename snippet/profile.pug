@@ -13,13 +13,13 @@ include parts/header.pug
 // ======= Main =======
 .container
   .profile-header
-    img.user-img(src=`${userData.img}` alt='profile pic')
+    img.user-img(src=`${img}` alt='profile pic')
     .user-text
-      h4= userData.name
-      span.main-status= userDataConverted.cleanStatuses[0]
-      each val in userDataConverted.cleanStatuses.slice(1)
-        span= val
-    a#editBtn.edit-btn(href="/custom-card")
+      h4= name
+      span.main-status.cleanWords= status
+      each val in other_statuses
+        span.cleanWords= val
+    a#editBtn.edit-btn(href="/create-card")
       i.fas.fa-user-edit  
 
   .cards
@@ -28,13 +28,11 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= userData.name
-        span= userDataConverted.cleanStatuses[0]
+        h3= name
+        span.cleanWords= status
       main.card-main
-        div.bedges
-          - for(let i = 0; i < userDataConverted.convertedClasses.length; i++)
-            img(src=`/assets/img/card/${userDataConverted.convertedClasses[i]}.png` alt='bedge')
-        img.profile-img(src=`${userData.img}` alt='user')
+        div.badges
+        img.profile-img(src=`${img}` alt='user')
       footer.card-footer
          h2 კანაფის მოყვარულთა საზოგადოება
 
@@ -44,20 +42,20 @@ include parts/header.pug
       img.card-bg-1(src="/assets/img/card/newbg1.png", alt="cannabis")
       img.card-bg-2(src="/assets/img/card/newbg2.png", alt="cannabis statue")
       header.card-header
-        h3= userDataConverted.convertedName
-        span= userDataConverted.convertedStatus
+        h3.convertWords= name
+        span.enStatuses= status
       main.card-main
         span DATE OF BIRTH
-        h4= userData.birth_date
+        h4= birth_date
 
         span PERSONAL NUMBER
-        h4= userData.id_number
+        h4= id_number
 
         span CARD NUMBER
-        h4= userData.card_number
+        h4= card_number
 
         span DATE OF REGISTRATION
-        h4= userData.registration
+        h4= registration
 
         img.qrcode-img(src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAklEQVR4AewaftIAAANOSURBVO3BMW4kMRDAQFLY/3+ZlzYcyBiMfVagKoH4jyoZ1Bgq2VBjqGRQY6hkUGOjkkGN/2hxHWVxHWVxHeXDF5X8IDUeUGOoZEONoZIHKnmgkh+kxrC4jrK4jrK4jvLhG2o8UMlB1NhQY6jkATUeqGRjcR1lcR1lcR3lwx+rZFBjUGOo5IFKNtQ4yOI6yuI6yuI6yofDVTKosVHJoMZQyVDJQRbXURbXURbXUT58o5JfpMYLlWxUMqgxVPJCJT9ocR1lcR1lcR3lwxdq/KFKBjWGSgY1hkoGNYZKBjWGSjbU+EWL6yiL6yiL6yhW/CU1Nip5QI0HKjnI4jrK4jrK4jrKh2+o8UAlgxpDJRuVDGpsVPJAJYMaL1SyocYDi+soi+soi+soH16qZFBjqOSFSl6oZFBjo5INNR6o5IHFdZTFdZTFdZQPX6gxVDKosVHJoMYfUmOoZFBjUGOjkkGNoZJBjQcW11EW11EW11E+fEONB9QYKnlBjaGSjUo21BgqGdQYKhnUeKCSQY2NxXWUxXWUxXUUKyY1hkoGNYZKBjU2KhnUGCp5QY2hkg01HqhkUOMHLa6jLK6jLK6jCMRGJRtqDJX8IjV+UCU/SI2hkgcW11EW11EW11E+fFHJoMZQyQNqbFQyqLFRyQtqDGq8UMlQyYYaG4vrKIvrKIvrKAIxVLKhxlDJoMZQyaDGRiUbavygSgY1HqjkBTWGxXWUxXWUxXWUD79MjY1KBjWGSoZKBjU2KhnUGNR4QY0XKhkW11EW11EW11Gs+EtqPFDJoMZQyYYaG5U8oMZQyaDGUMnG4jrK4jrK4jqKQPxHlWyo8UAlG2o8UMmgxlDJoMZGJYMaG4vrKIvrKIvrKB++qOQHqfFCJS9UsqHGRiUPVLJRyaDGsLiOsriOsriO8uEbajxQyQNqbKgxVLKhxkYlG2q8oMYDlQyL6yiL6yiL6ygfDlPJA2oMlWyosVHJoMZQyaDGA5UMagyL6yiL6yiL6ygfDqPGUMmgxguVDGpsVDKoMVTygxbXURbXURbXUT58o5JfVMmGGkMlgxqDGkMlgxpDJYMaQyVDJYMaQyUvLK6jLK6jLK6jfPhCjT+kxguVHESNBxbXURbXURbXUf4BQTPp4IX4NmoAAAAASUVORK5CYII=')
       footer.card-footer
@@ -67,18 +65,30 @@ include parts/header.pug
 include parts/footer.pug
 // End Footer
 
-script.
-  let userID = !{JSON.stringify(userData.user_id)}
-  let userIDLocal = JSON.parse(localStorage.getItem('USER')).userID
-  const editBtn = document.getElementById('editBtn')
-  if(userID === userIDLocal){
-    console.log('This is loggined user')
-    editBtn.classList.add('edit-btn-active')
-  }
-
 // ======= Scripts =======
 include parts/scripts.pug
 // End Scripts
 
-// Template Main JS File
-script(src='/assets/js/main.js')
+script(type="module"). 
+  //- Sets Multiple Badge Icons 
+  import statusChanger from "/assets/js/statusChanger.js";
+  const mainStatus = !{JSON.stringify(status)};
+  const otherStatuses = !{JSON.stringify(other_statuses)};
+
+  document.querySelector('.badges').innerHTML += `
+    <img src="/assets/img/card/${statusChanger(mainStatus, 'class')}.png" alt='bedge' >
+  `
+  otherStatuses.forEach(status => {
+    document.querySelector('.badges').innerHTML += `
+      <img src="/assets/img/card/${statusChanger(status, 'class')}.png" alt='bedge' >
+    `
+  })
+
+  //- Checks If User Owns Page
+  let drupalID = !{JSON.stringify(drupal_id)};
+  const localStore = JSON.parse(localStorage.getItem('UserDetails'));
+  const editBtn = document.getElementById('editBtn');
+  if(localStore && drupalID === localStore.drupalID){
+    console.log('This is logged user');
+    editBtn.classList.add('edit-btn-active');
+  }

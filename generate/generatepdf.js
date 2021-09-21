@@ -1,120 +1,137 @@
 import { PDFDocument, degrees } from "pdf-lib";
 import * as fs from "fs";
+import isCorrupted from 'is-corrupted-jpeg';
 
 // --Generate PDFs--
-async function generatepdf (){
+const generatepdf = async () => {
+try {
+  fs.readdirSync("./generate/pdf").forEach(file => { 
+    fs.unlink(`./generate/pdf/${file}`, err => { if (err) throw err; }); 
+  })
 
-  const existingUsers = getExistingUsersCardNums();
-  const PDFShouldBe = parseInt(existingUsers.length / 5)
+  let leftCards = leftCardNums();
+  
+  while(leftCards.length / 5 > 0){
 
-  for(let i = 0; i < PDFShouldBe; i++){
-  const unusedCards = getUnusedCardNums(existingUsers);
+    // Create document
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage();
 
-    if(unusedCards.length >= 5){
-      let jpgUrl, jpgImageBytes, jpgImage, jpgDims;
-      const pdfDoc = await PDFDocument.create();
-      const page = pdfDoc.addPage();
-
-      // Add background
-      jpgImageBytes = fs.readFileSync('./generate/bg.jpg');
-
-      jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-      jpgDims = jpgImage.scale(0.24);
-      page.drawImage(jpgImage, {
-        x: 0,
-        y: page.getHeight() - jpgDims.height,
-        width: jpgDims.width,
-        height: jpgDims.height,
-      });
-
-      // Fill with user card images
-      let positionY = page.getHeight() - 177.5;
-
-      let pdfName = ''
-      let currentStop = 5;
-      for (let i = 0; i < currentStop; i++) {
-        const frontPath = `./generate/card-imgs/${unusedCards[i]}-front.jpg`;
-        const backPath = `./generate/card-imgs/${unusedCards[i]}-back.jpg`;
-        if (fs.existsSync(frontPath) && fs.existsSync(backPath)) {
-          
-          // Card front side
-          jpgImageBytes = fs.readFileSync(frontPath);
-          jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-          jpgDims = jpgImage.scale(0.321);
-          page.drawImage(jpgImage, {
-            x: 286.5,
-            y: positionY,
-            width: jpgDims.width + 1.5,
-            height: jpgDims.height + 0.5,
-            rotate: degrees(90),
-          });
-
-          // Card back side
-          jpgImageBytes = fs.readFileSync(backPath);
-          jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
-          jpgDims = jpgImage.scale(0.321);
-          page.drawImage(jpgImage, {
-            x: 567,
-            y: positionY,
-            width: jpgDims.width + 1.5,
-            height: jpgDims.height,
-            rotate: degrees(90),
-          });
-
-          // Y position changes when one image set
-          positionY -= 162.5;
-
-          pdfName = pdfName + '-' +  unusedCards[i];
-        } else if(currentStop < unusedCards.length){
-          console.log(`missing card image for ${unusedCards[i]}`)
-          currentStop++
-        }
+    // Set parameters
+    let parameters = { 
+      sizes: {
+        bgWidth: 595.44,
+        bgHeight: 841.92,
+        cardWidth: 163.6,
+        cardHeight: 257.76,
+      },
+      positions: {
+        offsetY: 177.5,
+        frontPosX: 286.5,
+        backPosX: 309,
+        decValueY: 162.5,
+        offsetYBack: 163,
+      },
+      orientations: {
+        frontDegree: 90,
+        backDegree: -90,
       }
+    }, jpgImageBytes, jpgImage;
 
-      pdfName = pdfName.replace('-','')
+    // Set background into document
+    jpgImageBytes = fs.readFileSync('./generate/bg.jpg');
+    jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+    page.drawImage(jpgImage, {
+      x: 0,
+      y: page.getHeight() - parameters.sizes.bgHeight,
+      width: parameters.sizes.bgWidth,
+      height: parameters.sizes.bgHeight,
+    });
 
-      const pdfBytes = await pdfDoc.save();
+    // Fill with user card images
+    let positionY = page.getHeight() - parameters.positions.offsetY;
+    let pdfName = ''
 
-      // Saves into local folder
-      fs.writeFileSync(`./generate/pdf/${pdfName}.pdf`, pdfBytes, (err) => { 
-        if (err) throw err 
-        console.log(`PDF ${pdfName} Created`)
-      })
-    } else {
-      console.log("All pdf created based on provided images");
-      console.log("There must be 5 unused clean set of images to fill pdf");
+    for (let j = 0; j < 5; j++) {
+      const frontPath = `./generate/card-imgs/${leftCards[j]}-front.jpg`;
+      const backPath = `./generate/card-imgs/${leftCards[j]}-back.jpg`;
+      const existImages = fs.existsSync(frontPath) && fs.existsSync(backPath);
+
+      let requirement = '';
+
+      parseInt(leftCards[0]) <= 10 ? requirement = parseInt(leftCards[j]) <= 10 : 
+      parseInt(leftCards[0]) <= 1000 ? requirement = parseInt(leftCards[j]) <= 1000 : 
+      requirement = parseInt(leftCards[j]) > 1000;
+    
+      if (existImages && requirement) {
+        // Set card front side into document
+        jpgImageBytes = fs.readFileSync(frontPath);
+        jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+        page.drawImage(jpgImage, {
+          x: parameters.positions.frontPosX,
+          y: positionY,
+          width: parameters.sizes.cardWidth,
+          height: parameters.sizes.cardHeight + 1.5,
+          rotate: degrees(parameters.orientations.frontDegree),
+        }); 
+
+        // Set card back side into document
+        jpgImageBytes = fs.readFileSync(backPath);
+        jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+        page.drawImage(jpgImage, {
+          x: parameters.positions.backPosX,
+          y: positionY + parameters.positions.offsetYBack,
+          width: parameters.sizes.cardWidth,
+          height: parameters.sizes.cardHeight,
+          rotate: degrees(parameters.orientations.backDegree),
+        });
+
+        // Y position changes when one image 
+        positionY -= parameters.positions.decValueY;
+
+        pdfName = pdfName + '-' + leftCards[j];
+
+      }
     }
+
+    // Save document into directory
+    const pdfBytes = await pdfDoc.save();
+    fs.writeFileSync(`./generate/pdf/${pdfName.replace('-','')}.pdf`, pdfBytes, (err) => { 
+      if (err) throw err;
+      console.log(`PDF ${pdfName.replace('-','')} Created`)
+    })
+
+    leftCards = leftCardNums()     
   }
+} catch (err) {
+  console.log(err)
+}
 }
 
-function getExistingUsersCardNums() {
-  const usersDatabase = fs.readdirSync("./database")
-  let cardNumbers = []
+function leftCardNums() {
 
-  for(const userJSONName of usersDatabase){
-    const userData = JSON.parse(fs.readFileSync(`./database/${userJSONName}`, 'utf8'));
-    cardNumbers.push(userData.card_number);
+  const databaseCards = fs.readdirSync("./generate/card-imgs")
+  .filter(card => !isCorrupted(`./generate/card-imgs/${card}`))
+  .map(card => card.replace('-front.jpg','').replace('-back.jpg',''))
+
+  let unDublicate = [];
+  for(let card of databaseCards){
+    if(!unDublicate.includes(card)) unDublicate.push(card)
   }
 
-  cardNumbers.sort((a,b) => a - b)
-  return cardNumbers
-}
+  const directory = fs.readdirSync("./generate/pdf")
+  let directoryCards = []
 
-function getUnusedCardNums(existingUsers) {
-  const PDFDirectory = fs.readdirSync("./generate/pdf")
-  const alreadyInPDF = PDFDirectory.map(pdf => pdf.replace('.pdf', '').split('-'))
-  let alreadyInPDFSep = []
-  alreadyInPDF.forEach(pdf => pdf.forEach(inpdf => alreadyInPDFSep.push(inpdf)))
-
-  let freeCards = []
-
-  for(let i = 0; i < existingUsers.length; i++){
-    const findItem = alreadyInPDFSep.find(value => value == existingUsers[i])
-    if(!findItem){
-      freeCards.push(existingUsers[i])
+  for(let document of directory){
+    document = document.replace('.pdf', '').split('-');
+    for(let cardNum of document){
+      directoryCards.push(cardNum)
     }
   }
-  return freeCards;
+
+  const leftCards = unDublicate.filter(baseCard => !directoryCards.find(dirCard => dirCard == baseCard))
+  return leftCards;
+
 }
 
 export default generatepdf;
