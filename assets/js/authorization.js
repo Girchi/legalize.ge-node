@@ -1,5 +1,4 @@
-const FB_APP_ID = '';
-
+const FB_APP_ID = '303239883689419';
 
 // Set logged user credentials
 const localStore = JSON.parse(localStorage.getItem('UserDetails'));
