@@ -6,7 +6,7 @@ import isCorrupted from 'is-corrupted-jpeg';
 const generatepdf = async () => {
 try {
   fs.readdirSync("./generate/pdf").forEach(file => { 
-    fs.unlink(`./generate/pdf/${file}`, err => { if (err) throw err; }); 
+    if(file != ".gitkeep") fs.unlink(`./generate/pdf/${file}`, err => { if (err) throw err; }); 
   })
 
   let leftCards = leftCardNums();
@@ -116,7 +116,13 @@ function leftCardNums() {
 
   let unDublicate = [];
   for(let card of databaseCards){
-    if(!unDublicate.includes(card)) unDublicate.push(card)
+    const frontPath = `./generate/card-imgs/${card}-front.jpg`;
+    const backPath = `./generate/card-imgs/${card}-back.jpg`;
+    const existImages = fs.existsSync(frontPath) && fs.existsSync(backPath);
+    
+    if(existImages && !unDublicate.includes(card)){
+      unDublicate.push(card)
+    }
   }
 
   const directory = fs.readdirSync("./generate/pdf")
