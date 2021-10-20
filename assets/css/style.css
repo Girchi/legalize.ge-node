@@ -580,6 +580,10 @@ h6 {
   color: #2487ce;
 }
 
+.icon-box {
+  width: 100%;
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
