@@ -96,7 +96,7 @@ app.get('/create-card', (req, res) => {
 // User verify and save data
 app.post( "/create-card", [urlencodedParser, upload.single("image")], async (req, res) => {
 
-  axiosInstance.get('/jsonapi', { cache: 'no-cache', headers: { 'Authorization': req.body.token } } )
+  axiosInstance.get('/jsonapi', { headers: { 'Authorization': req.body.token } } )
   .then((response) => {
     // If user is logged successfully
     if(response && response.data.meta){
@@ -136,7 +136,7 @@ app.post( "/create-card", [urlencodedParser, upload.single("image")], async (req
           };
           await axiosInstance.patch(`/jsonapi/user/user/${details.drupal_id}`, body, config );
         } catch (err) {
-          console.log(err.message)
+          console.log(err.response.data)
         }
       }
 
@@ -225,11 +225,11 @@ app.get("/authorization/:authType/:token&:expirationTime&:userID", async (req, r
     const oauthTokens = await axiosInstance.post('/oauth/token', formData, { headers: formData.getHeaders() } );
     const token = `Bearer ${oauthTokens.data.access_token}`;
     
-    const drupalResponse = await axiosInstance.get('/jsonapi', { cache: 'no-cache', headers: { 'Authorization': token } } );
+    const drupalResponse = await axiosInstance.get('/jsonapi', { headers: { 'Authorization': token } } );
     const drupalID = drupalResponse.data.meta.links.me.meta.id
 
-    const userResponse = await axiosInstance.get(`/jsonapi/user/user/${drupalID}`, { cache: 'no-cache', headers: { 'Authorization': token } } );
-    const userPictureResponse = await axiosInstance.get(`/jsonapi/user/user/${drupalID}/user_picture`, { cache: 'no-cache', headers: { 'Authorization': token } } );
+    const userResponse = await axiosInstance.get(`/jsonapi/user/user/${drupalID}`, { headers: { 'Authorization': token } } );
+    const userPictureResponse = await axiosInstance.get(`/jsonapi/user/user/${drupalID}/user_picture`, { headers: { 'Authorization': token } } );
 
     const localStore = {
       token: `Bearer ${oauthTokens.data.access_token}`,

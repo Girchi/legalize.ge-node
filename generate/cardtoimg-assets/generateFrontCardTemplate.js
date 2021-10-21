@@ -1,3 +1,7 @@
+import * as fs from "fs";
+const fontGalaktioni = fs.readFileSync("./assets/fonts/DMGalaktioni.ttf");
+const base64Galaktioni = new Buffer.from(fontGalaktioni).toString('base64');
+
 const generateCardTemplateGe = function () {
   return `
   <html>
@@ -8,16 +12,8 @@ const generateCardTemplateGe = function () {
     
     @font-face {
       font-family: 'DM Galaktioni';
-      src: url('../../assets/fonts/DMGalaktioni.eot');
-      src: url('../../assets/fonts/DMGalaktioni.eot?#iefix') format('embedded-opentype'),
-          url('../../assets/fonts/DMGalaktioni.woff2') format('woff2'),
-          url('../../assets/fonts/DMGalaktioni.woff') format('woff'),
-          url('../../assets/fonts/DMGalaktioni.ttf') format('truetype'),
-          url('../../assets/fonts/DMGalaktioni.svg#../fonts/DMGalaktioni') format('svg');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
+        src: url('data:woff2;charset=utf-8;base64,${base64Galaktioni}') format('woff2');
+      }
 
     body{
       width: 505px;

@@ -16,7 +16,7 @@ import convertLetters from "/assets/js/convertLetters.js";
 
         try {
             loader.classList.add('loading');
-            const drupalResponse = await axiosInstance.get('/jsonapi', { cache: 'no-cache', headers: { 'Authorization': userDetails.token } } );
+            const drupalResponse = await axiosInstance.get('/jsonapi', { headers: { 'Authorization': userDetails.token } } );
             loader.classList.remove('loading');
             if(drupalResponse.status === 200) setData(userDetails)
 
