@@ -31,11 +31,10 @@ include parts/footer.pug
 include parts/scripts.pug
 // End Scripts
 
-script(src='/assets/js/searchFilter.js')
-
 script(type="module"). 
   //- Infinite Scroll
   let users = !{JSON.stringify(usersList)}
+  console.log(users)
 
   document.addEventListener("DOMContentLoaded", () => {
     let options = {
@@ -47,28 +46,58 @@ script(type="module").
     observer.observe(document.querySelector("#underUl"));
   
     //an initial load of some data
-    getData();
+    add20();
   });
 
   function handleIntersect(entries) {
     if (entries[0].isIntersecting) {
-      getData();
+      add20();
     }
   }
 
-  function getData() {
+  searchInput.onkeyup = () => {
+    let inputedVal = searchInput.value;
+    getData(inputedVal)
+    add20()
+  }
+
+  function getData(value) {
     let usersContainer = document.querySelector("#usersList")
-    let usersCounter = usersContainer.childElementCount;
-    for(let i = usersCounter; i < usersCounter + 20; i++){
-      if(users[i]){
-        usersContainer.innerHTML += `
-          <li>
-            <a class="list-user" href="user/${users[i].id_number}">
-              <img class="user-img" src="${users[i].img}">
-              <span class="user-name">${users[i].name}</span>
-            </a>
-          </li>
-        `
+    if(value !== '' && value != undefined){
+      usersContainer.innerHTML = '';
+
+      users.map(user => {
+        if(user.name.indexOf(value) > -1){
+          usersContainer.innerHTML += `
+            <li>
+              <a class="list-user" href="user/${user.id_number}">
+                <img class="user-img" src="${user.img}">
+                <span class="user-name">${user.name}</span>
+              </a>
+            </li>
+          `
+        }
+      })
+    }
+  }
+
+  function add20() {
+    let inputedVal = searchInput.value;
+    if(inputedVal == '' || inputedVal == undefined){
+      let usersContainer = document.querySelector("#usersList")
+      let usersCounter = usersContainer.childElementCount;
+
+      for(let i = usersCounter; i < usersCounter + 20; i++){
+        if(users[i]){
+          usersContainer.innerHTML += `
+            <li>
+              <a class="list-user" href="user/${users[i].id_number}">
+                <img class="user-img" src="${users[i].img}">
+                <span class="user-name">${users[i].name}</span>
+              </a>
+            </li>
+          `
+        }
       }
     }
   }
