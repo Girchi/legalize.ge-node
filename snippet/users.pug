@@ -15,11 +15,6 @@ include parts/header.pug
   h5 მომხმარებლები
   input#searchInput(type='text' placeholder='ძიება....')
   ul#usersList
-    //- each user in usersList
-    //-   li
-    //-     a.list-user(href=`user/${user.id_number}`)
-    //-       img.user-img(src= user.img)
-    //-       span.user-name= user.name
   br
   p#underUl= `სულ მომხმარებელთა რაოდენობა - ${usersList.length}` 
                   
@@ -34,7 +29,6 @@ include parts/scripts.pug
 script(type="module"). 
   //- Infinite Scroll
   let users = !{JSON.stringify(usersList)}
-  console.log(users)
 
   document.addEventListener("DOMContentLoaded", () => {
     let options = {
@@ -46,58 +40,45 @@ script(type="module").
     observer.observe(document.querySelector("#underUl"));
   
     //an initial load of some data
-    add20();
+    lazyLoading(users)
   });
+
+  let filteredUsers = [];
 
   function handleIntersect(entries) {
     if (entries[0].isIntersecting) {
-      add20();
+      console.log(searchInput.value)
+      if(searchInput.value !== '') {
+        lazyLoading(filteredUsers);
+      } else {
+        lazyLoading(users);
+      }
     }
   }
 
-  searchInput.onkeyup = () => {
-    let inputedVal = searchInput.value;
-    getData(inputedVal)
-    add20()
+  searchInput.addEventListener('keyup', setFilteredData);
+
+  function setFilteredData() {
+    const value = searchInput.value;
+    usersList.innerHTML = '';
+    filteredUsers = users.filter(user => user.name.indexOf(value) > -1);
+    lazyLoading(filteredUsers);
   }
 
-  function getData(value) {
-    let usersContainer = document.querySelector("#usersList")
-    if(value !== '' && value != undefined){
-      usersContainer.innerHTML = '';
+  function lazyLoading(users) {
 
-      users.map(user => {
-        if(user.name.indexOf(value) > -1){
-          usersContainer.innerHTML += `
-            <li>
-              <a class="list-user" href="user/${user.id_number}">
-                <img class="user-img" src="${user.img}">
-                <span class="user-name">${user.name}</span>
-              </a>
-            </li>
-          `
-        }
-      })
-    }
-  }
+    let usersCounter = usersList.childElementCount;
 
-  function add20() {
-    let inputedVal = searchInput.value;
-    if(inputedVal == '' || inputedVal == undefined){
-      let usersContainer = document.querySelector("#usersList")
-      let usersCounter = usersContainer.childElementCount;
-
-      for(let i = usersCounter; i < usersCounter + 20; i++){
-        if(users[i]){
-          usersContainer.innerHTML += `
-            <li>
-              <a class="list-user" href="user/${users[i].id_number}">
-                <img class="user-img" src="${users[i].img}">
-                <span class="user-name">${users[i].name}</span>
-              </a>
-            </li>
-          `
-        }
+    for(let i = usersCounter; i < usersCounter + 20; i++){
+      if(users[i]){
+        usersList.innerHTML += `
+          <li>
+            <a class="list-user" href="user/${users[i].id_number}">
+              <img class="user-img" src="${users[i].img}">
+              <span class="user-name">${users[i].name}</span>
+            </a>
+          </li>
+        `
       }
     }
   }
