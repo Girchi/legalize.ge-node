@@ -321,3 +321,12 @@ function nextCardNum(priority) {
     fs.mkdirSync('./generate/pdf');
   };
 })()
+
+
+app.get("/petition", (req, res) => {
+  res.render(__dirname + "/snippet/petition");
+});
+
+app.post("/post-petition", (req, res) => {
+  
+});

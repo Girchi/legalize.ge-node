@@ -1,0 +1,47 @@
+// Head
+include parts/head.pug
+
+// Template CSS Files
+link(href='/assets/css/style.css' rel='stylesheet')
+link(rel="stylesheet", href="/assets/css/petition.css")
+
+// Header 
+include parts/header.pug
+
+
+.content
+  .container
+    .row.align-items-stretch.justify-content-center.no-gutters
+      .col-md-7
+        .form.h-100.contact-wrap.p-5
+          h3.text-center პეტიცია
+          form#contactForm.mb-5(action='/post' method='POST' name='petition')
+            .row
+              .col-md-6.form-group.mb-3
+                label.col-form-label სახელი*
+                input#name.form-control(type='text' required)
+            .row
+              .col-md-6.form-group.mb-3
+                label.col-form-label გვარი*
+                input#name.form-control(type='text' required)
+            .row
+              .col-md-6.form-group.mb-3
+                label.col-form-label ელ.ფოსტა*
+                input#name.form-control(type='text' required)
+            .row
+              .col-md-6.form-group.mb-3
+                label.col-form-label ტელეფონის ნომერი*
+                input#name.form-control(type='tel' onKeyPress="if(this.value.length === 9) return false;" required)
+            .row
+              .col-md-6.form-group.mb-3
+                label.col-form-label პირადი ნომერი*
+                input#name.form-control(onKeyPress="if(this.value.length === 11) return false;" type='number' required)
+            .row.justify-content-center
+              .col-md-5.form-group.text-center
+                input.btn.btn-block.btn-primary.rounded-0.py-2.px-4(type='submit' value='ხელის მოწერა') 
+                span.submitting
+
+// Footer
+include parts/footer.pug
+// Scripts 
+include parts/scripts.pug
