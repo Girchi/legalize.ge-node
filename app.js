@@ -326,7 +326,3 @@ function nextCardNum(priority) {
 app.get("/petition", (req, res) => {
   res.render(__dirname + "/snippet/petition");
 });
-
-app.post("/post-petition", (req, res) => {
-  
-});
