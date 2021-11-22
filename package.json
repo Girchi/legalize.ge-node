@@ -4,8 +4,7 @@
   "version": "2.1.0",
   "description": "cannabis lovers community",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "girchi",
   "license": "ISC",
@@ -22,8 +21,5 @@
     "pug": "^3.0.2",
     "qrcode": "^1.4.4",
     "sharp": "^0.29.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
   }
 }
