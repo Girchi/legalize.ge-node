@@ -320,10 +320,10 @@ function nextCardNum(priority) {
 
 	fs.readdirSync('./database').forEach((user) => {
 		user = JSON.parse(fs.readFileSync(`./database/${user}`, 'utf8'));
-		if (Number(user.card_number) <= 1000) {
-			reservedCards.push(user.card_number);
-    } else if (Number(user.card_number) <= 10) {
+		if (Number(user.card_number) <= 10) {
 			mostReservedCards.push(user.card_number);
+    } else if (Number(user.card_number) <= 1000) {
+			reservedCards.push(user.card_number);
 		} else if (Number(user.card_number) > 1000) {
 			otherCards.push(user.card_number);
 		}
