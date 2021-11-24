@@ -279,37 +279,15 @@ app.get("/petition", (req, res) => {
 });
 
 // Define unused card number
-function nextCardNum(priority) {
-	let mostReservedCards = [];
-	let reservedCards = [];
-	let otherCards = [];
+function nextCardNum() {
+  
+  const base = fs.readdirSync("./database")
+  .map(member => member = JSON.parse(fs.readFileSync(`./database/${member}`, 'utf8')).card_number)
+  .sort((a, b) => b - a);
 
-	fs.readdirSync('./database').forEach((user) => {
-		user = JSON.parse(fs.readFileSync(`./database/${user}`, 'utf8'));
-		if (Number(user.card_number) <= 10) {
-			mostReservedCards.push(user.card_number);
-    } else if (Number(user.card_number) <= 1000) {
-			reservedCards.push(user.card_number);
-		} else if (Number(user.card_number) > 1000) {
-			otherCards.push(user.card_number);
-		}
-	});
+  let nextCardNum = Number(base[0]) + 1 || 1;
 
-	mostReservedCards.sort((a, b) => b - a);
-	reservedCards.sort((a, b) => b - a);
-	otherCards.sort((a, b) => b - a);
-
-	let nextCardNum;
-
-	if (priority == 1) {
-		nextCardNum = Number(mostReservedCards[0]) + 1 || 1;
-	} else if (priority == 2) {
-		nextCardNum = Number(reservedCards[0]) + 1 || 11;
-	} else {
-		nextCardNum = Number(otherCards[0]) + 1 || 1001;
-	}
-
-	return JSON.stringify(nextCardNum).padStart(4, '0');
+  return JSON.stringify(nextCardNum).padStart(4, '0')
 }
 
 (function makeImportantDirectories(){
