@@ -166,6 +166,18 @@
 }
 
 @media(max-width: 450px) {
+  .form {
+    padding: 2rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+  
+  .btn {
+    font-size: .9rem;
+  }
+
   .messages {
     font-size: .85rem;
   }
@@ -173,4 +185,29 @@
   .messages i {
     font-size: 1rem;
   }
+
+  .sign-options a {
+    font-size: 14px;
+  }
+}
+
+#petitionList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#petitionList li {
+  margin-top: .3rem;
+  background-color: #f6f6f6;
+  padding: .5rem;
+  text-decoration: none;
+  font-size: .95rem;
+  color: black;
+  display: block;
+}
+
+#petitionList li:hover {
+  background-color: #eee;
 }
