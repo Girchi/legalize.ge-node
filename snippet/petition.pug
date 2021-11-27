@@ -29,6 +29,7 @@ include parts/header.pug
         i.bx.bx-chevron-up.icon-close
       #noAuthSign.collapse.show(data-bs-parent='.sign-options')
 
+     
         form#formPetition.form.col-12.col-md-8.col-lg-6
           div.messages
             #successMessage.alert.alert-success პეტიცია წარმატებით დაემატა
@@ -38,19 +39,19 @@ include parts/header.pug
           h3.heading პეტიცია
           .form-group.mb-3
             label.col-form-label სახელი*
-            input.form-control(type='text' id="nameInput" required)
+            input.form-control(type='text' value="test" id="nameInput" required)
           .form-group.mb-3
             label.col-form-label გვარი*
-            input.form-control(type='text' id="surnameInput" required)
+            input.form-control(type='text' value="test" id="surnameInput" required)
           .form-group.mb-3
             label.col-form-label პირადი ნომერი*
-            input.form-control(type='text' id="personalNumInput" maxlength='11' required)
+            input.form-control(type='text' value="test" id="personalNumInput" maxlength='11' required)
           .form-group.mb-3
             label.col-form-label ტელეფონის ნომერი*
-            input.form-control(type='tel' id="phoneNumInput" maxlength='9' required)
+            input.form-control(type='tel' value="test" id="phoneNumInput" maxlength='9' required)
           .form-group.mb-5
             label.col-form-label ელ.ფოსტა*
-            input.form-control(type='email' id="emailInput" required)
+            input.form-control(type='email' value="test@gmail.com" id="emailInput" required)
           .form-group.text-center
             input#submitBtn.btn(type='submit' value='ხელის მოწერა') 
 
@@ -68,13 +69,12 @@ include parts/header.pug
 // Footer
 include parts/footer.pug
 
-script.
 
+script.
   if(localStorage.getItem('UserDetails')){
     authItem.style.display = 'none';
     signHeading.innerText = 'ხელმოწერა'
   }
-
 
   // Grab Petitions Part
   window.onload = () => {
@@ -94,25 +94,30 @@ script.
     
     const { data: { data } } = await axiosInstance.get(`/jsonapi/webform_submission/legalize_ge_pettition_form?sort=-created&page[offset]=${submissionCount}&page[limit]=20`, {
       headers: {
-        "pragma": "no-cache",
+        "pragma": "no-cache", // Comment this line for testing, otherwise CORS won't let you get the data
         "cache-control": "no-cache"
       },
     })
 
     submissionCount += data.length;
-    
+
+
+    console.log(data);
+    let fetchedData = '';
     for (const submission of data) {
       const { data: { data } } = await axiosInstance.get(`/webform_rest/legalize_ge_pettition_form/submission/${submission.id}`)
-      petitionList.innerHTML += `
-        <li>${data.name} ${data.surname}</li>
-      `
+      //- petitionList.innerHTML += `
+        //- <li>${data.name} ${data.surname}</li>
+      //- `
+      fetchedData += `<li>${data.name} ${data.surname}</li>`
     }
+
+    petitionList.innerHTML += fetchedData;
 
     if(data.length === 20){
       loadBtn.style.display = 'inline-block';
     }
   }
-
 
   // Petition Send Part
   formPetition.onsubmit = (e) => {
@@ -123,9 +128,10 @@ script.
     e.preventDefault();
 
     submitBtn.style.display = 'none'
-    setTimeout(() => {
-      submitBtn.style.display = 'inline-block'
-    }, 3000)
+
+    //- setTimeout(() => {
+    //-   submitBtn.style.display = 'inline-block'
+    //- }, 3000)
 
     const domains = await axios.get('/assets/js/auth_config.json');
     const axiosInstance = axios.create({ baseURL: domains.data.DRUPAL_DOMAIN })
