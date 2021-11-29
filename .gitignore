@@ -4,6 +4,7 @@ https-conf/
 **/card-imgs/*
 **/pdf/*
 **/users-images/*
+keys/
 
 *.html
 .env
