@@ -1,21 +1,24 @@
 # Legalize
 Node application, which connects to a Drupal database and exchanges the information about users.
-Users can create Legalize's card by inputting their personal information and the card will be generated immediately, which can be converted as pdf files and get printed easily. 
+Users can create Legalize's card by inputting their personal information and the card will be generated immediately, which can be converted as PDF files and get printed easily. 
 Each one of them gets their unique card.
 Users can see preview of their card, while inputting the details, after authorization.
 
 
 
 ## Default configuration
-1. Create `.env` file in the project's root directory(where `package.json` is) and make it just like `example.env`
+1. Make local instance of the project: `git clone git@github.com:Girchi/legalize.ge-node.git; cd legalize.ge-node`
+2. Create `.env` file in the project's root directory(where `package.json` is) and use `example.env` as a template
 
      A. Create `/keys` directory also in the root directory
 
-     B. Generate SSL key and certificate in the `/keys` folder
-2. Insert client_id and client_secret from Drupal's Ouath module
-3. To set up a localhost environment, put in your SSL key(for example: `SSL_KEY=./keys/example.key`)
-4. It's essential to have configured JSON:API, Simple Oauth and Token, Simple Oauth Facebook Connect and Social Auth Facebook in Drupal side
-5. Change `"DRUPAL_DOMAIN"` in `assets/js/auth_config.json ` to http://girchi.docker.localhost for testing purposes
+     B. Generate SSL key and certificate in the `/keys` folder(`.gitignore` will automatically ignore it)
+     
+     C. Insert client_id and client_secret in `.env` from Drupal's Ouath module
+     
+     D. To set up a localhost environment, put in your SSL key(for example: `SSL_KEY=./keys/example.key`)
+3. **It's essential** to have configured JSON:API, Simple Oauth and Token, Simple Oauth Facebook Connect and Social Auth Facebook in Drupal side
+4. Change `"DRUPAL_DOMAIN"` in `assets/js/auth_config.json ` to http://girchi.docker.localhost for testing purposes
 
 
 ## Configuration for Facebook authorization
