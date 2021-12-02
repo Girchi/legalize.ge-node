@@ -1,7 +1,9 @@
-import { PDFDocument, degrees } from "pdf-lib";
+import pkg from 'pdf-lib';
 import * as fs from "fs";
 import isCorrupted from 'is-corrupted-jpeg';
 
+
+const { PDFDocument, degrees } = pkg;
 // --Generate PDFs--
 const generatepdf = async () => {
 try {
