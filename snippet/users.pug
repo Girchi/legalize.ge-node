@@ -1,5 +1,5 @@
 // ======= Head =======
-include parts/head.pug
+include defaultParts/head.pug
 // End Head
 
 // Template CSS Files
@@ -7,7 +7,7 @@ link(href='/assets/css/style.css' rel='stylesheet')
 link(href='/assets/css/user.css' rel='stylesheet')
 
 // ======= Header =======
-include parts/header.pug
+include defaultParts/header.pug
 // End Header
 
 // User Search
@@ -19,11 +19,11 @@ include parts/header.pug
   p#underUl= `სულ მომხმარებელთა რაოდენობა - ${usersList.length}` 
                   
 // ======= Footer =======
-include parts/footer.pug
+include defaultParts/footer.pug
 // End Footer
 
 // ======= Scripts =======
-include parts/scripts.pug
+include defaultParts/scripts.pug
 // End Scripts
 
 script(type="module"). 

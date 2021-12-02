@@ -1,0 +1,21 @@
+// Head
+include ../defaultParts/head.pug
+
+// Template CSS Files
+link(href='/assets/css/style.css' rel='stylesheet')
+link(rel="stylesheet" href="/assets/css/petition.css")
+
+// Header 
+include ../defaultParts/header.pug
+
+// Uncomment line below (with ctrl + / to don't mess up the format) for custom text in the petititon's body
+//- - let petitionBodyText = "უჭერთ თუ არა პეტიციას ხმას?";
+// Petition form component
+include petition.pug
+
+// Footer
+include ../defaultParts/footer.pug
+
+// Scripts 
+script(src="/assets/js/petition.js")
+include ../defaultParts/scripts.pug

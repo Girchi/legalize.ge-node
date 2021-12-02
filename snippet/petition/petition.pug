@@ -1,17 +1,6 @@
-// Head
-include parts/head.pug
-
-// Template CSS Files
-link(href='/assets/css/style.css' rel='stylesheet')
-link(rel="stylesheet" href="/assets/css/petition.css")
-
-// Header 
-include parts/header.pug
-
 .container#petitionContainer
 
   ul.sign-options#options
-
     li#authItem
       a.collapsed(data-bs-toggle='collapse' data-bs-target='#authSign')
         | ავტორიზაცია და ხელმოწერა
@@ -28,8 +17,6 @@ include parts/header.pug
         i.bx.bx-chevron-down.icon-show
         i.bx.bx-chevron-up.icon-close
       #noAuthSign.collapse.show(data-bs-parent='.sign-options')
-
-
         form#formPetition.form.col-12.col-md-8.col-lg-6
           div.messages
             #successMessage.alert.alert-success პეტიცია წარმატებით დაემატა
@@ -38,6 +25,7 @@ include parts/header.pug
               i.bx.bx-error-circle
           .form-container
             h3.heading პეტიცია
+            h4.petitionText=petitionBodyText // Custom text
             .form-group.mb-3
               label.col-form-label სახელი*
               input.form-control(type='text' placeholder='მიუთითეთ სახელი' id="nameInput" required)
@@ -71,10 +59,3 @@ include parts/header.pug
         div
           ul#petitionList
           button#loadBtn.btn.mt-2(style="display:none") მეტის ნახვა
-
-// Footer
-include parts/footer.pug
-
-// Scripts 
-script(src="../assets/js/petition.js")
-include parts/scripts.pug

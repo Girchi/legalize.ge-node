@@ -26,6 +26,10 @@ input[type=number] {
   margin-bottom: 2rem;
 }
 
+.petitionText {
+  text-align: center;
+}
+
 .form-group {
   width: 100%;
 }

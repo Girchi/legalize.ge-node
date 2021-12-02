@@ -275,7 +275,7 @@ app.post('/cards-download', (req, res) => {
 });
 
 app.get("/petition", (req, res) => {
-  res.render(__dirname + "/snippet/petition");
+  res.render(__dirname + "/snippet/petition/petitionLayout");
 });
 
 // Define unused card number
