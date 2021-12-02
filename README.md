@@ -19,6 +19,7 @@ Users can see preview of their card, while inputting the details, after authoriz
      D. To set up a localhost environment, put in your SSL key(for example: `SSL_KEY=./keys/example.key`)
 3. **It's essential** to have configured JSON:API, Simple Oauth and Token, Simple Oauth Facebook Connect and Social Auth Facebook in Drupal side
 4. Change `"DRUPAL_DOMAIN"` in `assets/js/auth_config.json ` to http://girchi.docker.localhost for testing purposes
+5. Run `npm run launch` in terminal to automatically install all the neccessary npm packages and start the app
 
 
 ## Configuration for Facebook authorization
